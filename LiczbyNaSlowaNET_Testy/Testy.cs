@@ -1,4 +1,7 @@
-﻿using System;
+﻿
+// Copyright (c) 2014 Przemek Walkowski
+
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LiczbyNaSlowaNET;
 
