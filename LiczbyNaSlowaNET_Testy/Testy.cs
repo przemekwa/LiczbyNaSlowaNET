@@ -6,7 +6,7 @@ namespace LiczbyNaSlowaNET_Testy
 {
     [TestClass]
    
-    public class UnitTest1
+    public class Testy
     {
 
         private Konwerter konwerter { get; set; }
@@ -45,33 +45,37 @@ namespace LiczbyNaSlowaNET_Testy
         public void TestSetek()
         {
             Assert.AreEqual("sto dwadziescia trzy", konwerter.ZamienNaSlowa(123));
-            Assert.AreEqual("czterysta trzydziesci trzy", konwerter.ZamienNaSlowa(433));
-            Assert.AreEqual("trzysta dwadziescia piec", konwerter.ZamienNaSlowa(325));
-            Assert.AreEqual("siedemset piecdziesiat szesc", konwerter.ZamienNaSlowa(756));
+            Assert.AreEqual("czterysta trzy", konwerter.ZamienNaSlowa(403));
+            Assert.AreEqual("trzysta dwadziescia", konwerter.ZamienNaSlowa(320));
+            Assert.AreEqual("siedemset", konwerter.ZamienNaSlowa(700));
             Assert.AreEqual("dziewiecset dziewiecdziesiat dziewiec", konwerter.ZamienNaSlowa(999));
         }
 
         [TestMethod]
         public void TestTysiecy()
         {
-            Assert.AreEqual("jeden tysiac dwa".Trim(), konwerter.ZamienNaSlowa(1002));
-            Assert.AreEqual("sto dwadziescia tysiecy trzydziesci".Trim(), konwerter.ZamienNaSlowa(120030));
-            Assert.AreEqual("sto dwadziescia trzy tysiace".Trim(), konwerter.ZamienNaSlowa(123000));
-            Assert.AreEqual("sto dwadziescia trzy tysiace trzydziesci dwa".Trim(), konwerter.ZamienNaSlowa(123032));
-            Assert.AreEqual("osiemset dwadziescia cztery tysiace siedemset dwa".Trim(), konwerter.ZamienNaSlowa(824702));
-            Assert.AreEqual("sto dwadziescia trzy tysiace trzysta szescdziesiat".Trim(), konwerter.ZamienNaSlowa(123360));
+            Assert.AreEqual("jeden tysiac dwa", konwerter.ZamienNaSlowa(1002));
+            Assert.AreEqual("sto dwadziescia tysiecy trzydziesci", konwerter.ZamienNaSlowa(120030));
+            Assert.AreEqual("sto dwadziescia trzy tysiace", konwerter.ZamienNaSlowa(123000));
+            Assert.AreEqual("sto dwadziescia trzy tysiace trzydziesci dwa", konwerter.ZamienNaSlowa(123032));
+            Assert.AreEqual("osiemset dwadziescia cztery tysiace siedemset dwa", konwerter.ZamienNaSlowa(824702));
+            Assert.AreEqual("sto dwadziescia trzy tysiace trzysta szescdziesiat", konwerter.ZamienNaSlowa(123360));
         }
 
         [TestMethod]
         public void TestMilionow()
         {
-            Assert.AreEqual("sto dwadziescia trzy miliony".Trim(), konwerter.ZamienNaSlowa(123000000));
+            Assert.AreEqual("jeden milion", konwerter.ZamienNaSlowa(1000000));
+            Assert.AreEqual("sto dwadziescia trzy miliony", konwerter.ZamienNaSlowa(123000000));
+            Assert.AreEqual("sto dwadziescia trzy miliony dwadziescia jeden", konwerter.ZamienNaSlowa(123000021));
+            Assert.AreEqual("trzy miliony dwiescie tysiecy", konwerter.ZamienNaSlowa(3200000));
+            Assert.AreEqual("trzynascie milionow dwiescie tysiecy", konwerter.ZamienNaSlowa(13200000));
         }
 
         [TestMethod]
         public void TestMiliardow()
         {
-            Assert.AreEqual("dwa miliardy".Trim(), konwerter.ZamienNaSlowa(2000000000));
+            Assert.AreEqual("dwa miliardy", konwerter.ZamienNaSlowa(2000000000));
         }
 
 
