@@ -22,8 +22,6 @@ namespace LiczbyNaSlowaNET
 
         public string ZamienNaSlowa()
         {
-
-
             return liczbyNaSlowaBuldier.Build();
         }
 

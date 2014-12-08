@@ -83,13 +83,15 @@ namespace LiczbyNaSlowaNET
                 {
                     var temp = rezultat.ToString().Trim();
 
+                    rezultat.Clear();
+
                     rezultat.AppendFormat("{0}{1}{2}{3}{4}{5}",
                         this.DajOdstep(Slowniki.Setki[this.setki]),
                         this.DajOdstep(Slowniki.Dziesiatki[this.dziesiatki]),
                         this.DajOdstep(Slowniki.Nastki[this.nastki]),
                         this.DajOdstep(Slowniki.Jednosci[this.jednosci]),
                         this.DajOdstep(Slowniki.Koncowki[this.rzadWielkosci, this.formaGramatyczna]),
-                        temp);
+                        this.DajOdstep(temp));
                 }
               
                 this.rzadWielkosci += 1;
