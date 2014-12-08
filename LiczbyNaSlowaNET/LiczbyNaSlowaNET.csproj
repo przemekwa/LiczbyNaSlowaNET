@@ -39,7 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlgorytmZamiany.cs" />
     <Compile Include="Konwerter.cs" />
+    <Compile Include="LiczbyNaSlowa.cs" />
+    <Compile Include="LiczbyNaSlowaBuldier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

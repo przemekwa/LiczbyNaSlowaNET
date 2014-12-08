@@ -8,8 +8,15 @@ namespace LiczbyNaSlowaNET_Testy
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestKonwersji()
         {
+            var konwerter = new Konwerter();
+
+            Assert.AreEqual(konwerter.ZamienNaSlowa(1000), "tysiąc");
+
+            Assert.AreEqual(konwerter.ZamienNaSlowa(100), "sto");
+
+            Assert.AreEqual(konwerter.ZamienNaSlowa(550), "pięć set piędzisiąt");
            
 
         }

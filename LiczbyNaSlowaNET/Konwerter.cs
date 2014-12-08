@@ -8,5 +8,16 @@ namespace LiczbyNaSlowaNET
 {
     public class Konwerter
     {
+        public string ZamienNaSlowa(int liczba)
+        {
+            var buldier = new LiczbyNaSlowa
+            {
+                Liczba = liczba
+            };
+
+            var zamiana = new AlgorytmZamiany(buldier);
+
+            return zamiana.ZamienNaSlowa();
+        }
     }
 }
