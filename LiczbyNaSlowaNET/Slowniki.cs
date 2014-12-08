@@ -11,28 +11,29 @@ namespace LiczbyNaSlowaNET
         static Slowniki()
         {
 
-            jednosi = new List<string>
+            jednosci = new List<string>
                 {
-                    "zero", "jeden","dwa" , "trzy", "cztery", "piec", "szesc", "siedem", "osiem", "dziewiec"
+                    "","jeden","dwa" , "trzy", "cztery", "piec", "szesc", "siedem", "osiem", "dziewiec","zero"
                 };
 
             nastki = new List<string>
                 {
-                    "jedenascie", "dwanascie","trzynascie" , "czternascie", "pietnascie", "szesnascie", "siedemnascie", "osiemnascie", "dziewietnascie"
+                    "","jedenascie", "dwanascie","trzynascie" , "czternascie", "pietnascie", "szesnascie", "siedemnascie", "osiemnascie", "dziewietnascie"
                 };
 
             dziesiatki = new List<string>
                 {
-                    "dziesiec", "dwadziescia","trzydziesci" , "czterdziesci", "piecdziesiat", "szescdziesiat", "siedemdziesiat", "osiemdziesiat", "dziewiecdziesiat"
+                    "","dziesiec", "dwadziescia","trzydziesci" , "czterdziesci", "piecdziesiat", "szescdziesiat", "siedemdziesiat", "osiemdziesiat", "dziewiecdziesiat"
                 };
 
             setki = new List<string>
                 {
-                    "sto", "dwiescie","trzysta" , "czterysta", "piecset", "szescset", "siedemset", "osiemset", "dziewiecset"
+                    "","sto", "dwiescie","trzysta" , "czterysta", "piecset", "szescset", "siedemset", "osiemset", "dziewiecset"
                 };
 
             koncowki = new string[,] 
             {
+                {"","",""},
                 {"tysiac","tysiace","tysiecy"},
                 {"milion","miliony","milionow"},
                 {"miliard","miliardy","miliardow"},
@@ -40,6 +41,10 @@ namespace LiczbyNaSlowaNET
                 {"biliard","biliardy","biliardow"}
             };
 
+            znak = new List<string>
+            {
+                "plus", "minus"
+            };
 
 
 
@@ -47,7 +52,7 @@ namespace LiczbyNaSlowaNET
 
         private static string[,] koncowki;
 
-        private static List<String> jednosi;
+        private static List<String> jednosci;
 
         private static List<String> nastki;
 
@@ -55,12 +60,14 @@ namespace LiczbyNaSlowaNET
 
         private static List<String> setki;
 
+        private static List<String> znak;
+
 
         public static List<String> Jednosci
         {
             get
             {
-                return jednosi;
+                return jednosci;
             }
         }
         
@@ -95,6 +102,15 @@ namespace LiczbyNaSlowaNET
                 return koncowki;
             }
         }
+
+        public static List<String> Znak
+        {
+            get
+            {
+                return znak;
+            }
+        }
+
 
 
 
