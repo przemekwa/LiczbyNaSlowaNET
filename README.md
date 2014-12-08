@@ -1,7 +1,7 @@
-LiczbyNaSlowaNET
+LiczbyNaSłowaNET
 ================
 
-Konwerter liczb na odpowiedniki słowne z zachowanie polskiej gramatyki. 
+Konwerter liczb na odpowiedniki słowne z zachowanie polskiej gramatyki.  Implementacja w C#.
 Przykład: 
 
 liczba = 15123541
