@@ -8,8 +8,14 @@ namespace LiczbyNaSlowaNET
 {
     class LiczbyNaSlowa : LiczbyNaSlowaBuldier
     {
+                
         public override string Build()
         {
+
+            
+
+
+
             throw new NotImplementedException();
         }
     }

@@ -22,7 +22,9 @@ namespace LiczbyNaSlowaNET
 
         public string ZamienNaSlowa()
         {
-            return liczbyNaSlowaBuldier.Liczba.ToString();
+
+
+            return liczbyNaSlowaBuldier.Build();
         }
 
     }
