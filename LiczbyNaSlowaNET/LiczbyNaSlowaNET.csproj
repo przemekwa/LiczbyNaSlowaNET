@@ -40,12 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AlgorytmZamiany.cs" />
-    <Compile Include="Konwerter.cs" />
-    <Compile Include="LiczbyNaSlowa.cs" />
-    <Compile Include="LiczbyNaSlowaBuldier.cs" />
+    <Compile Include="CommonConverter.cs" />
+    <Compile Include="Converter.cs" />
+    <Compile Include="ConvertAlgorithm.cs" />
+    <Compile Include="ConverterBuldier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Slowniki.cs" />
+    <Compile Include="Dictionaries.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

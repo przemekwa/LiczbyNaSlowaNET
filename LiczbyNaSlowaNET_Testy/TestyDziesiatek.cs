@@ -10,42 +10,42 @@ namespace LiczbyNaSlowaNET_Testy
     [TestClass]
     public class TestyDziesiatek
     {
-        private Konwerter konwerter { get; set; }
+        private Converter konwerter { get; set; }
 
         [TestInitialize]
         public void SetUp()
         {
-            this.konwerter = new Konwerter();
+            this.konwerter = new Converter();
         }
 
         [TestMethod]
         public void Test_11()
         {
-            Assert.AreEqual("jedenascie", konwerter.ZamienNaSlowa(11));
+            Assert.AreEqual("jedenascie", konwerter.Convert(11));
         }
 
         [TestMethod]
         public void Test_13()
         {
-            Assert.AreEqual("trzynascie", konwerter.ZamienNaSlowa(13));
+            Assert.AreEqual("trzynascie", konwerter.Convert(13));
         }
 
         [TestMethod]
         public void Test_18()
         {
-            Assert.AreEqual("osiemnascie", konwerter.ZamienNaSlowa(18));
+            Assert.AreEqual("osiemnascie", konwerter.Convert(18));
         }
 
         [TestMethod]
         public void Test_20()
         {
-            Assert.AreEqual("dwadziescia", konwerter.ZamienNaSlowa(20));
+            Assert.AreEqual("dwadziescia", konwerter.Convert(20));
         }
 
         [TestMethod]
         public void Test_84()
         {
-            Assert.AreEqual("osiemdziesiat cztery", konwerter.ZamienNaSlowa(84));
+            Assert.AreEqual("osiemdziesiat cztery", konwerter.Convert(84));
         }
     }
 }

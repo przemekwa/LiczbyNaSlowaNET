@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace LiczbyNaSlowaNET
 {
-    abstract class LiczbyNaSlowaBuldier
+    public abstract class ConverterBuldier
     {
-        public int Liczba { get; set; }
+        public int NumberToConvert { get; set; }
 
         abstract public string Build();
     }

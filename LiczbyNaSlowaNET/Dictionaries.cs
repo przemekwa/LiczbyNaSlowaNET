@@ -9,32 +9,31 @@ using System.Threading.Tasks;
 
 namespace LiczbyNaSlowaNET
 {
-    static class Slowniki
+    internal static class Dictionaries
     {
-        static Slowniki()
+        static Dictionaries()
         {
-
-            jednosci = new List<string>
+            unity = new List<string>
                 {
                     "","jeden","dwa" , "trzy", "cztery", "piec", "szesc", "siedem", "osiem", "dziewiec","zero"
                 };
 
-            nastki = new List<string>
+            othersTens = new List<string>
                 {
                     "","jedenascie", "dwanascie","trzynascie" , "czternascie", "pietnascie", "szesnascie", "siedemnascie", "osiemnascie", "dziewietnascie"
                 };
 
-            dziesiatki = new List<string>
+            tens = new List<string>
                 {
                     "","dziesiec", "dwadziescia","trzydziesci" , "czterdziesci", "piecdziesiat", "szescdziesiat", "siedemdziesiat", "osiemdziesiat", "dziewiecdziesiat"
                 };
 
-            setki = new List<string>
+            hundreds = new List<string>
                 {
                     "","sto", "dwiescie","trzysta" , "czterysta", "piecset", "szescset", "siedemset", "osiemset", "dziewiecset"
                 };
 
-            koncowki = new string[,] 
+            endings = new string[,] 
             {
                 {"","",""},
                 {"tysiac","tysiace","tysiecy"},
@@ -44,80 +43,71 @@ namespace LiczbyNaSlowaNET
                 {"biliard","biliardy","biliardow"}
             };
 
-            znak = new List<string>
+            sign = new List<string>
             {
                 "plus", "minus"
             };
-
-
-
         }
 
-        private static string[,] koncowki;
+        private static string[,] endings;
 
-        private static List<String> jednosci;
+        private static List<String> unity;
 
-        private static List<String> nastki;
+        private static List<String> othersTens;
 
-        private static List<String> dziesiatki;
+        private static List<String> tens;
 
-        private static List<String> setki;
+        private static List<String> hundreds ;
 
-        private static List<String> znak;
+        private static List<String> sign;
 
 
-        public static List<String> Jednosci
+        public static List<String> Unity
         {
             get
             {
-                return jednosci;
+                return unity;
             }
         }
-        
-        public static List<String> Nastki
+
+        public static List<String> OthersTens
         {
             get
             {
-                return nastki;
+                return othersTens;
             }
         }
 
-        public static List<String> Dziesiatki
+        public static List<String> Tens
         {
             get
             {
-                return dziesiatki;
+                return tens;
             }
         }
 
-        public static List<String> Setki
+        public static List<String> Hundreds
         {
             get
             {
-                return setki;
+                return hundreds;
             }
         }
 
-        public static string[,] Koncowki
+        public static string[,] Endings
         {
             get
             {
-                return koncowki;
+                return endings;
             }
         }
 
-        public static List<String> Znak
+        public static List<String> Sign
         {
             get
             {
-                return znak;
+                return sign;
             }
         }
-
-
-
-
-
-
     }
 }
