@@ -51,7 +51,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Testy.cs" />
+    <Compile Include="TestySetek.cs" />
+    <Compile Include="TestyMilionow.cs" />
+    <Compile Include="TestyMiliardow.cs" />
+    <Compile Include="TestyDziesiatek.cs" />
+    <Compile Include="TestyJednosci.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
