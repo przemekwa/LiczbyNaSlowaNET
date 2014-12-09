@@ -8,26 +8,26 @@ using LiczbyNaSlowaNET;
 namespace LiczbyNaSlowaNET_Testy
 {
     [TestClass]
-    public class TestyJednosci
+    public class Unity
     {
-        private Converter konwerter { get; set; }
+        private Converter converter { get; set; }
 
         [TestInitialize]
         public void SetUp()
         {
-            this.konwerter = new Converter();
+            this.converter = new Converter();
         }
 
         [TestMethod]
         public void Test_0()
         {
-            Assert.AreEqual("zero", konwerter.Convert(0));
+            Assert.AreEqual("zero", converter.Convert(0));
         }
 
         [TestMethod]
         public void Test_3()
         {
-            Assert.AreEqual("trzy", konwerter.Convert(3));
+            Assert.AreEqual("trzy", converter.Convert(3));
         }
     }
 }

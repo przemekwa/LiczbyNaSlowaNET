@@ -8,44 +8,44 @@ using LiczbyNaSlowaNET;
 namespace LiczbyNaSlowaNET_Testy
 {
     [TestClass]
-    public class TestyDziesiatek
+    public class Tens
     {
-        private Converter konwerter { get; set; }
+        private Converter converter { get; set; }
 
         [TestInitialize]
         public void SetUp()
         {
-            this.konwerter = new Converter();
+            this.converter = new Converter();
         }
 
         [TestMethod]
         public void Test_11()
         {
-            Assert.AreEqual("jedenascie", konwerter.Convert(11));
+            Assert.AreEqual("jedenascie", converter.Convert(11));
         }
 
         [TestMethod]
         public void Test_13()
         {
-            Assert.AreEqual("trzynascie", konwerter.Convert(13));
+            Assert.AreEqual("trzynascie", converter.Convert(13));
         }
 
         [TestMethod]
         public void Test_18()
         {
-            Assert.AreEqual("osiemnascie", konwerter.Convert(18));
+            Assert.AreEqual("osiemnascie", converter.Convert(18));
         }
 
         [TestMethod]
         public void Test_20()
         {
-            Assert.AreEqual("dwadziescia", konwerter.Convert(20));
+            Assert.AreEqual("dwadziescia", converter.Convert(20));
         }
 
         [TestMethod]
         public void Test_84()
         {
-            Assert.AreEqual("osiemdziesiat cztery", konwerter.Convert(84));
+            Assert.AreEqual("osiemdziesiat cztery", converter.Convert(84));
         }
     }
 }

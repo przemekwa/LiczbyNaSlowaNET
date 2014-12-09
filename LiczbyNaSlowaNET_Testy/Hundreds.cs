@@ -8,44 +8,44 @@ using LiczbyNaSlowaNET;
 namespace LiczbyNaSlowaNET_Testy
 {
     [TestClass]
-    public class TestySetek
+    public class Hundreds
     {
-        private Converter konwerter { get; set; }
+        private Converter converter { get; set; }
 
         [TestInitialize]
         public void SetUp()
         {
-            this.konwerter = new Converter();
+            this.converter = new Converter();
         }
 
         [TestMethod]
         public void Test_123()
         {
-            Assert.AreEqual("sto dwadziescia trzy", konwerter.Convert(123));
+            Assert.AreEqual("sto dwadziescia trzy", converter.Convert(123));
         }
 
         [TestMethod]
         public void Test_403()
         {
-            Assert.AreEqual("czterysta trzy", konwerter.Convert(403));
+            Assert.AreEqual("czterysta trzy", converter.Convert(403));
         }
 
         [TestMethod]
         public void Test_320()
         {
-            Assert.AreEqual("trzysta dwadziescia", konwerter.Convert(320));
+            Assert.AreEqual("trzysta dwadziescia", converter.Convert(320));
         }
 
         [TestMethod]
         public void Test_700()
         {
-            Assert.AreEqual("siedemset", konwerter.Convert(700));
+            Assert.AreEqual("siedemset", converter.Convert(700));
         }
 
         [TestMethod]
         public void Test_999()
         {
-            Assert.AreEqual("dziewiecset dziewiecdziesiat dziewiec", konwerter.Convert(999));
+            Assert.AreEqual("dziewiecset dziewiecdziesiat dziewiec", converter.Convert(999));
         }
     }
 }
