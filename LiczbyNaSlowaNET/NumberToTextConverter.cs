@@ -9,15 +9,16 @@ using System.Threading.Tasks;
 
 namespace LiczbyNaSlowaNET
 {
-    public static class Converter
+    public static class NumberToTextConverter
     {
         private static  ConverterAlgorithm convertAlgorithm;
 
-        static Converter()
+        static NumberToTextConverter()
         {
             convertAlgorithm = new ConverterAlgorithm();
-
         }
+
+
         /// <summary>
         /// Convert number to words. 
         /// </summary>

@@ -13,31 +13,31 @@ namespace LiczbyNaSlowaNET_Testy
         [TestMethod]
         public void Test_11()
         {
-            Assert.AreEqual("jedenascie", Converter.Convert(11));
+            Assert.AreEqual("jedenascie", NumberToTextConverter.Convert(11));
         }
 
         [TestMethod]
         public void Test_13()
         {
-            Assert.AreEqual("trzynascie", Converter.Convert(13));
+            Assert.AreEqual("trzynascie", NumberToTextConverter.Convert(13));
         }
 
         [TestMethod]
         public void Test_18()
         {
-            Assert.AreEqual("osiemnascie", Converter.Convert(18));
+            Assert.AreEqual("osiemnascie", NumberToTextConverter.Convert(18));
         }
 
         [TestMethod]
         public void Test_20()
         {
-            Assert.AreEqual("dwadziescia", Converter.Convert(20));
+            Assert.AreEqual("dwadziescia", NumberToTextConverter.Convert(20));
         }
 
         [TestMethod]
         public void Test_84()
         {
-            Assert.AreEqual("osiemdziesiat cztery", Converter.Convert(84));
+            Assert.AreEqual("osiemdziesiat cztery", NumberToTextConverter.Convert(84));
         }
     }
 }
