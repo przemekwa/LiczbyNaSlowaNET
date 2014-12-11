@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace LiczbyNaSlowaNET
 {
-    public class Converter
+    public static class Converter
     {
-        private ConverterAlgorithm convertAlgorithm;
+        private static  ConverterAlgorithm convertAlgorithm;
 
-        public Converter()
+        static Converter()
         {
-            this.convertAlgorithm = new ConverterAlgorithm();
+            convertAlgorithm = new ConverterAlgorithm();
 
         }
         /// <summary>
@@ -23,11 +23,11 @@ namespace LiczbyNaSlowaNET
         /// </summary>
         /// <param name="number">Number to convert</param>
         /// <returns>The words describe number</returns>
-        public string Convert(int number)
+        public static string Convert(int number)
         {
-            this.convertAlgorithm.NumberToConvert = number;
+            convertAlgorithm.NumberToConvert = number;
 
-            var commonConverter = new CommonConverter(this.convertAlgorithm);
+            var commonConverter = new CommonConverter(convertAlgorithm);
 
             return commonConverter.Convert();
         }
