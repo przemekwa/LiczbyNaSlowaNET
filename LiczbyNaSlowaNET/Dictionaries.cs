@@ -47,6 +47,12 @@ namespace LiczbyNaSlowaNET
             {
                 "plus", "minus"
             };
+
+            current = new string[,] 
+            {
+                {"","",""},
+                {"zloty","zlote","zlotych"},
+            };
         }
 
         private static string[,] endings;
@@ -60,6 +66,8 @@ namespace LiczbyNaSlowaNET
         private static List<String> hundreds ;
 
         private static List<String> sign;
+
+        private static string[,] current;
 
 
         public static List<String> Unity
@@ -107,6 +115,14 @@ namespace LiczbyNaSlowaNET
             get
             {
                 return sign;
+            }
+        }
+
+        public static string[,] Current
+        {
+            get
+            {
+                return current;
             }
         }
     }

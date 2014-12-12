@@ -52,7 +52,9 @@ namespace LiczbyNaSlowaNET
             while (tempNumber != 0)
             {
                 this.hundreds = (tempNumber % 1000) / 100;
+
                 this.tens = (tempNumber % 100) / 10;
+
                 this.unity = tempNumber % 10;
 
                 if (this.tens == 1 && this.unity > 0)

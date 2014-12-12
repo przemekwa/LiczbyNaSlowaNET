@@ -3,7 +3,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,10 +19,9 @@ namespace LiczbyNaSlowaNET
         {
             convertAlgorithm = new ConverterAlgorithm();
         }
-
-
+        
         /// <summary>
-        /// Convert number to words. 
+        /// Convert number into words. 
         /// </summary>
         /// <param name="number">Number to convert</param>
         /// <returns>The words describe number</returns>
@@ -31,6 +32,28 @@ namespace LiczbyNaSlowaNET
             var commonConverter = new CommonConverter(convertAlgorithm);
 
             return commonConverter.Convert();
+        }
+
+        public static string Convert(decimal number)
+        {
+            var result = new StringBuilder();
+
+            var splitNumber = number.ToString().Replace('.','@').Replace(',','@').Split('@');
+
+            foreach (var singleNumber in splitNumber)
+            {
+                int intNumber;
+
+                if (!int.TryParse(singleNumber, out intNumber))
+                {
+                    return String.Empty;
+                }
+
+                 result.Append(Convert(intNumber));
+                 result.Append(" ");
+            }
+
+            return result.ToString().Trim();
         }
     }
 }

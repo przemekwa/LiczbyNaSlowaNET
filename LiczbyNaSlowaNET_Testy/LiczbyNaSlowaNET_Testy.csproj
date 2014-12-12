@@ -51,6 +51,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Decimal.cs" />
     <Compile Include="Thousands.cs" />
     <Compile Include="Hundreds.cs" />
     <Compile Include="Millions.cs" />
