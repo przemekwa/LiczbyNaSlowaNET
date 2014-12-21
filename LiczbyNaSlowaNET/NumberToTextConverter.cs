@@ -13,11 +13,21 @@ namespace LiczbyNaSlowaNET
 {
     public static class NumberToTextConverter
     {
-        private static  ConverterAlgorithm convertAlgorithm;
+        private static  ConverterBuldier convertAlgorithm;
 
-        static NumberToTextConverter()
+        public enum Currency {None, PL};
+
+        private static void Initialization(Currency currency)
         {
-            convertAlgorithm = new ConverterAlgorithm();
+            switch (currency)
+            {
+                case Currency.None:
+                    convertAlgorithm = new ConverterAlgorithm();
+                    break;
+                case Currency.PL:
+                    convertAlgorithm = new CurrencyConvertAlgorithm();
+                    break;
+            }
         }
         
         /// <summary>
@@ -25,8 +35,10 @@ namespace LiczbyNaSlowaNET
         /// </summary>
         /// <param name="number">Number to convert</param>
         /// <returns>The words describe number</returns>
-        public static string Convert(int number)
+        public static string Convert(int number, Currency currency = Currency.None)
         {
+            Initialization(currency);
+
             convertAlgorithm.NumberToConvert = number;
 
             var commonConverter = new CommonConverter(convertAlgorithm);
@@ -34,7 +46,7 @@ namespace LiczbyNaSlowaNET
             return commonConverter.Convert();
         }
 
-        public static string Convert(decimal number)
+        public static string Convert(decimal number, Currency currency = Currency.None)
         {
             var result = new StringBuilder();
 
@@ -49,7 +61,7 @@ namespace LiczbyNaSlowaNET
                     return String.Empty;
                 }
 
-                 result.Append(Convert(intNumber));
+                 result.Append(Convert(intNumber, currency));
                  result.Append(" ");
             }
 

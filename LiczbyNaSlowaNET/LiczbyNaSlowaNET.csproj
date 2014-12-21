@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonConverter.cs" />
+    <Compile Include="CurrencyConvertAlgorithm.cs" />
     <Compile Include="NumberToTextConverter.cs" />
     <Compile Include="ConvertAlgorithm.cs" />
     <Compile Include="ConverterBuldier.cs" />
