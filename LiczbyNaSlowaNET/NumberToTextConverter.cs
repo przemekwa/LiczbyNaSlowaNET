@@ -15,7 +15,7 @@ namespace LiczbyNaSlowaNET
     {
         private static  ConverterBuldier convertAlgorithm;
 
-        public enum Currency {None, PL};
+        public enum Currency { None, PL };
 
         private static void Initialization(Currency currency)
         {
@@ -29,21 +29,26 @@ namespace LiczbyNaSlowaNET
                     break;
             }
         }
-        
+
+        private static string CommonConver(int[] numbers, Currency currency = Currency.None)
+        {
+            Initialization(currency);
+
+            convertAlgorithm.NumberToConvert = numbers;
+
+            var commonConverter = new CommonConverter(convertAlgorithm);
+
+            return commonConverter.Convert();
+        }
+
         /// <summary>
-        /// Convert number into words. 
+        /// Convert number into words.
         /// </summary>
         /// <param name="number">Number to convert</param>
         /// <returns>The words describe number</returns>
         public static string Convert(int number, Currency currency = Currency.None)
         {
-            Initialization(currency);
-
-            convertAlgorithm.NumberToConvert = number;
-
-            var commonConverter = new CommonConverter(convertAlgorithm);
-
-            return commonConverter.Convert();
+            return CommonConver(new int[] { number }, currency);
         }
 
         public static string Convert(decimal number, Currency currency = Currency.None)
@@ -52,20 +57,21 @@ namespace LiczbyNaSlowaNET
 
             var splitNumber = number.ToString().Replace('.','@').Replace(',','@').Split('@');
 
-            foreach (var singleNumber in splitNumber)
+            var allNumbers = new List<int>();
+
+            for (int i = 0; i < splitNumber.Length; i++)
             {
                 int intNumber;
 
-                if (!int.TryParse(singleNumber, out intNumber))
+                if (!int.TryParse(splitNumber[i], out intNumber))
                 {
-                    return String.Empty;
+                    continue;
                 }
 
-                 result.Append(Convert(intNumber, currency));
-                 result.Append(" ");
+                allNumbers.Add(intNumber);
             }
 
-            return result.ToString().Trim();
+            return CommonConver(allNumbers.ToArray(), currency);
         }
     }
 }

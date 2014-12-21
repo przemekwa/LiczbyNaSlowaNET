@@ -52,7 +52,7 @@ namespace LiczbyNaSlowaNET
             {
                 {"","",""},
                 {"zloty","zlote","zlotych"},
-                {"groszy","grosze",""}
+                {"grosz","grosze","groszy"}
             };
         }
 
