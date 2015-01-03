@@ -58,6 +58,7 @@ namespace LiczbyNaSlowaNET_Testy
             Assert.AreEqual("czternascie tysiecy sto dwadziescia trzy", NumberToTextConverter.Convert(14100.23M));
         }
 
+
        
     }
 }
