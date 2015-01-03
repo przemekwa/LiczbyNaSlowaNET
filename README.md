@@ -12,11 +12,11 @@ Możliwości biblioteki są następujące:
 Projekt składa się z 2 solucji:
 
 1. LiczbyNaSlowaNET - jest to głowna bliblioteka służąca do zamiany liczb na słowa.
-2. LiczbyNaSlowaNET_Testy - jest to biblioteka z teastami.
+2. LiczbyNaSlowaNET_Testy - jest to biblioteka z testami.
 
 Szybki start:
 
-Biblioteka LiczbyNaSłowaNET to statyczna klasa NumberToTextConverter z metodą Convert, która przyjmuje liczbę typu int lub decimal i  zwraca string z odpowiednikiem słownym danej liczby.
+Biblioteka LiczbyNaSłowaNET to statyczna klasa NumberToTextConverter z metodą Convert, która przyjmuje liczbę typu int lub decimal i zwraca string z odpowiednikiem słownym danej liczby.
 
 Przykłady zastosowań z testów dostępnych w projekcie:
 
