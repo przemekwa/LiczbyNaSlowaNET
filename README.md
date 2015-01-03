@@ -6,8 +6,8 @@ LiczbyNaSłowaNET to biblioteka, która umożliwia konwersje liczb na odpowiedni
 Możliwości biblioteki są następujące:
 
 * Zamiana liczb na odpowiedniki słowne z zachowaniem polskiej gramatyki czyli  {"tysiac","tysiace","tysiecy"},
-* Zamiana liczb typu decimal,
-* Zamina liczb typu decimal na odpowiedniki walutowe.
+* zamiana liczb typu decimal i int,
+* zamiana liczb typu decimal na odpowiedniki walutowe.
 
 Projekt składa się z 2 solucji:
 
