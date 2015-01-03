@@ -20,7 +20,7 @@ Biblioteka LiczbyNaSłowaNET to statyczna klasa NumberToTextConverter z metodą 
 
 Przykłady zastosowań z testów dostępnych w projekcie:
 
-* Zamiana liczb na odpowiedniki słowne (zachowana polska gramatyka)
+* Zamiana liczb na odpowiedniki słowne (zachowana polskiej gramatyki)
  -  Assert.AreEqual("osiemdziesiat cztery", NumberToTextConverter.Convert(84));
  -  Assert.AreEqual("sto dwadziescia tysiecy trzydziesci", NumberToTextConverter.Convert(120030));
  -  Assert.AreEqual("osiemset dwadziescia cztery tysiace siedemset dwa", NumberToTextConverter.Convert(824702));
@@ -30,7 +30,7 @@ Przykłady zastosowań z testów dostępnych w projekcie:
  -   Assert.AreEqual("czternascie tysiecy sto dwadziescia trzy", NumberToTextConverter.Convert(14100.23M));
  -   Assert.AreEqual("trzynascie zero", NumberToTextConverter.Convert(13.0M));
 
-* Zamiana liczn typu decimal na odpowiedniki walutowe:
+* Zamiana liczb typu decimal na odpowiedniki walutowe:
 -  Assert.AreEqual("jeden zloty dwadziescia dwa grosze", NumberToTextConverter.Convert(1.22M, NumberToTextConverter.Currency.PL));
 -   Assert.AreEqual("dwa zlote szescdziesiat osiem groszy", NumberToTextConverter.Convert(2.68M, NumberToTextConverter.Currency.PL));
 -   Assert.AreEqual("zero zlotych dwanascie groszy", NumberToTextConverter.Convert(0.12M, NumberToTextConverter.Currency.PL));
