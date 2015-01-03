@@ -1,7 +1,7 @@
 LiczbyNaSłowaNET
 ================
 
-LiczbyNaSłowaNET to biblioteka, która umożliwia konwersje liczb na odpowiedniki słowne z zachowanie polskiej gramatyki.
+LiczbyNaSłowaNET to biblioteka, która umożliwia konwersje liczb na odpowiedniki słowne z zachowaniem polskiej gramatyki.
 
 Możliwości biblioteki są następujące:
 
