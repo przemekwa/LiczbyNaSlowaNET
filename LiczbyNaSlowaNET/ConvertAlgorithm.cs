@@ -11,7 +11,7 @@ namespace LiczbyNaSlowaNET
 {
     internal class ConverterAlgorithm : ConverterBuldier
     {
-        private StringBuilder result;
+        private StringBuilder result = new StringBuilder();
 
         // liczba setek
         private int hundreds;
@@ -30,34 +30,31 @@ namespace LiczbyNaSlowaNET
 
         //forma gramatyczna (tysiąc, tysiące, tysięcy)
         private int grammarForm;
-        
+
+        private int[] tempGrammarForm = new int[] { 2, 3, 4 };
+
         public override string Build()
         {
-            result = new StringBuilder();
-
-            foreach (var singleNumber in NumberToConvert)
+            foreach (var number in Numbers)
             {
                 var partialResult = new StringBuilder();
 
-                if (singleNumber == 0)
+                if (number == 0)
                 {
                     partialResult.Append(Dictionaries.Unity[10]).ToString();
-
                 }
 
-                if (singleNumber < 0)
+                if (number < 0)
                 {
                     partialResult.Append(Dictionaries.Sign[2]);
                 }
 
-                var tempNumber = singleNumber;
+                var tempNumber = number;
 
                 this.order = 0;
-                
 
                 while (tempNumber != 0)
                 {
-
                     this.hundreds = (tempNumber % 1000) / 100;
 
                     this.tens = (tempNumber % 100) / 10;
@@ -74,9 +71,6 @@ namespace LiczbyNaSlowaNET
                     {
                         this.othersTens = 0;
                     }
-
-                    var tempGrammarForm = new int[] { 2, 3, 4 };
-
 
                     if (this.unity == 1 && (this.hundreds + this.tens + this.othersTens == 0))
                     {

@@ -11,7 +11,7 @@ namespace LiczbyNaSlowaNET
 {
     internal class CurrencyConvertAlgorithm : ConverterBuldier
     {
-        private StringBuilder result;
+        private StringBuilder result = new StringBuilder();
 
         // liczba setek
         private int hundreds;
@@ -31,42 +31,45 @@ namespace LiczbyNaSlowaNET
         //forma gramatyczna (tysiąc, tysiące, tysięcy)
         private int grammarForm;
 
-        //forma gramatyczna (tysiąc, tysiące, tysięcy)
-        private enum phase { beforeComma=1, afterComma  } ;
+        //liczba przed przecinkiem, liczba po przecinku
+        private enum phase { beforeComma = 1, afterComma };
 
-        //forma gramatyczna (tysiąc, tysiące, tysięcy)
-        private phase currentNumberPhase;
+        //aktualna faza
+        private phase currentPhase;
 
         private int[] tempGrammarForm = new int[] { 2, 3, 4 };
 
         public override string Build()
         {
-            result = new StringBuilder();
-           
-            this.currentNumberPhase = phase.beforeComma;
+            this.currentPhase = phase.beforeComma;
 
-            foreach (var singleNumber in NumberToConvert)
+            foreach (var number in Numbers)
             {
                 var partialResult = new StringBuilder();
 
-                if (singleNumber == 0)
+                if (number == 0)
                 {
                     partialResult.Append(Dictionaries.Unity[10]).ToString();
                     partialResult.Append(" ");
-                    partialResult.Append(Dictionaries.Current[(int)currentNumberPhase, 2]).ToString();
+
+                    partialResult.Append(Dictionaries.Current[(int)currentPhase, 2]).ToString();
+
                     result.Append(partialResult.ToString().Trim());
 
                     result.Append(" ");
-                    this.currentNumberPhase = phase.afterComma;
+
+                    this.currentPhase = phase.afterComma;
+
                     continue;
+                   
                 }
 
-                if (singleNumber < 0)
+                if (number < 0)
                 {
                     partialResult.Append(Dictionaries.Sign[2]);
                 }
 
-                var tempNumber = singleNumber;
+                var tempNumber = number;
 
                 this.order = 0;
 
@@ -88,8 +91,6 @@ namespace LiczbyNaSlowaNET
                     {
                         this.othersTens = 0;
                     }
-
-                    
 
                     if (this.unity == 1 && (this.hundreds + this.tens + this.othersTens == 0))
                     {
@@ -126,13 +127,13 @@ namespace LiczbyNaSlowaNET
                     tempNumber = tempNumber / 1000;
                 }
 
-                partialResult.Append(this.CheckWhitespace(Dictionaries.Current[(int)this.currentNumberPhase, GetCurrencyForm(singleNumber, this.grammarForm)]));
+                partialResult.Append(this.CheckWhitespace(Dictionaries.Current[(int)this.currentPhase, GetCurrencyForm(number, this.grammarForm)]));
 
                 result.Append(partialResult.ToString().Trim());
 
                 result.Append(" ");
 
-                this.currentNumberPhase = phase.afterComma;
+                this.currentPhase = phase.afterComma;
             }
 
             return result.ToString().Trim();
@@ -147,5 +148,7 @@ namespace LiczbyNaSlowaNET
         {
             return number >= 1000 ? 2 : grammarForm;
         }
+
+        
     }
 }

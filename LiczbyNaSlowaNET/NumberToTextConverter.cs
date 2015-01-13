@@ -13,7 +13,7 @@ namespace LiczbyNaSlowaNET
 {
     public static class NumberToTextConverter
     {
-        private static  ConverterBuldier convertAlgorithm;
+        private static ConverterBuldier convertAlgorithm;
 
         public enum Currency { None, PL };
 
@@ -34,7 +34,7 @@ namespace LiczbyNaSlowaNET
         {
             Initialization(currency);
 
-            convertAlgorithm.NumberToConvert = numbers;
+            convertAlgorithm.Numbers = numbers;
 
             var commonConverter = new CommonConverter(convertAlgorithm);
 

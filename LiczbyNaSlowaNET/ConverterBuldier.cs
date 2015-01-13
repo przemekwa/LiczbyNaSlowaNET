@@ -11,7 +11,7 @@ namespace LiczbyNaSlowaNET
 {
     public abstract class ConverterBuldier
     {
-        public int[] NumberToConvert { get; set; }
+        public int[] Numbers { get; set; }
 
         abstract public string Build();
     }
