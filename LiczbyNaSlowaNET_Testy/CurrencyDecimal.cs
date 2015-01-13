@@ -29,6 +29,12 @@ namespace LiczbyNaSlowaNET_Testy
         }
 
         [TestMethod]
+        public void Test_Currency_123_12()
+        {
+            Assert.AreEqual("sto dwadziescia trzy zlote dwanascie groszy", NumberToTextConverter.Convert(123.12M, NumberToTextConverter.Currency.PL));
+        }
+
+        [TestMethod]
         public void Test_Currency_Infinity()
         {
             Assert.AreEqual("", NumberToTextConverter.Convert(999999999999999999999M, NumberToTextConverter.Currency.PL));

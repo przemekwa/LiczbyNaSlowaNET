@@ -128,23 +128,16 @@ namespace LiczbyNaSlowaNET
                 }
 
 
-                //partialResult.Append(this.CheckWhitespace(Dictionaries.Current[(int)this.currentNumberPhase, this.grammarForm]));
-
                 if (this.currentNumberPhase == phase.beforeComma)
                 {
 
-                    if (singleNumber >= 5)
+                    if (singleNumber >= 1000)
                     {
-                        partialResult.Append(this.CheckWhitespace(Dictionaries.Current[(int)this.currentNumberPhase, 2]));
+                        grammarForm = 2;
                     }
-                    else if (singleNumber == 2 || singleNumber == 3 || singleNumber == 4)
-                    {
-                        partialResult.Append(this.CheckWhitespace(Dictionaries.Current[(int)this.currentNumberPhase, 1]));
-                    }
-                    else
-                    {
-                        partialResult.Append(this.CheckWhitespace(Dictionaries.Current[(int)this.currentNumberPhase, 0]));
-                    }
+
+                    partialResult.Append(this.CheckWhitespace(Dictionaries.Current[(int)this.currentNumberPhase, grammarForm]));
+
                 }
                 else
                 {
