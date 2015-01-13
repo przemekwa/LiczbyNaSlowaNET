@@ -121,36 +121,12 @@ namespace LiczbyNaSlowaNET
                             );
                     }
 
-
                     this.order += 1;
 
                     tempNumber = tempNumber / 1000;
                 }
 
-
-                if (this.currentNumberPhase == phase.beforeComma)
-                {
-
-                    if (singleNumber >= 1000)
-                    {
-                        grammarForm = 2;
-                    }
-
-                    partialResult.Append(this.CheckWhitespace(Dictionaries.Current[(int)this.currentNumberPhase, grammarForm]));
-
-                }
-                else
-                {
-                    partialResult.Append(this.CheckWhitespace(Dictionaries.Current[(int)this.currentNumberPhase, grammarForm]));
-                }
-
-
-
-          
-                
-
-                
-           
+                partialResult.Append(this.CheckWhitespace(Dictionaries.Current[(int)this.currentNumberPhase, GetCurrencyForm(singleNumber, this.grammarForm)]));
 
                 result.Append(partialResult.ToString().Trim());
 
@@ -159,15 +135,17 @@ namespace LiczbyNaSlowaNET
                 this.currentNumberPhase = phase.afterComma;
             }
 
-
-
             return result.ToString().Trim();
-            
         }
 
         private string CheckWhitespace(string ciag)
         {
             return String.IsNullOrEmpty(ciag) ? string.Empty : " " + ciag;
+        }
+
+        private int GetCurrencyForm(int number, int gramaForm)
+        {
+            return number >= 1000 ? 2 : grammarForm;
         }
     }
 }
