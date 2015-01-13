@@ -31,9 +31,9 @@ Przykłady zastosowań z testów dostępnych w projekcie:
  -   Assert.AreEqual("trzynascie zero", NumberToTextConverter.Convert(13.0M));
 
 * Zamiana liczb typu decimal na odpowiedniki walutowe:
--  Assert.AreEqual("jeden zloty dwadziescia dwa grosze", NumberToTextConverter.Convert(1.22M, NumberToTextConverter.Currency.PL));
--   Assert.AreEqual("dwa zlote szescdziesiat osiem groszy", NumberToTextConverter.Convert(2.68M, NumberToTextConverter.Currency.PL));
--   Assert.AreEqual("zero zlotych dwanascie groszy", NumberToTextConverter.Convert(0.12M, NumberToTextConverter.Currency.PL));
+ - Assert.AreEqual("jeden zloty dwadziescia dwa grosze", NumberToTextConverter.Convert(1.22M,  NumberToTextConverter.Currency.PL));
+ -   Assert.AreEqual("dwa zlote szescdziesiat osiem groszy", NumberToTextConverter.Convert(2.68M, NumberToTextConverter.Currency.PL));
+ -   Assert.AreEqual("zero zlotych dwanascie groszy", NumberToTextConverter.Convert(0.12M, NumberToTextConverter.Currency.PL));
 
 Biblioteka jest implementacją algorytmu bazującego na prawidłowości, że każda liczba składa się z trzy cyfrowych elementów oddzielonych rzędami wielkości.
 
