@@ -37,6 +37,8 @@ namespace LiczbyNaSlowaNET
         //forma gramatyczna (tysiąc, tysiące, tysięcy)
         private phase currentNumberPhase;
 
+        private int[] tempGrammarForm = new int[] { 2, 3, 4 };
+
         public override string Build()
         {
             result = new StringBuilder();
@@ -52,6 +54,11 @@ namespace LiczbyNaSlowaNET
                     partialResult.Append(Dictionaries.Unity[10]).ToString();
                     partialResult.Append(" ");
                     partialResult.Append(Dictionaries.Current[(int)currentNumberPhase, 2]).ToString();
+                    result.Append(partialResult.ToString().Trim());
+
+                    result.Append(" ");
+                    this.currentNumberPhase = phase.afterComma;
+                    continue;
                 }
 
                 if (singleNumber < 0)
@@ -82,12 +89,12 @@ namespace LiczbyNaSlowaNET
                         this.othersTens = 0;
                     }
 
-                    var tempGrammarForm = new int[] { 2, 3, 4 };
-
+                    
 
                     if (this.unity == 1 && (this.hundreds + this.tens + this.othersTens == 0))
                     {
                         this.grammarForm = 0;
+                     
                     }
                     else if (tempGrammarForm.Contains(this.unity))
                     {
@@ -104,27 +111,62 @@ namespace LiczbyNaSlowaNET
 
                         partialResult.Clear();
 
-                        partialResult.AppendFormat("{0}{1}{2}{3}{4}{5}{6}",
+                        partialResult.AppendFormat("{0}{1}{2}{3}{4}{5}",
                             this.CheckWhitespace(Dictionaries.Hundreds[this.hundreds]),
                             this.CheckWhitespace(Dictionaries.Tens[this.tens]),
                             this.CheckWhitespace(Dictionaries.OthersTens[this.othersTens]),
                             this.CheckWhitespace(Dictionaries.Unity[this.unity]),
                             this.CheckWhitespace(Dictionaries.Endings[this.order, this.grammarForm]),
-                            this.CheckWhitespace(Dictionaries.Current[(int)this.currentNumberPhase, this.grammarForm]),
                             this.CheckWhitespace(temp)
                             );
                     }
+
 
                     this.order += 1;
 
                     tempNumber = tempNumber / 1000;
                 }
 
+
+                //partialResult.Append(this.CheckWhitespace(Dictionaries.Current[(int)this.currentNumberPhase, this.grammarForm]));
+
+                if (this.currentNumberPhase == phase.beforeComma)
+                {
+
+                    if (singleNumber >= 5)
+                    {
+                        partialResult.Append(this.CheckWhitespace(Dictionaries.Current[(int)this.currentNumberPhase, 2]));
+                    }
+                    else if (singleNumber == 2 || singleNumber == 3 || singleNumber == 4)
+                    {
+                        partialResult.Append(this.CheckWhitespace(Dictionaries.Current[(int)this.currentNumberPhase, 1]));
+                    }
+                    else
+                    {
+                        partialResult.Append(this.CheckWhitespace(Dictionaries.Current[(int)this.currentNumberPhase, 0]));
+                    }
+                }
+                else
+                {
+                    partialResult.Append(this.CheckWhitespace(Dictionaries.Current[(int)this.currentNumberPhase, grammarForm]));
+                }
+
+
+
+          
+                
+
+                
+           
+
                 result.Append(partialResult.ToString().Trim());
 
                 result.Append(" ");
+
                 this.currentNumberPhase = phase.afterComma;
             }
+
+
 
             return result.ToString().Trim();
             

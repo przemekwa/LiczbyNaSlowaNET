@@ -65,12 +65,13 @@ namespace LiczbyNaSlowaNET_Testy
         }
 
         [TestMethod]
-        public void Test_Currency_1_2()
+        public void Test_Currency_1_02()
         {
             Assert.AreEqual("jeden zloty dwa grosze", NumberToTextConverter.Convert(1.02M, NumberToTextConverter.Currency.PL));
         }
 
-        [TestMethod]
+
+       [TestMethod]
         public void Test_Currency_1_22()
         {
             Assert.AreEqual("jeden zloty dwadziescia dwa grosze", NumberToTextConverter.Convert(1.22M, NumberToTextConverter.Currency.PL));
@@ -98,6 +99,25 @@ namespace LiczbyNaSlowaNET_Testy
         public void Test_Currency_3_99()
         {
             Assert.AreEqual("trzy zlote dziewiecdziesiat dziewiec groszy", NumberToTextConverter.Convert(3.99M, NumberToTextConverter.Currency.PL));
+        }
+
+
+        [TestMethod]
+        public void Test_Currency_1000_00()
+        {
+            Assert.AreEqual("jeden tysiac zlotych zero groszy", NumberToTextConverter.Convert(1000.00M, NumberToTextConverter.Currency.PL));
+        }
+
+        [TestMethod]
+        public void Test_Currency_2320_00()
+        {
+            Assert.AreEqual("dwa tysiace trzysta dwadziescia zlotych zero groszy", NumberToTextConverter.Convert(2320.00M, NumberToTextConverter.Currency.PL));
+        }
+
+        [TestMethod]
+        public void Test_Currency_20367_40()
+        {
+            Assert.AreEqual("dwadziescia tysiecy trzysta szescdziesiat siedem zlotych czterdziesci groszy", NumberToTextConverter.Convert(20367.40M, NumberToTextConverter.Currency.PL));
         }
        
     }
