@@ -28,9 +28,6 @@ namespace LiczbyNaSlowaNET
         //rząd wielkości (tysiąc, milion, miliard)
         private int order;
 
-        //forma gramatyczna (tysiąc, tysiące, tysięcy)
-        private int grammarForm;
-
         //liczba przed przecinkiem, liczba po przecinku
         private enum phase { beforeComma = 1, afterComma };
 
@@ -41,6 +38,8 @@ namespace LiczbyNaSlowaNET
 
         public override string Build()
         {
+            int grammarForm = 0;
+
             this.currentPhase = phase.beforeComma;
 
             foreach (var number in Numbers)
@@ -92,23 +91,12 @@ namespace LiczbyNaSlowaNET
                         this.othersTens = 0;
                     }
 
-                    if (this.unity == 1 && (this.hundreds + this.tens + this.othersTens == 0))
-                    {
-                        this.grammarForm = 0;
-                     
-                    }
-                    else if (tempGrammarForm.Contains(this.unity))
-                    {
-                        this.grammarForm = 1;
-                    }
-                    else
-                    {
-                        this.grammarForm = 2;
-                    }
+                    grammarForm = this.GetGrammaForm();
+                    
 
                     if ((this.hundreds + this.unity + this.othersTens + this.tens) > 0)
                     {
-                        var temp = partialResult.ToString().Trim();
+                        var tempPartialResult = partialResult.ToString().Trim();
 
                         partialResult.Clear();
 
@@ -117,9 +105,8 @@ namespace LiczbyNaSlowaNET
                             this.CheckWhitespace(Dictionaries.Tens[this.tens]),
                             this.CheckWhitespace(Dictionaries.OthersTens[this.othersTens]),
                             this.CheckWhitespace(Dictionaries.Unity[this.unity]),
-                            this.CheckWhitespace(Dictionaries.Endings[this.order, this.grammarForm]),
-                            this.CheckWhitespace(temp)
-                            );
+                            this.CheckWhitespace(Dictionaries.Endings[this.order, grammarForm]),
+                            this.CheckWhitespace(tempPartialResult));
                     }
 
                     this.order += 1;
@@ -127,7 +114,7 @@ namespace LiczbyNaSlowaNET
                     tempNumber = tempNumber / 1000;
                 }
 
-                partialResult.Append(this.CheckWhitespace(Dictionaries.Current[(int)this.currentPhase, GetCurrencyForm(number, this.grammarForm)]));
+                partialResult.Append(this.CheckWhitespace(Dictionaries.Current[(int)this.currentPhase, GetCurrencyForm(number, grammarForm)]));
 
                 result.Append(partialResult.ToString().Trim());
 
@@ -146,9 +133,23 @@ namespace LiczbyNaSlowaNET
 
         private int GetCurrencyForm(int number, int gramaForm)
         {
-            return number >= 1000 ? 2 : grammarForm;
+            return number >= 1000 ? 2 : gramaForm;
         }
 
-        
+        private int GetGrammaForm()
+        {
+            if (this.unity == 1 && (this.hundreds + this.tens + this.othersTens == 0))
+            {
+                return  0;
+            }
+            else if (tempGrammarForm.Contains(this.unity))
+            {
+                return 1;
+            }
+            else
+            {
+                return 2;
+            }
+        }
     }
 }
