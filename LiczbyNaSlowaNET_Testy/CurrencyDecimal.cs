@@ -129,7 +129,7 @@ namespace LiczbyNaSlowaNET_Testy
         [TestMethod]
         public void Test_Currency_999_00()
         {
-            Assert.AreEqual("dziewiecset dziewiedziesiat dziewiec zlotych zero groszy", NumberToTextConverter.Convert(999.00M, NumberToTextConverter.Currency.PL));
+            Assert.AreEqual("dziewiecset dziewiecdziesiat dziewiec zlotych zero groszy", NumberToTextConverter.Convert(999.00M, NumberToTextConverter.Currency.PL));
         }
 
 
