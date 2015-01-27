@@ -19,14 +19,13 @@ namespace LiczbyNaSlowaNET_Testy
        [TestMethod]
         public void ThreadSafetyTest()
         {
-
-            var taskList = new List<Task>();
+           var taskList = new List<Task>();
 
            var objectsToConvert = new List<int>();
 
             objectsToConvert.AddRange(Enumerable.Range(1, 5000));
 
-            foreach (var list in objectsToConvert.SplitInToParts(2))
+            foreach (var list in objectsToConvert.SplitInToParts(4))
             {
                 taskList.Add(new Task(this.ConvewrtTask, list));
             }
@@ -39,10 +38,20 @@ namespace LiczbyNaSlowaNET_Testy
                 t.Wait();
             }
 
-          foreach( var s in testResult)
+            using (var sr = new StreamWriter(@"d:\plik2.txt"))
+            {
+                testResult.ForEach(tr => sr.WriteLine(tr));
+            }
+
+          foreach( var s in testResult.Where(s=>s != null))
           {
-              Assert.AreNotEqual(true, s.Length > 54, s);
+              Assert.AreNotEqual(true, s.Length > 60, s);
           }
+
+         
+
+
+
         }
 
 

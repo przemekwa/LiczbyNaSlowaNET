@@ -13,30 +13,26 @@ namespace LiczbyNaSlowaNET
 {
     public static class NumberToTextConverter
     {
-        private static ConverterBuldier convertAlgorithm;
-
         public enum Currency { None, PL };
 
-        private static void Initialization(Currency currency)
+        private static ConverterBuldier Initialization(Currency currency)
         {
             switch (currency)
             {
-                case Currency.None:
-                    convertAlgorithm = new ConverterAlgorithm();
-                    break;
                 case Currency.PL:
-                    convertAlgorithm = new CurrencyConvertAlgorithm();
-                    break;
+                    return new CurrencyConvertAlgorithm();
+                default:
+                    return new ConverterAlgorithm();
             }
         }
 
         private static string CommonConver(int[] numbers, Currency currency = Currency.None)
         {
-            Initialization(currency);
+            var converterBuldier = Initialization(currency);
 
-            convertAlgorithm.Numbers = numbers;
+            converterBuldier.Numbers = numbers;
 
-            var commonConverter = new CommonConverter(convertAlgorithm);
+            var commonConverter = new CommonConverter(converterBuldier);
 
             return commonConverter.Convert();
         }
