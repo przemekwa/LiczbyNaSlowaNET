@@ -26,6 +26,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -34,6 +35,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -53,11 +55,13 @@
   <ItemGroup>
     <Compile Include="CurrencyDecimal.cs" />
     <Compile Include="Decimal.cs" />
+    <Compile Include="ExtensionLinqu.cs" />
     <Compile Include="Thousands.cs" />
     <Compile Include="Hundreds.cs" />
     <Compile Include="Millions.cs" />
     <Compile Include="Billions.cs" />
     <Compile Include="Tens.cs" />
+    <Compile Include="ThreadSafety.cs" />
     <Compile Include="Unity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
