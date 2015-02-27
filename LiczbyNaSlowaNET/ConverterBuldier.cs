@@ -9,10 +9,12 @@ using System.Threading.Tasks;
 
 namespace LiczbyNaSlowaNET
 {
-    public abstract class ConverterBuldier
+    internal interface IConverterBuldier
     {
-        public int[] Numbers { get; set; }
+        int[] Numbers { get; set; }
 
-        abstract public string Build();
+        IDictionaries dictionaries { get;}
+
+        string Build();
     }
 }

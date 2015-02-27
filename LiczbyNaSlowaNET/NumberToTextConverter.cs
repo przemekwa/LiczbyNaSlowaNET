@@ -1,6 +1,7 @@
 ﻿
 // Copyright (c) 2014 Przemek Walkowski
 
+using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -15,14 +16,24 @@ namespace LiczbyNaSlowaNET
     {
         public enum Currency { None, PL };
 
-        private static ConverterBuldier Initialization(Currency currency)
+        private static IKernel kernel;
+
+        static NumberToTextConverter()
+        {
+            kernel = new StandardKernel();
+
+            kernel.Bind(typeof(IDictionaries)).To<Dictionaries>();
+
+        }
+
+        private static IConverterBuldier Initialization(Currency currency)
         {
             switch (currency)
             {
                 case Currency.PL:
-                    return new CurrencyConvertAlgorithm();
+                    return kernel.Get<CurrencyConvertAlgorithm>();
                 default:
-                    return new ConverterAlgorithm();
+                    return kernel.Get<ConverterAlgorithm>();
             }
         }
 

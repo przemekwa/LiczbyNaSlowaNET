@@ -1,6 +1,7 @@
 ﻿
 // Copyright (c) 2014 Przemek Walkowski
 
+using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,17 @@ using System.Threading.Tasks;
 
 namespace LiczbyNaSlowaNET
 {
-    internal sealed class CurrencyConvertAlgorithm : ConverterBuldier
+    internal sealed class CurrencyConvertAlgorithm : IConverterBuldier
     {
+        [Inject]
+        public IDictionaries dictionaries { get; set; }
+
+        public int[] Numbers
+        {
+            get;
+            set;
+        }
+
         private StringBuilder result = new StringBuilder();
 
         // liczba setek
@@ -36,7 +46,7 @@ namespace LiczbyNaSlowaNET
 
         private int[] tempGrammarForm = new int[] { 2, 3, 4 };
 
-        public override string Build()
+        public string Build()
         {
             int grammarForm = 0;
 
@@ -48,10 +58,10 @@ namespace LiczbyNaSlowaNET
 
                 if (number == 0)
                 {
-                    partialResult.Append(Dictionaries.Unity[10]).ToString();
+                    partialResult.Append(dictionaries.Unity[10]).ToString();
                     partialResult.Append(" ");
 
-                    partialResult.Append(Dictionaries.Current[(int)currentPhase, 2]).ToString();
+                    partialResult.Append(dictionaries.Current[(int)currentPhase, 2]).ToString();
 
                     result.Append(partialResult.ToString().Trim());
 
@@ -65,7 +75,7 @@ namespace LiczbyNaSlowaNET
 
                 if (number < 0)
                 {
-                    partialResult.Append(Dictionaries.Sign[2]);
+                    partialResult.Append(dictionaries.Sign[2]);
                 }
 
                 var tempNumber = number;
@@ -101,11 +111,11 @@ namespace LiczbyNaSlowaNET
                         partialResult.Clear();
 
                         partialResult.AppendFormat("{0}{1}{2}{3}{4}{5}",
-                            this.CheckWhitespace(Dictionaries.Hundreds[this.hundreds]),
-                            this.CheckWhitespace(Dictionaries.Tens[this.tens]),
-                            this.CheckWhitespace(Dictionaries.OthersTens[this.othersTens]),
-                            this.CheckWhitespace(Dictionaries.Unity[this.unity]),
-                            this.CheckWhitespace(Dictionaries.Endings[this.order, grammarForm]),
+                            this.CheckWhitespace(dictionaries.Hundreds[this.hundreds]),
+                            this.CheckWhitespace(dictionaries.Tens[this.tens]),
+                            this.CheckWhitespace(dictionaries.OthersTens[this.othersTens]),
+                            this.CheckWhitespace(dictionaries.Unity[this.unity]),
+                            this.CheckWhitespace(dictionaries.Endings[this.order, grammarForm]),
                             this.CheckWhitespace(tempPartialResult));
                     }
 
@@ -114,7 +124,7 @@ namespace LiczbyNaSlowaNET
                     tempNumber = tempNumber / 1000;
                 }
 
-                partialResult.Append(this.CheckWhitespace(Dictionaries.Current[(int)this.currentPhase, GetCurrencyForm(number, grammarForm)]));
+                partialResult.Append(this.CheckWhitespace(dictionaries.Current[(int)this.currentPhase, GetCurrencyForm(number, grammarForm)]));
 
                 result.Append(partialResult.ToString().Trim());
 
@@ -151,5 +161,7 @@ namespace LiczbyNaSlowaNET
                 return 2;
             }
         }
+
+        
     }
 }

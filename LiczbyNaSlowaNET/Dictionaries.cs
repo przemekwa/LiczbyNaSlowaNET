@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace LiczbyNaSlowaNET
 {
-    internal static class Dictionaries
+    internal class Dictionaries : IDictionaries
     {
-        static Dictionaries()
+        public Dictionaries()
         {
             unity = new List<string>
                 {
@@ -56,22 +56,22 @@ namespace LiczbyNaSlowaNET
             };
         }
 
-        private static string[,] endings;
+        private  string[,] endings;
 
-        private static List<String> unity;
+        private  List<String> unity;
 
-        private static List<String> othersTens;
+        private  List<String> othersTens;
 
-        private static List<String> tens;
+        private  List<String> tens;
 
-        private static List<String> hundreds ;
+        private  List<String> hundreds ;
 
-        private static List<String> sign;
+        private  List<String> sign;
 
-        private static string[,] current;
+        private  string[,] current;
 
 
-        public static List<String> Unity
+        public  List<String> Unity
         {
             get
             {
@@ -79,7 +79,7 @@ namespace LiczbyNaSlowaNET
             }
         }
 
-        public static List<String> OthersTens
+        public  List<String> OthersTens
         {
             get
             {
@@ -87,7 +87,7 @@ namespace LiczbyNaSlowaNET
             }
         }
 
-        public static List<String> Tens
+        public  List<String> Tens
         {
             get
             {
@@ -95,7 +95,7 @@ namespace LiczbyNaSlowaNET
             }
         }
 
-        public static List<String> Hundreds
+        public  List<String> Hundreds
         {
             get
             {
@@ -103,7 +103,7 @@ namespace LiczbyNaSlowaNET
             }
         }
 
-        public static string[,] Endings
+        public  string[,] Endings
         {
             get
             {
@@ -111,7 +111,7 @@ namespace LiczbyNaSlowaNET
             }
         }
 
-        public static List<String> Sign
+        public  List<String> Sign
         {
             get
             {
@@ -119,7 +119,7 @@ namespace LiczbyNaSlowaNET
             }
         }
 
-        public static string[,] Current
+        public  string[,] Current
         {
             get
             {

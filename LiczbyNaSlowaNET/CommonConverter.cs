@@ -11,9 +11,9 @@ namespace LiczbyNaSlowaNET
 {
     internal class CommonConverter
     {
-        private ConverterBuldier converterBuldier;
+        private IConverterBuldier converterBuldier;
 
-        public CommonConverter(ConverterBuldier converterBuldier)
+        public CommonConverter(IConverterBuldier converterBuldier)
         {
             if (converterBuldier == null)
             {
