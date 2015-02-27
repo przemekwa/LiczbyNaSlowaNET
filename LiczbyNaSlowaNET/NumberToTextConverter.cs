@@ -42,7 +42,7 @@ namespace LiczbyNaSlowaNET
         /// </summary>
         /// <param name="number">Number to convert</param>
         /// <returns>The words describe number</returns>
-        public static string Convert(int number, Currency currency = Currency.None)
+        public static string Convert(int number, Currency currency)
         {
             return CommonConver(new int[] { number }, currency);
         }
@@ -59,12 +59,10 @@ namespace LiczbyNaSlowaNET
             {
                 int intNumber;
 
-                if (!int.TryParse(splitNumber[i], out intNumber))
+                if (int.TryParse(splitNumber[i], out intNumber))
                 {
-                    continue;
+                    allNumbers.Add(intNumber);
                 }
-
-                allNumbers.Add(intNumber);
             }
 
             return CommonConver(allNumbers.ToArray(), currency);

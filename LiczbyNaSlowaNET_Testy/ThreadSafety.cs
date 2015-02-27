@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace LiczbyNaSlowaNET_Testy
 {
-        [TestClass]
+    [TestClass]
     public class ThreadSafety
     {
       List<string> testResult = new List<string>();

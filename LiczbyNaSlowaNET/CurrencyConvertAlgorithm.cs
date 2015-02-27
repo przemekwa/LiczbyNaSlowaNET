@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LiczbyNaSlowaNET
 {
-    internal class CurrencyConvertAlgorithm : ConverterBuldier
+    internal sealed class CurrencyConvertAlgorithm : ConverterBuldier
     {
         private StringBuilder result = new StringBuilder();
 
