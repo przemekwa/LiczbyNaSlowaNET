@@ -66,6 +66,12 @@ namespace LiczbyNaSlowaNET_Testy
         }
 
         [TestMethod]
+        public void Test_Currency_2594()
+        {
+            Assert.AreEqual("dwa tysiace piecset dziewiecdziesiat cztery zlote", NumberToText.Convert(2594, NumberToText.Currency.PL));
+        }
+
+        [TestMethod]
         public void Test_Currency_4()
         {
             Assert.AreEqual("cztery zlote", NumberToText.Convert(4, NumberToText.Currency.PL));
@@ -143,6 +149,12 @@ namespace LiczbyNaSlowaNET_Testy
         public void Test_Currency_2320_00()
         {
             Assert.AreEqual("dwa tysiace trzysta dwadziescia zlotych zero groszy", NumberToText.Convert(2320.00M, NumberToText.Currency.PL));
+        }
+        
+        [TestMethod]
+        public void Test_Currency_2596()
+        {
+            Assert.AreEqual("dwa tysiace piecset dziewiecdziesiat szesc zlotych", NumberToText.Convert(2596, NumberToText.Currency.PL));
         }
 
         [TestMethod]
