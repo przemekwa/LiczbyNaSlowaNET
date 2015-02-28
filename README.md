@@ -16,24 +16,24 @@ Projekt składa się z 2 solucji:
 
 ### Szybki start:
 
-Biblioteka LiczbyNaSłowaNET to statyczna klasa NumberToTextConverter z metodą Convert, która przyjmuje liczbę typu int lub decimal i zwraca string z odpowiednikiem słownym danej liczby.
+Biblioteka LiczbyNaSłowaNET to statyczna klasa NumberToText z metodą Convert, która przyjmuje liczbę typu int lub decimal i zwraca string z odpowiednikiem słownym danej liczby.
 
 Przykłady zastosowań z testów dostępnych w projekcie:
 
 * Zamiana liczb na odpowiedniki słowne (zachowana polskiej gramatyki)
- -  Assert.AreEqual("osiemdziesiat cztery", NumberToTextConverter.Convert(84));
- -  Assert.AreEqual("sto dwadziescia tysiecy trzydziesci", NumberToTextConverter.Convert(120030));
- -  Assert.AreEqual("osiemset dwadziescia cztery tysiace siedemset dwa", NumberToTextConverter.Convert(824702));
- -  Assert.AreEqual("jeden tysiac dwa", NumberToTextConverter.Convert(1002)); 
+ -  Assert.AreEqual("osiemdziesiat cztery", NumberToText.Convert(84));
+ -  Assert.AreEqual("sto dwadziescia tysiecy trzydziesci", NumberToText.Convert(120030));
+ -  Assert.AreEqual("osiemset dwadziescia cztery tysiace siedemset dwa", NumberToText.Convert(824702));
+ -  Assert.AreEqual("jeden tysiac dwa", NumberToText.Convert(1002)); 
 
 * Zamiana liczb typu decimal:
- -   Assert.AreEqual("czternascie tysiecy sto dwadziescia trzy", NumberToTextConverter.Convert(14100.23M));
- -   Assert.AreEqual("trzynascie zero", NumberToTextConverter.Convert(13.0M));
+ -   Assert.AreEqual("czternascie tysiecy sto dwadziescia trzy", NumberToText.Convert(14100.23M));
+ -   Assert.AreEqual("trzynascie zero", NumberToText.Convert(13.0M));
 
 * Zamiana liczb typu decimal na odpowiedniki walutowe:
- - Assert.AreEqual("jeden zloty dwadziescia dwa grosze", NumberToTextConverter.Convert(1.22M,  NumberToTextConverter.Currency.PL));
- -   Assert.AreEqual("dwa zlote szescdziesiat osiem groszy", NumberToTextConverter.Convert(2.68M, NumberToTextConverter.Currency.PL));
- -   Assert.AreEqual("zero zlotych dwanascie groszy", NumberToTextConverter.Convert(0.12M, NumberToTextConverter.Currency.PL));
+ - Assert.AreEqual("jeden zloty dwadziescia dwa grosze", NumberToText.Convert(1.22M,  NumberToText.Currency.PL));
+ -   Assert.AreEqual("dwa zlote szescdziesiat osiem groszy", NumberToText.Convert(2.68M, NumberToText.Currency.PL));
+ -   Assert.AreEqual("zero zlotych dwanascie groszy", NumberToText.Convert(0.12M, NumberToText.Currency.PL));
 
 Biblioteka jest bezpieczna w środowisku wielowątkowym(ThreadSafety)
 
