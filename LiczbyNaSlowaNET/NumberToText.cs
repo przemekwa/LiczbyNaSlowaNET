@@ -23,31 +23,10 @@ namespace LiczbyNaSlowaNET
             kernel = new StandardKernel();
 
             kernel.Bind(typeof(IDictionaries)).To<Dictionaries>();
-
+            kernel.Bind<CommonAlgorithm>().ToSelf();
+            kernel.Bind<CurrencyAlgorithm>().ToSelf();
         }
-
-        private static IConverterBuldier GetConverterBuldier(Currency currency)
-        {
-            switch (currency)
-            {
-                case Currency.PL:
-                    return kernel.Get<CurrencyConvertAlgorithm>();
-                default:
-                    return kernel.Get<ConverterAlgorithm>();
-            }
-        }
-
-        private static string CommonConver(int[] numbers, Currency currency = Currency.None)
-        {
-            var converterBuldier = GetConverterBuldier(currency);
-
-            converterBuldier.Numbers = numbers;
-
-            var commonConverter = new CommonConverter(converterBuldier);
-
-            return commonConverter.Convert();
-        }
-
+        
         /// <summary>
         /// Convert number into words.
         /// </summary>
@@ -74,7 +53,28 @@ namespace LiczbyNaSlowaNET
                 }
             }
 
-            return CommonConver(allNumbers.ToArray(), currency);
+            return CommonConver(allNumbers, currency);
         }
+
+        private static string CommonConver(IEnumerable<int> numbers, Currency currency)
+        {
+            var algorithm = GetAlgorithm(currency);
+
+            algorithm.Numbers = numbers;
+
+            return algorithm.Build();
+        }
+
+        private static IAlgorithm GetAlgorithm(Currency currency)
+        {
+           switch (currency)
+            {
+                case Currency.PL:
+                    return kernel.Get<CurrencyAlgorithm>();
+                default:
+                    return kernel.Get<CommonAlgorithm>();
+            }
+        }
+
     }
 }

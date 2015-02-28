@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace LiczbyNaSlowaNET
 {
-    internal interface IConverterBuldier
+    internal interface IAlgorithm
     {
-        int[] Numbers { get; set; }
+        IEnumerable<int> Numbers { get; set; }
 
         IDictionaries dictionaries { get;}
 

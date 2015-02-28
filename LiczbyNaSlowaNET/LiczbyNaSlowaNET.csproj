@@ -43,12 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommonConverter.cs" />
-    <Compile Include="CurrencyConvertAlgorithm.cs" />
+    <Compile Include="CurrencyAlgorithm.cs" />
     <Compile Include="IDictionaries.cs" />
     <Compile Include="NumberToText.cs" />
-    <Compile Include="ConvertAlgorithm.cs" />
-    <Compile Include="ConverterBuldier.cs" />
+    <Compile Include="CommonAlgorithm.cs" />
+    <Compile Include="IAlgorithm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Dictionaries.cs" />
   </ItemGroup>

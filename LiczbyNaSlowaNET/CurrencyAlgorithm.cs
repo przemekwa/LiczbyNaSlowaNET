@@ -10,41 +10,30 @@ using System.Threading.Tasks;
 
 namespace LiczbyNaSlowaNET
 {
-    internal sealed class CurrencyConvertAlgorithm : IConverterBuldier
+    internal sealed class CurrencyAlgorithm : IAlgorithm
     {
-        [Inject]
-        public IDictionaries dictionaries { get; set; }
-
-        public int[] Numbers
-        {
-            get;
-            set;
-        }
-
         private StringBuilder result = new StringBuilder();
-
-        // liczba setek
+       
         private int hundreds;
-
-        //liczba dziesiątek
+                
         private int tens;
 
-        //liczba jedności
         private int unity;
 
-        //liczba nastek (11,12,13 itd)
         private int othersTens;
 
-        //rząd wielkości (tysiąc, milion, miliard)
         private int order;
-
-        //liczba przed przecinkiem, liczba po przecinku
+      
         private enum phase { beforeComma = 1, afterComma };
 
-        //aktualna faza
         private phase currentPhase;
 
         private int[] tempGrammarForm = new int[] { 2, 3, 4 };
+
+        public IEnumerable<int> Numbers { get; set; }
+
+        [Inject]
+        public IDictionaries dictionaries { get; set; }
 
         public string Build()
         {

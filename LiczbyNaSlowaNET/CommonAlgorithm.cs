@@ -10,34 +10,28 @@ using System.Threading.Tasks;
 
 namespace LiczbyNaSlowaNET
 {
-    internal class ConverterAlgorithm : IConverterBuldier
+    internal class CommonAlgorithm : IAlgorithm
     {
-        [Inject]
-        public IDictionaries dictionaries { get; set; }
-
         private StringBuilder result = new StringBuilder();
 
-        public int[] Numbers { get; set;}
-
-        // liczba setek
         private int hundreds;
-
-        //liczba dziesiątek
+      
         private int tens;
 
-        //liczba jedności
         private int unity;
 
-        //liczba nastek (11,12,13 itd)
         private int othersTens;
 
-        //rząd wielkości (tysiąc, milion, miliard)
         private int order;
 
-        //forma gramatyczna (tysiąc, tysiące, tysięcy)
         private int grammarForm;
 
         private int[] tempGrammarForm = new int[] { 2, 3, 4 };
+
+        [Inject]
+        public IDictionaries dictionaries { get; set; }
+
+        public IEnumerable<int> Numbers { get; set; }
 
         public string Build()
         {
@@ -124,7 +118,5 @@ namespace LiczbyNaSlowaNET
         {
             return String.IsNullOrEmpty(ciag) ? string.Empty : " " + ciag;
         }
-
-      
     }
 }
