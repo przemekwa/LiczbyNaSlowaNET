@@ -12,13 +12,13 @@ using System.Threading.Tasks;
 
 namespace LiczbyNaSlowaNET
 {
-    public static class NumberToTextConverter
+    public static class NumberToText
     {
         public enum Currency { None, PL };
 
         private static IKernel kernel;
 
-        static NumberToTextConverter()
+        static NumberToText()
         {
             kernel = new StandardKernel();
 
@@ -26,7 +26,7 @@ namespace LiczbyNaSlowaNET
 
         }
 
-        private static IConverterBuldier Initialization(Currency currency)
+        private static IConverterBuldier GetConverterBuldier(Currency currency)
         {
             switch (currency)
             {
@@ -39,7 +39,7 @@ namespace LiczbyNaSlowaNET
 
         private static string CommonConver(int[] numbers, Currency currency = Currency.None)
         {
-            var converterBuldier = Initialization(currency);
+            var converterBuldier = GetConverterBuldier(currency);
 
             converterBuldier.Numbers = numbers;
 
@@ -60,8 +60,6 @@ namespace LiczbyNaSlowaNET
 
         public static string Convert(decimal number, Currency currency = Currency.None)
         {
-            var result = new StringBuilder();
-
             var splitNumber = number.ToString().Replace('.','@').Replace(',','@').Split('@');
 
             var allNumbers = new List<int>();

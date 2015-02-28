@@ -45,13 +45,8 @@ namespace LiczbyNaSlowaNET_Testy
 
           foreach( var s in testResult.Where(s=>s != null))
           {
-              Assert.AreNotEqual(true, s.Length > 60, s);
+              Assert.AreNotEqual(true, s.Length > 65, s);
           }
-
-         
-
-
-
         }
 
 
@@ -61,7 +56,7 @@ namespace LiczbyNaSlowaNET_Testy
             
             foreach (var i in list)
             {
-               testResult.Add(NumberToTextConverter.Convert(i, NumberToTextConverter.Currency.PL));
+               testResult.Add(string.Format("{0} {1}",i,NumberToText.Convert(i, NumberToText.Currency.PL)));
             }
         }
     }

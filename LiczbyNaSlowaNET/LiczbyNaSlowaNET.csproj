@@ -46,7 +46,7 @@
     <Compile Include="CommonConverter.cs" />
     <Compile Include="CurrencyConvertAlgorithm.cs" />
     <Compile Include="IDictionaries.cs" />
-    <Compile Include="NumberToTextConverter.cs" />
+    <Compile Include="NumberToText.cs" />
     <Compile Include="ConvertAlgorithm.cs" />
     <Compile Include="ConverterBuldier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
