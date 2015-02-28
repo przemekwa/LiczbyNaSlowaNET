@@ -133,7 +133,28 @@ namespace LiczbyNaSlowaNET
 
         private int GetCurrencyForm(int number, int gramaForm)
         {
-            return number >= 1000 ? 2 : gramaForm;
+            var hundreds = (number % 1000) / 100;
+
+            var tens = (number % 100) / 10;
+
+            var unity = number % 10;
+
+            if (unity == 1 && (hundreds + tens + othersTens == 0))
+            {
+                return 0;
+            }
+            else if (tempGrammarForm.Contains(unity))
+            {
+                if (tens == 1)
+                {
+                    return 2;
+                }
+                return 1;
+            }
+            else
+            {
+                return 2;
+            }
         }
 
         private int GetGrammaForm()
