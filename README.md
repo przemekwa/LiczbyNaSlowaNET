@@ -1,7 +1,10 @@
 LiczbyNaSłowaNET
 ================
 
+
 LiczbyNaSłowaNET to biblioteka, która umożliwia konwersje liczb na odpowiedniki słowne z zachowaniem polskiej gramatyki.
+
+Biblioteka dostępna przez nuget-y: https://www.nuget.org/packages/LiczbyNaSlowaNET.dll/
 
 Możliwości biblioteki są następujące:
 
