@@ -34,6 +34,17 @@ Przykłady zastosowań z testów dostępnych w projekcie:
  - Assert.AreEqual("jeden zloty dwadziescia dwa grosze", NumberToText.Convert(1.22M,  NumberToText.Currency.PL));
  -   Assert.AreEqual("dwa zlote szescdziesiat osiem groszy", NumberToText.Convert(2.68M, NumberToText.Currency.PL));
  -   Assert.AreEqual("zero zlotych dwanascie groszy", NumberToText.Convert(0.12M, NumberToText.Currency.PL));
+ 
+* Można również przesłać własny string, który rozdzieli liczby po przecinku.
+
+ var options = new NumberToTextOptions
+            {
+                curency = Currency.PL,
+                SplitDecimal = "i"
+            };
+
+Assert.AreEqual("dwanascie zlotych i dwadziescia trzy grosze", NumberToText.Convert(12.23M, options));
+            
 
 Biblioteka jest bezpieczna w środowisku wielowątkowym(ThreadSafety)
 
