@@ -32,6 +32,8 @@ namespace LiczbyNaSlowaNET
 
         public IEnumerable<int> Numbers { get; set; }
 
+        public NumberToTextOptions Options { get; set; }
+
         [Inject]
         public IDictionaries Dictionaries { get; set; }
 
@@ -118,6 +120,13 @@ namespace LiczbyNaSlowaNET
                 result.Append(partialResult.ToString().Trim());
 
                 result.Append(" ");
+
+                if (!(number == Numbers.Last()) && !string.IsNullOrEmpty(Options.SplitDecimal))
+                {
+                    result.Append(Options.SplitDecimal);
+                    result.Append(" ");
+                }
+               
 
                 this.currentPhase = phase.afterComma;
             }

@@ -33,6 +33,8 @@ namespace LiczbyNaSlowaNET
 
         public IEnumerable<int> Numbers { get; set; }
 
+        public NumberToTextOptions Options { get; set; }
+
         public string Build()
         {
             foreach (var number in Numbers)
@@ -96,7 +98,7 @@ namespace LiczbyNaSlowaNET
                             this.CheckWhitespace(Dictionaries.Tens[this.tens]),
                             this.CheckWhitespace(Dictionaries.OthersTens[this.othersTens]),
                             this.CheckWhitespace(Dictionaries.Unity[this.unity]),
-                            this.CheckWhitespace(Dictionaries.Endings[this.order, this.grammarForm]),
+                            this.CheckWhitespace(Dictionaries.Endings[this.order, this.grammarForm]),                  
                             this.CheckWhitespace(temp));
                     }
 
@@ -106,8 +108,14 @@ namespace LiczbyNaSlowaNET
                 }
 
                 result.Append(partialResult.ToString().Trim());
+
                 result.Append(" ");
 
+                if (!(number == Numbers.Last()) && !string.IsNullOrEmpty(Options.SplitDecimal))
+                {
+                    result.Append(Options.SplitDecimal);
+                    result.Append(" ");
+                }
             }
 
             return result.ToString().Trim();

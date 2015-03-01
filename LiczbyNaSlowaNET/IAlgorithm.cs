@@ -15,6 +15,8 @@ namespace LiczbyNaSlowaNET
 
         IDictionaries Dictionaries { get;}
 
+        NumberToTextOptions Options { get; set; }
+
         string Build();
     }
 }

@@ -53,6 +53,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="SplitDecimal.cs" />
     <Compile Include="CurrencyDecimal.cs" />
     <Compile Include="Decimal.cs" />
     <Compile Include="ExtensionLinqu.cs" />

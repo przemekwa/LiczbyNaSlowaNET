@@ -72,11 +72,31 @@ namespace LiczbyNaSlowaNET
             return CommonConver(allNumbers, options);
         }
 
+        public static string Convert(decimal number, NumberToTextOptions options)
+        {
+            var splitNumber = number.ToString().Replace('.', '@').Replace(',', '@').Split('@');
+
+            var allNumbers = new List<int>();
+
+            for (int i = 0; i < splitNumber.Length; i++)
+            {
+                int intNumber;
+
+                if (int.TryParse(splitNumber[i], out intNumber))
+                {
+                    allNumbers.Add(intNumber);
+                }
+            }
+
+            return CommonConver(allNumbers, options);
+        }
+
         private static string CommonConver(IEnumerable<int> numbers, NumberToTextOptions options)
         {
             var algorithm = GetAlgorithm(options.curency);
 
             algorithm.Numbers = numbers;
+            algorithm.Options = options;
 
             return algorithm.Build();
         }

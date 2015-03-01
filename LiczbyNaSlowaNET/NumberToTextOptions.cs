@@ -8,7 +8,7 @@ namespace LiczbyNaSlowaNET
     public class NumberToTextOptions
     {
         private Currency _currency = Currency.None;
-        private string _splitDecimal = " ";
+        private string _splitDecimal = string.Empty;
 
         public Currency curency 
         { 
