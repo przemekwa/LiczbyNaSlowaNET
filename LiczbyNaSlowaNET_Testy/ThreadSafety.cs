@@ -56,7 +56,7 @@ namespace LiczbyNaSlowaNET_Testy
             
             foreach (var i in list)
             {
-               testResult.Add(string.Format("{0} {1}",i,NumberToText.Convert(i, NumberToText.Currency.PL)));
+               testResult.Add(string.Format("{0} {1}",i,NumberToText.Convert(i, Currency.PL)));
             }
         }
     }

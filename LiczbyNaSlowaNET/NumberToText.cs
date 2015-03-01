@@ -12,10 +12,10 @@ using System.Threading.Tasks;
 
 namespace LiczbyNaSlowaNET
 {
+    public enum Currency { None, PL };
+
     public static class NumberToText
     {
-        public enum Currency { None, PL };
-
         private static IKernel kernel;
 
         static NumberToText()
@@ -25,6 +25,7 @@ namespace LiczbyNaSlowaNET
             kernel.Bind(typeof(IDictionaries)).To<Dictionaries>();
             kernel.Bind<CommonAlgorithm>().ToSelf();
             kernel.Bind<CurrencyAlgorithm>().ToSelf();
+            kernel.Bind<NumberToTextOptions>().ToSelf();
         }
         
         /// <summary>
@@ -34,11 +35,26 @@ namespace LiczbyNaSlowaNET
         /// <returns>The words describe number</returns>
         public static string Convert(int number, Currency currency)
         {
-            return CommonConver(new int[] { number }, currency);
+            var options = kernel.Get<NumberToTextOptions>();
+
+            options.curency = currency;
+
+            return CommonConver(new int[] { number }, options);
         }
+
+
+        public static string Convert(int number, NumberToTextOptions options)
+        {
+            return CommonConver(new int[] { number }, options);
+        }
+
 
         public static string Convert(decimal number, Currency currency = Currency.None)
         {
+            var options = kernel.Get<NumberToTextOptions>();
+
+            options.curency = currency;
+
             var splitNumber = number.ToString().Replace('.','@').Replace(',','@').Split('@');
 
             var allNumbers = new List<int>();
@@ -53,12 +69,12 @@ namespace LiczbyNaSlowaNET
                 }
             }
 
-            return CommonConver(allNumbers, currency);
+            return CommonConver(allNumbers, options);
         }
 
-        private static string CommonConver(IEnumerable<int> numbers, Currency currency)
+        private static string CommonConver(IEnumerable<int> numbers, NumberToTextOptions options)
         {
-            var algorithm = GetAlgorithm(currency);
+            var algorithm = GetAlgorithm(options.curency);
 
             algorithm.Numbers = numbers;
 

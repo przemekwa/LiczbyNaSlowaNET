@@ -29,7 +29,7 @@ namespace LiczbyNaSlowaNET
         private int[] tempGrammarForm = new int[] { 2, 3, 4 };
 
         [Inject]
-        public IDictionaries dictionaries { get; set; }
+        public IDictionaries Dictionaries { get; set; }
 
         public IEnumerable<int> Numbers { get; set; }
 
@@ -41,12 +41,12 @@ namespace LiczbyNaSlowaNET
 
                 if (number == 0)
                 {
-                    partialResult.Append(dictionaries.Unity[10]).ToString();
+                    partialResult.Append(Dictionaries.Unity[10]).ToString();
                 }
 
                 if (number < 0)
                 {
-                    partialResult.Append(dictionaries.Sign[2]);
+                    partialResult.Append(Dictionaries.Sign[2]);
                 }
 
                 var tempNumber = number;
@@ -92,11 +92,11 @@ namespace LiczbyNaSlowaNET
                         partialResult.Clear();
 
                         partialResult.AppendFormat("{0}{1}{2}{3}{4}{5}",
-                            this.CheckWhitespace(dictionaries.Hundreds[this.hundreds]),
-                            this.CheckWhitespace(dictionaries.Tens[this.tens]),
-                            this.CheckWhitespace(dictionaries.OthersTens[this.othersTens]),
-                            this.CheckWhitespace(dictionaries.Unity[this.unity]),
-                            this.CheckWhitespace(dictionaries.Endings[this.order, this.grammarForm]),
+                            this.CheckWhitespace(Dictionaries.Hundreds[this.hundreds]),
+                            this.CheckWhitespace(Dictionaries.Tens[this.tens]),
+                            this.CheckWhitespace(Dictionaries.OthersTens[this.othersTens]),
+                            this.CheckWhitespace(Dictionaries.Unity[this.unity]),
+                            this.CheckWhitespace(Dictionaries.Endings[this.order, this.grammarForm]),
                             this.CheckWhitespace(temp));
                     }
 
