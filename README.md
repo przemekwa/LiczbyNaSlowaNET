@@ -7,7 +7,8 @@ Możliwości biblioteki są następujące:
 
 * Zamiana liczb na odpowiedniki słowne z zachowaniem polskiej gramatyki czyli  {"tysiac","tysiace","tysiecy"},
 * zamiana liczb typu decimal i int,
-* zamiana liczb typu decimal na odpowiedniki walutowe.
+* zamiana liczb typu decimal na odpowiedniki walutowe,
+* definiowanie własnego separatora liczb typu decimal.
 
 Projekt składa się z 2 solucji:
 
@@ -16,7 +17,7 @@ Projekt składa się z 2 solucji:
 
 ### Szybki start:
 
-Biblioteka LiczbyNaSłowaNET to statyczna klasa NumberToText z metodą Convert, która przyjmuje liczbę typu int lub decimal i zwraca string z odpowiednikiem słownym danej liczby.
+Biblioteka LiczbyNaSłowaNET to statyczna klasa NumberToText z metodą Convert, która przyjmuje liczbę typu int lub decimal i zwraca string z odpowiednikiem słownym danej liczby. Dodatkowo można przesłać obiekt NumberToTextOptions, w którym definiujemy walutę i separator liczb dziesiętnych.
 
 Przykłady zastosowań z testów dostępnych w projekcie:
 
@@ -45,8 +46,9 @@ Przykłady zastosowań z testów dostępnych w projekcie:
 
 Assert.AreEqual("dwanascie zlotych i dwadziescia trzy grosze", NumberToText.Convert(12.23M, options));
             
-
 Biblioteka jest bezpieczna w środowisku wielowątkowym(ThreadSafety)
+
+Opis biblioteki znajduje się również na moim blogu: http://blogprogramisty.net/zamiana-liczby-na-slowa-z-polska-gramatyka-c/
 
 Biblioteka jest implementacją algorytmu bazującego na prawidłowości, że każda liczba składa się z trzy cyfrowych elementów oddzielonych rzędami wielkości.
 
