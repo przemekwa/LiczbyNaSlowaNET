@@ -37,11 +37,11 @@ Przykłady zastosowań z testów dostępnych w projekcie:
  
 * Można również przesłać własny string, który rozdzieli liczby po przecinku.
 
- var options = new NumberToTextOptions
+ ```var options = new NumberToTextOptions
             {
                 curency = Currency.PL,
                 SplitDecimal = "i"
-            };
+            };```
 
 Assert.AreEqual("dwanascie zlotych i dwadziescia trzy grosze", NumberToText.Convert(12.23M, options));
             
