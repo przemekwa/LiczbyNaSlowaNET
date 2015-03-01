@@ -113,7 +113,7 @@ namespace LiczbyNaSlowaNET
                     tempNumber = tempNumber / 1000;
                 }
 
-                partialResult.Append(this.CheckWhitespace(dictionaries.Current[(int)this.currentPhase, GetCurrencyForm(number, grammarForm)]));
+                partialResult.Append(this.CheckWhitespace(dictionaries.Current[(int)this.currentPhase, GetCurrencyForm(number)]));
 
                 result.Append(partialResult.ToString().Trim());
 
@@ -130,7 +130,7 @@ namespace LiczbyNaSlowaNET
             return String.IsNullOrEmpty(ciag) ? string.Empty : " " + ciag;
         }
 
-        private int GetCurrencyForm(int number, int gramaForm)
+        private int GetCurrencyForm(int number)
         {
             var hundreds = (number % 1000) / 100;
 
@@ -142,12 +142,8 @@ namespace LiczbyNaSlowaNET
                 {
                     return 0;
                 }
-                else if (tempGrammarForm.Contains(unity))
+                else if (tempGrammarForm.Contains(unity) && tens != 1)
                 {
-                    if (tens == 1)
-                    {
-                        return 2;
-                    }
                     return 1;
                 }
                 else

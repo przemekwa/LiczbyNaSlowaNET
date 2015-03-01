@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace LiczbyNaSlowaNET
 {
-    internal class CommonAlgorithm : IAlgorithm
+    internal sealed class CommonAlgorithm : IAlgorithm
     {
         private StringBuilder result = new StringBuilder();
 
