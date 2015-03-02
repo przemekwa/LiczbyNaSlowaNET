@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 
 namespace LiczbyNaSlowaNET
 {
+    internal enum phase { beforeComma = 1, afterComma };
+
     internal sealed class CurrencyAlgorithm : IAlgorithm
     {
         private StringBuilder result = new StringBuilder();
@@ -23,8 +25,6 @@ namespace LiczbyNaSlowaNET
         private int othersTens;
 
         private int order;
-      
-        private enum phase { beforeComma = 1, afterComma };
 
         private phase currentPhase;
 
@@ -121,7 +121,7 @@ namespace LiczbyNaSlowaNET
 
                 result.Append(" ");
 
-                if (!(number == Numbers.Last()) && !string.IsNullOrEmpty(Options.SplitDecimal))
+                if (this.currentPhase == phase.beforeComma && !string.IsNullOrEmpty(Options.SplitDecimal))
                 {
                     result.Append(Options.SplitDecimal);
                     result.Append(" ");

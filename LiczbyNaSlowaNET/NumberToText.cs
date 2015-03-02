@@ -55,40 +55,12 @@ namespace LiczbyNaSlowaNET
 
             options.curency = currency;
 
-            var splitNumber = number.ToString().Replace('.','@').Replace(',','@').Split('@');
-
-            var allNumbers = new List<int>();
-
-            for (int i = 0; i < splitNumber.Length; i++)
-            {
-                int intNumber;
-
-                if (int.TryParse(splitNumber[i], out intNumber))
-                {
-                    allNumbers.Add(intNumber);
-                }
-            }
-
-            return CommonConver(allNumbers, options);
+            return CommonConver(PrepareNumbers(number), options);
         }
 
         public static string Convert(decimal number, NumberToTextOptions options)
         {
-            var splitNumber = number.ToString().Replace('.', '@').Replace(',', '@').Split('@');
-
-            var allNumbers = new List<int>();
-
-            for (int i = 0; i < splitNumber.Length; i++)
-            {
-                int intNumber;
-
-                if (int.TryParse(splitNumber[i], out intNumber))
-                {
-                    allNumbers.Add(intNumber);
-                }
-            }
-
-            return CommonConver(allNumbers, options);
+            return CommonConver(PrepareNumbers(number), options);
         }
 
         private static string CommonConver(IEnumerable<int> numbers, NumberToTextOptions options)
@@ -110,6 +82,34 @@ namespace LiczbyNaSlowaNET
                 default:
                     return kernel.Get<CommonAlgorithm>();
             }
+        }
+
+        private static  IEnumerable<int> PrepareNumbers(decimal numbers)
+        {
+            var splitNumber = numbers.ToString().Replace('.', '@').Replace(',', '@').Split('@');
+
+
+            if (splitNumber.Length > 1)
+            {
+                if (splitNumber[1].Length == 1)
+                {
+                    splitNumber[1] += "0";
+                }
+            }
+            
+            var allNumbers = new List<int>();
+
+            for (int i = 0; i < splitNumber.Length; i++)
+            {
+                int intNumber;
+
+                if (int.TryParse(splitNumber[i], out intNumber))
+                {
+                    allNumbers.Add(intNumber);
+                }
+            }
+
+            return allNumbers;
         }
 
     }

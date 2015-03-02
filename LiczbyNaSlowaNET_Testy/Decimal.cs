@@ -11,6 +11,19 @@ namespace LiczbyNaSlowaNET_Testy
     public class Decimal
     {
         [TestMethod]
+        public void Test_4_4()
+        {
+            Assert.AreEqual("cztery czterdziesci", NumberToText.Convert(4.4M));
+        }
+
+        [TestMethod]
+        public void Test_4_40()
+        {
+            Assert.AreEqual("cztery czterdziesci", NumberToText.Convert(4.40M));
+        }
+
+
+        [TestMethod]
         public void Test_12_23()
         {
             Assert.AreEqual("dwanascie dwadziescia trzy", NumberToText.Convert(12.23M));

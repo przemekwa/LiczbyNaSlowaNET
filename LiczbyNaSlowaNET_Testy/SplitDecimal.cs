@@ -11,6 +11,32 @@ namespace LiczbyNaSlowaNET_Testy
     public class SplitDecimal
     {
         [TestMethod]
+        public void Test_SplitDecimal_50_50()
+        {
+            var options = new NumberToTextOptions
+            {
+                curency = Currency.None,
+                SplitDecimal = "i"
+            };
+
+            Assert.AreEqual("piecdziesiat i piecdziesiat", NumberToText.Convert(50.50M, options));
+        }
+
+
+        [TestMethod]
+        public void Test_SplitDecimal_5_5()
+        {
+            var options = new NumberToTextOptions
+            {
+                curency = Currency.PL,
+                SplitDecimal = "i"
+            };
+
+
+            Assert.AreEqual("piec zlotych i piecdziesiat groszy", NumberToText.Convert(5.5M, options));
+        }
+
+        [TestMethod]
         public void Test_SplitDecimal_12_23()
         {
             var options = new NumberToTextOptions

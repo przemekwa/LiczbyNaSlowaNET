@@ -11,6 +11,18 @@ namespace LiczbyNaSlowaNET_Testy
     public class CurrencyDecimal
     {
         [TestMethod]
+        public void Test_Currency_4_4()
+        {
+            Assert.AreEqual("cztery zlote czterdziesci groszy", NumberToText.Convert(4.4M, Currency.PL));
+        }
+
+        [TestMethod]
+        public void Test_Currency_4_40()
+        {
+            Assert.AreEqual("cztery zlote czterdziesci groszy", NumberToText.Convert(4.40M, Currency.PL));
+        }
+
+        [TestMethod]
         public void Test_Currency_12_23()
         {
             Assert.AreEqual("dwanascie zlotych dwadziescia trzy grosze", NumberToText.Convert(12.23M, Currency.PL));

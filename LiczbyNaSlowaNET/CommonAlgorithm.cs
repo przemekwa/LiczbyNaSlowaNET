@@ -26,6 +26,8 @@ namespace LiczbyNaSlowaNET
 
         private int grammarForm;
 
+        private phase currentPhase;
+
         private int[] tempGrammarForm = new int[] { 2, 3, 4 };
 
         [Inject]
@@ -37,6 +39,8 @@ namespace LiczbyNaSlowaNET
 
         public string Build()
         {
+            this.currentPhase = phase.beforeComma;
+
             foreach (var number in Numbers)
             {
                 var partialResult = new StringBuilder();
@@ -44,6 +48,7 @@ namespace LiczbyNaSlowaNET
                 if (number == 0)
                 {
                     partialResult.Append(Dictionaries.Unity[10]).ToString();
+                    this.currentPhase = phase.afterComma;
                 }
 
                 if (number < 0)
@@ -111,12 +116,16 @@ namespace LiczbyNaSlowaNET
 
                 result.Append(" ");
 
-                if (!(number == Numbers.Last()) && !string.IsNullOrEmpty(Options.SplitDecimal))
+                if (this.currentPhase == phase.beforeComma && !string.IsNullOrEmpty(Options.SplitDecimal))
                 {
                     result.Append(Options.SplitDecimal);
                     result.Append(" ");
                 }
+
+                this.currentPhase = phase.afterComma;
             }
+
+           
 
             return result.ToString().Trim();
             
