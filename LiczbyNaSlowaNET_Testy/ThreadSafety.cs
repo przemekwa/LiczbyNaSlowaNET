@@ -16,6 +16,9 @@ namespace LiczbyNaSlowaNET_Testy
     {
       List<string> testResult = new List<string>();
 
+
+    
+
        [TestMethod]
         public void ThreadSafetyTest()
         {
@@ -25,7 +28,7 @@ namespace LiczbyNaSlowaNET_Testy
 
             objectsToConvert.AddRange(Enumerable.Range(1, 5000));
 
-            foreach (var list in objectsToConvert.SplitInToParts(4))
+            foreach (var list in objectsToConvert.SplitInToParts(5))
             {
                 taskList.Add(new Task(this.ConvewrtTask, list));
             }
@@ -38,14 +41,14 @@ namespace LiczbyNaSlowaNET_Testy
                 t.Wait();
             }
 
-            using (var sr = new StreamWriter(@"d:\plik2.txt"))
+            using (var sr = new StreamWriter(@"d:\LiczbyNaSlowaTesty.txt"))
             {
                 testResult.ForEach(tr => sr.WriteLine(tr));
             }
 
           foreach( var s in testResult.Where(s=>s != null))
           {
-              Assert.AreNotEqual(true, s.Length > 65, s);
+              Assert.AreNotEqual(true, s.Length > 99, s);
           }
         }
 
@@ -54,9 +57,14 @@ namespace LiczbyNaSlowaNET_Testy
         {
             var list = obj as IEnumerable<int>;
             
-            foreach (var i in list)
+            foreach (var beforeComma in list)
             {
-               testResult.Add(string.Format("{0} {1}",i,NumberToText.Convert(i, Currency.PL)));
+                foreach (var afterComma in Enumerable.Range(0, 30))
+                {
+                    var decimalNumber = decimal.Parse(beforeComma + "," + afterComma);
+
+                    testResult.Add(string.Format("{0} -> {1}", decimalNumber, NumberToText.Convert(decimalNumber, Currency.PL)));
+                }
             }
         }
     }

@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 
 namespace LiczbyNaSlowaNET
 {
+    internal enum phase { beforeComma = 1, afterComma };
+
     public enum Currency { None, PL };
 
     public static class NumberToText
@@ -42,12 +44,10 @@ namespace LiczbyNaSlowaNET
             return CommonConver(new int[] { number }, options);
         }
 
-
         public static string Convert(int number, NumberToTextOptions options)
         {
             return CommonConver(new int[] { number }, options);
         }
-
 
         public static string Convert(decimal number, Currency currency = Currency.None)
         {
@@ -84,10 +84,9 @@ namespace LiczbyNaSlowaNET
             }
         }
 
-        private static  IEnumerable<int> PrepareNumbers(decimal numbers)
+        private static IEnumerable<int> PrepareNumbers(decimal numbers)
         {
             var splitNumber = numbers.ToString().Replace('.', '@').Replace(',', '@').Split('@');
-
 
             if (splitNumber.Length > 1)
             {

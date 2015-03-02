@@ -125,8 +125,6 @@ namespace LiczbyNaSlowaNET
                 this.currentPhase = phase.afterComma;
             }
 
-           
-
             return result.ToString().Trim();
             
         }
