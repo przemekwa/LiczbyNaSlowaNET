@@ -15,10 +15,7 @@ namespace LiczbyNaSlowaNET_Testy
     public class ThreadSafety
     {
       List<string> testResult = new List<string>();
-
-
-    
-
+           
        [TestMethod]
         public void ThreadSafetyTest()
         {
@@ -35,13 +32,12 @@ namespace LiczbyNaSlowaNET_Testy
 
             taskList.ForEach(t => t.Start());
 
-
             foreach (var t in taskList)
             {
                 t.Wait();
             }
 
-            using (var sr = new StreamWriter(@"d:\LiczbyNaSlowaTesty.txt"))
+            using (var sr = new StreamWriter(@"j:\LiczbyNaSlowaTesty.txt"))
             {
                 testResult.ForEach(tr => sr.WriteLine(tr));
             }
