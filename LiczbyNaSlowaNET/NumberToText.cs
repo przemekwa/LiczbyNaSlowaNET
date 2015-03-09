@@ -85,9 +85,7 @@ namespace LiczbyNaSlowaNET
         }
 
         private static IEnumerable<int> PrepareNumbers(decimal numbers)
-        {
-
-
+       {
             var splitNumber = numbers.ToString().Replace('.', '@').Replace(',', '@').Split('@');
 
             if (splitNumber.Length > 1)
