@@ -10,8 +10,12 @@ using System.Threading.Tasks;
 
 namespace LiczbyNaSlowaNET
 {
-    internal sealed class CurrencyAlgorithm : IAlgorithm
+    internal sealed class CurrencyAlgorithm : Algorithm
     {
+        public CurrencyAlgorithm(IDictionaries dictionary) : 
+            base(dictionary)
+        {}
+
         private StringBuilder result = new StringBuilder();
        
         private int hundreds;
@@ -28,14 +32,8 @@ namespace LiczbyNaSlowaNET
 
         private int[] tempGrammarForm = new int[] { 2, 3, 4 };
 
-        public IEnumerable<int> Numbers { get; set; }
 
-        public NumberToTextOptions Options { get; set; }
-
-        [Inject]
-        public IDictionaries Dictionaries { get; set; }
-
-        public string Build()
+        public override string Build()
         {
             int grammarForm = 0;
 

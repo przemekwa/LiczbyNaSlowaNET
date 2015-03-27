@@ -10,8 +10,12 @@ using System.Threading.Tasks;
 
 namespace LiczbyNaSlowaNET
 {
-    internal sealed class CommonAlgorithm : IAlgorithm
+    internal sealed class CommonAlgorithm :Algorithm
     {
+        public CommonAlgorithm(IDictionaries dictionary) : 
+            base(dictionary)
+        {}
+
         private StringBuilder result = new StringBuilder();
 
         private int hundreds;
@@ -30,14 +34,7 @@ namespace LiczbyNaSlowaNET
 
         private int[] tempGrammarForm = new int[] { 2, 3, 4 };
 
-        [Inject]
-        public IDictionaries Dictionaries { get; set; }
-
-        public IEnumerable<int> Numbers { get; set; }
-
-        public NumberToTextOptions Options { get; set; }
-
-        public string Build()
+        public override string Build()
         {
             this.currentPhase = phase.beforeComma;
 

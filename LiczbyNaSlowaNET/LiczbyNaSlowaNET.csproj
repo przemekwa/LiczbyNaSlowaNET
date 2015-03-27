@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithm.cs" />
     <Compile Include="CurrencyAlgorithm.cs" />
     <Compile Include="IDictionaries.cs" />
     <Compile Include="NumberToText.cs" />
