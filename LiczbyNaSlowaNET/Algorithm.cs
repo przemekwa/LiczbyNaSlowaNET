@@ -19,5 +19,10 @@ namespace LiczbyNaSlowaNET
         }
 
         public abstract string Build();
+
+        public string CheckWhitespace(string ciag)
+        {
+            return String.IsNullOrEmpty(ciag) ? string.Empty : " " + ciag;
+        }
     }
 }

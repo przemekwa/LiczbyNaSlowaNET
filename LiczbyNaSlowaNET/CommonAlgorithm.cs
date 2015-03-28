@@ -10,11 +10,13 @@ using System.Threading.Tasks;
 
 namespace LiczbyNaSlowaNET
 {
-    internal sealed class CommonAlgorithm :Algorithm
+    internal sealed class CommonAlgorithm : Algorithm
     {
         public CommonAlgorithm(IDictionaries dictionary) : 
             base(dictionary)
-        {}
+        {
+        
+        }
 
         private StringBuilder result = new StringBuilder();
 
@@ -124,11 +126,6 @@ namespace LiczbyNaSlowaNET
 
             return result.ToString().Trim();
             
-        }
-
-        private string CheckWhitespace(string ciag)
-        {
-            return String.IsNullOrEmpty(ciag) ? string.Empty : " " + ciag;
         }
     }
 }

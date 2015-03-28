@@ -129,10 +129,7 @@ namespace LiczbyNaSlowaNET
             return result.ToString().Trim();
         }
 
-        private string CheckWhitespace(string ciag)
-        {
-            return String.IsNullOrEmpty(ciag) ? string.Empty : " " + ciag;
-        }
+        
 
         private int GetCurrencyForm(int number)
         {
