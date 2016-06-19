@@ -1,39 +1,36 @@
 ﻿
-// Copyright (c) 2014 Przemek Walkowski
+// Copyright (c) 2016 Przemek Walkowski
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LiczbyNaSlowaNET
 {
-    internal class PolishDictionary : IDictionaries
+    internal class PolishWithsStemsDictionary : IDictionaries
     {
-        public PolishDictionary()
+        public PolishWithsStemsDictionary()
         {
             unity = new List<string>
                 {
-                    "","jeden","dwa" , "trzy", "cztery", "piec", "szesc", "siedem", "osiem", "dziewiec","zero"
+                    "","jeden","dwa" , "trzy", "cztery", "pięć", "sześć", "siedem", "osiem", "dziewięć","zero"
                 };
 
             othersTens = new List<string>
                 {
-                    "","jedenascie", "dwanascie","trzynascie" , "czternascie", "pietnascie", "szesnascie", "siedemnascie", "osiemnascie", "dziewietnascie"
+                    "","jedenaście", "dwanaście","trzynaście" , "czternaście", "pietnaście", "szesnaście", "siedemnaście", "osiemnaście", "dziewietnaście"
                 };
 
             tens = new List<string>
                 {
-                    "","dziesiec", "dwadziescia","trzydziesci" , "czterdziesci", "piecdziesiat", "szescdziesiat", "siedemdziesiat", "osiemdziesiat", "dziewiecdziesiat"
+                    "","dziesięc", "dwadzieścia","trzydzieści" , "czterdzieści", "piędziesiąt", "sześćdziesiąt", "siedemdziesiąt", "osiemdziesiąt", "dziewięćdziesiąt"
                 };
 
             hundreds = new List<string>
                 {
-                    "","sto", "dwiescie","trzysta" , "czterysta", "piecset", "szescset", "siedemset", "osiemset", "dziewiecset"
+                    "","sto", "dwieście","trzysta" , "czterysta", "pięćset", "sześćset", "siedemset", "osiemset", "dziewięćset"
                 };
 
-            endings = new string[,] 
+            endings = new string[,]
             {
                 {"","",""},
                 {"tysiac","tysiace","tysiecy"},
@@ -48,30 +45,30 @@ namespace LiczbyNaSlowaNET
                 "plus", "minus"
             };
 
-            current = new string[,] 
+            current = new string[,]
             {
                 {"","",""},
-                {"zloty","zlote","zlotych"},
+                {"złoty","złote","złotych"},
                 {"grosz","grosze","groszy"}
             };
         }
 
-        private  string[,] endings;
+        private string[,] endings;
 
-        private  List<String> unity;
+        private List<String> unity;
 
-        private  List<String> othersTens;
+        private List<String> othersTens;
 
-        private  List<String> tens;
+        private List<String> tens;
 
-        private  List<String> hundreds ;
+        private List<String> hundreds;
 
-        private  List<String> sign;
+        private List<String> sign;
 
-        private  string[,] current;
+        private string[,] current;
 
 
-        public  List<String> Unity
+        public List<String> Unity
         {
             get
             {
@@ -79,7 +76,7 @@ namespace LiczbyNaSlowaNET
             }
         }
 
-        public  List<String> OthersTens
+        public List<String> OthersTens
         {
             get
             {
@@ -87,7 +84,7 @@ namespace LiczbyNaSlowaNET
             }
         }
 
-        public  List<String> Tens
+        public List<String> Tens
         {
             get
             {
@@ -95,7 +92,7 @@ namespace LiczbyNaSlowaNET
             }
         }
 
-        public  List<String> Hundreds
+        public List<String> Hundreds
         {
             get
             {
@@ -103,7 +100,7 @@ namespace LiczbyNaSlowaNET
             }
         }
 
-        public  string[,] Endings
+        public string[,] Endings
         {
             get
             {
@@ -111,7 +108,7 @@ namespace LiczbyNaSlowaNET
             }
         }
 
-        public  List<String> Sign
+        public List<String> Sign
         {
             get
             {
@@ -119,7 +116,7 @@ namespace LiczbyNaSlowaNET
             }
         }
 
-        public  string[,] Current
+        public string[,] Current
         {
             get
             {
@@ -128,3 +125,6 @@ namespace LiczbyNaSlowaNET
         }
     }
 }
+
+
+

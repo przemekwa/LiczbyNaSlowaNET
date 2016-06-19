@@ -50,6 +50,7 @@
     <Compile Include="CommonAlgorithm.cs" />
     <Compile Include="IAlgorithm.cs" />
     <Compile Include="NumberToTextOptions.cs" />
+    <Compile Include="PolishWithsStemsDictionary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Dictionaries.cs" />
   </ItemGroup>

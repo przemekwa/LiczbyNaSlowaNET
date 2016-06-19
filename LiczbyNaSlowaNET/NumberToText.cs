@@ -24,7 +24,7 @@ namespace LiczbyNaSlowaNET
         {
             kernel = new StandardKernel();
 
-            kernel.Bind(typeof(IDictionaries)).To<Dictionaries>();
+            kernel.Bind(typeof(IDictionaries)).To<PolishDictionary>();
             kernel.Bind<CommonAlgorithm>().ToSelf();
             kernel.Bind<CurrencyAlgorithm>().ToSelf();
             kernel.Bind<NumberToTextOptions>().ToSelf();
