@@ -54,16 +54,16 @@
   </Choose>
   <ItemGroup>
     <Compile Include="SplitDecimal.cs" />
-    <Compile Include="CurrencyDecimal.cs" />
-    <Compile Include="Decimal.cs" />
+    <Compile Include="PolishDictionary\CurrencyDecimal.cs" />
+    <Compile Include="PolishDictionary\Decimal.cs" />
     <Compile Include="ExtensionLinqu.cs" />
-    <Compile Include="Thousands.cs" />
-    <Compile Include="Hundreds.cs" />
-    <Compile Include="Millions.cs" />
-    <Compile Include="Billions.cs" />
-    <Compile Include="Tens.cs" />
-    <Compile Include="ThreadSafety.cs" />
-    <Compile Include="Unity.cs" />
+    <Compile Include="PolishDictionary\Thousands.cs" />
+    <Compile Include="PolishDictionary\Hundreds.cs" />
+    <Compile Include="PolishDictionary\Millions.cs" />
+    <Compile Include="PolishDictionary\Billions.cs" />
+    <Compile Include="PolishDictionary\Tens.cs" />
+    <Compile Include="PolishDictionary\ThreadSafety.cs" />
+    <Compile Include="PolishDictionary\Unity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -71,6 +71,9 @@
       <Project>{2cca5cf9-6343-48dd-b138-329a6910166d}</Project>
       <Name>LiczbyNaSlowaNET</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="PolishStemsDictionary\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
