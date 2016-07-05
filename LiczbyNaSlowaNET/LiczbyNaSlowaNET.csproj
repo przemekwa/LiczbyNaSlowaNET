@@ -52,7 +52,7 @@
     <Compile Include="NumberToTextOptions.cs" />
     <Compile Include="Dictionaries\PolishWithsStemsDictionary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Dictionaries\Dictionaries.cs" />
+    <Compile Include="Dictionaries\PolishDictionary.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
