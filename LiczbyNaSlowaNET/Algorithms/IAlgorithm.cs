@@ -13,7 +13,7 @@ namespace LiczbyNaSlowaNET
     {
         IEnumerable<int> Numbers { get; set; }
 
-        IDictionaries Dictionaries { get;}
+        IDictionaries Dictionaries { get; set; }
 
         NumberToTextOptions Options { get; set; }
 

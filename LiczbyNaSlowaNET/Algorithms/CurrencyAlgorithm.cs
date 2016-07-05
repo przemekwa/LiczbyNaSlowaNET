@@ -12,10 +12,6 @@ namespace LiczbyNaSlowaNET
 {
     internal sealed class CurrencyAlgorithm : Algorithm
     {
-        public CurrencyAlgorithm(IDictionaries dictionary) : 
-            base(dictionary)
-        {}
-
         private StringBuilder result = new StringBuilder();
        
         private int hundreds;

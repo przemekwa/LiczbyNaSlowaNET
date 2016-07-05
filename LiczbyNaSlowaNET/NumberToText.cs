@@ -67,6 +67,7 @@ namespace LiczbyNaSlowaNET
         {
             var algorithm = GetAlgorithm(options.curency);
 
+            algorithm.Dictionaries = options.Dictionary ?? kernel.Get<IDictionaries>(); 
             algorithm.Numbers = numbers;
             algorithm.Options = options;
 
@@ -88,12 +89,9 @@ namespace LiczbyNaSlowaNET
        {
             var splitNumber = numbers.ToString().Replace('.', '@').Replace(',', '@').Split('@');
 
-            if (splitNumber.Length > 1)
+            if (splitNumber.Length > 1 && splitNumber[1].Length == 1)
             {
-                if (splitNumber[1].Length == 1)
-                {
-                    splitNumber[1] += "0";
-                }
+                splitNumber[1] += "0";
             }
             
             var allNumbers = new List<int>();

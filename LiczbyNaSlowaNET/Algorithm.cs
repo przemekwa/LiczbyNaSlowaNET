@@ -13,11 +13,6 @@ namespace LiczbyNaSlowaNET
 
         public NumberToTextOptions Options { get; set; }
 
-        public Algorithm(IDictionaries dictionary)
-        {
-            this.Dictionaries = dictionary;
-        }
-
         public abstract string Build();
 
         public string CheckWhitespace(string ciag)

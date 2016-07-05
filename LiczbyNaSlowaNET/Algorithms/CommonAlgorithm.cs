@@ -12,12 +12,6 @@ namespace LiczbyNaSlowaNET
 {
     internal sealed class CommonAlgorithm : Algorithm
     {
-        public CommonAlgorithm(IDictionaries dictionary) : 
-            base(dictionary)
-        {
-        
-        }
-
         private StringBuilder result = new StringBuilder();
 
         private int hundreds;

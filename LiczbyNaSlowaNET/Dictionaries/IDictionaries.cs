@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LiczbyNaSlowaNET
 {
-    internal interface IDictionaries
+    public interface IDictionaries
     {
         List<String> Unity { get; }
         List<String> OthersTens { get; }

@@ -10,6 +10,15 @@ namespace LiczbyNaSlowaNET
         private Currency _currency = Currency.None;
         private string _splitDecimal = string.Empty;
 
+        private IDictionaries dictionary;
+
+        public IDictionaries Dictionary
+        {
+            get { return dictionary; }
+            set { dictionary = value; }
+        }
+
+
         public Currency curency 
         { 
             get 
