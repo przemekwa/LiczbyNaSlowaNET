@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace LiczbyNaSlowaNET
 {
-    internal class PolishDictionary : IDictionaries
+    public class PolishDictionary : IDictionaries
     {
         public PolishDictionary()
         {
