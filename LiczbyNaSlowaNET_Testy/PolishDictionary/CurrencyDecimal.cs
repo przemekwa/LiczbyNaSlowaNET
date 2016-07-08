@@ -192,6 +192,12 @@ namespace LiczbyNaSlowaNET_Testy
         {
             Assert.AreEqual("dwadziescia tysiecy trzysta szescdziesiat siedem zlotych czterdziesci groszy", NumberToText.Convert(20367.40M, Currency.PL));
         }
-       
+
+        [TestMethod]
+        public void Test_Currency_20367_45()
+        {
+            Assert.AreEqual("dwadziescia tysiecy trzysta szescdziesiat siedem zlotych czterdziesci piec groszy", NumberToText.Convert(20367.45M, Currency.PL));
+        }
+
     }
 }
