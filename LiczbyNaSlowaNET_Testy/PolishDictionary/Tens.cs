@@ -10,12 +10,10 @@ namespace LiczbyNaSlowaNET_Testy
     [TestClass]
     public class Tens
     {
-        public NumberToTextOptions NumberToTextOptions { get; set; } = new NumberToTextOptions { Dictionary = new PolishWithsStemsDictionary() };
-
         [TestMethod]
         public void Test_11()
         {
-            Assert.AreEqual("jedenaście", NumberToText.Convert(11, this.NumberToTextOptions));
+            Assert.AreEqual("jedenascie", NumberToText.Convert(11));
         }
 
         [TestMethod]
