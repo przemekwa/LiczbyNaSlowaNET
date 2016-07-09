@@ -8,9 +8,8 @@ using LiczbyNaSlowaNET;
 namespace LiczbyNaSlowaNET_Testy.PolishStemsDictionary
 {
     [TestClass]
-    public class Tens
+    public class Tens : TestBase
     {
-        public NumberToTextOptions NumberToTextOptions { get; set; } = new NumberToTextOptions { Dictionary = new PolishWithsStemsDictionary() };
 
         [TestMethod]
         public void Test_11()
