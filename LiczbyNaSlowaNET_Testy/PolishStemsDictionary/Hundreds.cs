@@ -8,12 +8,12 @@ using LiczbyNaSlowaNET;
 namespace LiczbyNaSlowaNET_Testy.PolishStemsDictionary
 {
     [TestClass]
-    public class Hundreds
+    public class Hundreds : TestBase
     {
         [TestMethod]
         public void Test_123()
         {
-            Assert.AreEqual("sto dwadziescia trzy", NumberToText.Convert(123));
+            Assert.AreEqual("sto dwadziescia trzy", NumberToText.Convert(123, this.NumberToTextOptions));
         }
 
         [TestMethod]

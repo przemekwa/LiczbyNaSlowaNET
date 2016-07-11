@@ -8,7 +8,7 @@ using LiczbyNaSlowaNET;
 namespace LiczbyNaSlowaNET_Testy.PolishStemsDictionary
 {
     [TestClass]
-    public class Unity
+    public class Unity : TestBase
     {
         [TestMethod]
         public void Test_0()

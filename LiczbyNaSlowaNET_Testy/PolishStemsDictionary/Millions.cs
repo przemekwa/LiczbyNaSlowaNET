@@ -8,7 +8,7 @@ using LiczbyNaSlowaNET;
 namespace LiczbyNaSlowaNET_Testy.PolishStemsDictionary
 {
     [TestClass]
-    public class Millions
+    public class Millions : TestBase
     {
         [TestMethod]
         public void Test_1000000()

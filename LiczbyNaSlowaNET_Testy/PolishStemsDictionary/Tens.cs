@@ -10,7 +10,6 @@ namespace LiczbyNaSlowaNET_Testy.PolishStemsDictionary
     [TestClass]
     public class Tens : TestBase
     {
-
         [TestMethod]
         public void Test_11()
         {

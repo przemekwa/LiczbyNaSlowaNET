@@ -54,13 +54,12 @@
   </Choose>
   <ItemGroup>
     <Compile Include="PolishStemsDictionary\Billions.cs" />
-    <Compile Include="PolishStemsDictionary\CurrencyDecimal.cs" />
     <Compile Include="PolishStemsDictionary\Decimal.cs" />
     <Compile Include="PolishStemsDictionary\Hundreds.cs" />
     <Compile Include="PolishStemsDictionary\Millions.cs" />
     <Compile Include="PolishStemsDictionary\Tens.cs" />
+    <Compile Include="PolishStemsDictionary\TestBase.cs" />
     <Compile Include="PolishStemsDictionary\Thousands.cs" />
-    <Compile Include="PolishStemsDictionary\ThreadSafety.cs" />
     <Compile Include="PolishStemsDictionary\Unity.cs" />
     <Compile Include="SplitDecimal.cs" />
     <Compile Include="PolishDictionary\CurrencyDecimal.cs" />
