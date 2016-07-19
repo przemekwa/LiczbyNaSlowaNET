@@ -14,9 +14,9 @@ namespace LiczbyNaSlowaNET_Testy
     [TestClass]
     public class ThreadSafety
     {
-      List<string> testResult = new List<string>();
-           
-       [TestMethod]
+        List<string> testResult = new List<string>();
+        [Ignore]
+        [TestMethod]
         public void ThreadSafetyTest()
         {
            var taskList = new List<Task>();

@@ -1,6 +1,6 @@
-﻿
-// Copyright (c) 2016 Przemek Walkowski
+﻿// Copyright (c) 2016 Przemek Walkowski
 
+using LiczbyNaSlowaNET.Currencies;
 using System;
 using System.Collections.Generic;
 
@@ -8,7 +8,7 @@ namespace LiczbyNaSlowaNET
 {
     public class PolishWithsStemsDictionary : IDictionaries
     {
-        public PolishWithsStemsDictionary()
+        public PolishWithsStemsDictionary(List<ICurrencyDeflation> currencyDeflation)
         {
             unity = new List<string>
                 {
@@ -17,12 +17,12 @@ namespace LiczbyNaSlowaNET
 
             othersTens = new List<string>
                 {
-                    "","jedenaście", "dwanaście","trzynaście" , "czternaście", "pietnaście", "szesnaście", "siedemnaście", "osiemnaście", "dziewietnaście"
+                    "","jedenaście", "dwanaście","trzynaście" , "czternaście", "piętnaście", "szesnaście", "siedemnaście", "osiemnaście", "dziewiętnaście"
                 };
 
             tens = new List<string>
                 {
-                    "","dziesięc", "dwadzieścia","trzydzieści" , "czterdzieści", "piędziesiąt", "sześćdziesiąt", "siedemdziesiąt", "osiemdziesiąt", "dziewięćdziesiąt"
+                    "","dziesięć", "dwadzieścia","trzydzieści" , "czterdzieści", "pięćdziesiąt", "sześćdziesiąt", "siedemdziesiąt", "osiemdziesiąt", "dziewięćdziesiąt"
                 };
 
             hundreds = new List<string>
@@ -32,12 +32,12 @@ namespace LiczbyNaSlowaNET
 
             endings = new string[,]
             {
-                {"","",""},
-                {"tysiac","tysiace","tysiecy"},
-                {"milion","miliony","milionow"},
-                {"miliard","miliardy","miliardow"},
-                {"bilion","biliony","bilionow"},
-                {"biliard","biliardy","biliardow"}
+                 {"","",""},
+                {"tysiąc","tysiące","tysięcy"},
+                {"milion","miliony","milionów"},
+                {"miliard","miliardy","miliardów"},
+                {"bilion","biliony","bilionów"},
+                {"biliard","biliardy","biliardów"}
             };
 
             sign = new List<string>
@@ -51,6 +51,7 @@ namespace LiczbyNaSlowaNET
                 {"złoty","złote","złotych"},
                 {"grosz","grosze","groszy"}
             };
+            currency = currencyDeflation;
         }
 
         private string[,] endings;
@@ -67,6 +68,9 @@ namespace LiczbyNaSlowaNET
 
         private string[,] current;
 
+        private readonly List<ICurrencyDeflation> currency;
+
+        private bool hasStems =true;
 
         public List<String> Unity
         {
@@ -123,8 +127,21 @@ namespace LiczbyNaSlowaNET
                 return current;
             }
         }
+
+        public List<ICurrencyDeflation> Currency
+        {
+            get
+            {
+                return currency;
+            }
+        }
+
+        public bool HasStems
+        {
+            get
+            {
+                return hasStems;
+            }
+        }
     }
 }
-
-
-

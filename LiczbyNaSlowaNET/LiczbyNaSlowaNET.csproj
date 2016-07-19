@@ -31,8 +31,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core, Version=3.2.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>packages\Castle.Core.3.2.0\lib\net40-client\Castle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Ninject">
       <HintPath>packages\Ninject.3.2.3-unstable-012\lib\net40\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Conventions, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>packages\Ninject.Extensions.Conventions.3.2.0.0\lib\net40\Ninject.Extensions.Conventions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Factory, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>packages\Ninject.Extensions.Factory.3.2.1.0\lib\net40\Ninject.Extensions.Factory.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -45,7 +57,26 @@
   <ItemGroup>
     <Compile Include="Algorithm.cs" />
     <Compile Include="Algorithms\CurrencyAlgorithm.cs" />
+    <Compile Include="Dictionaries\Currencies\ChfCurrencyDeflation.cs" />
+    <Compile Include="Dictionaries\Currencies\CurrencyDeflationFactory.cs" />
+    <Compile Include="Dictionaries\Currencies\CzkCurrenctDeflation.cs" />
+    <Compile Include="Dictionaries\Currencies\EmptyCurrencyDeflation.cs" />
+    <Compile Include="Dictionaries\Currencies\EurCurrencyDeflation.cs" />
+    <Compile Include="Dictionaries\Currencies\GbpCurrencyDeflation.cs" />
+    <Compile Include="Dictionaries\Currencies\HufCurrencyDeflation.cs" />
+    <Compile Include="Dictionaries\Currencies\ICurrencyDeflation.cs" />
+    <Compile Include="Dictionaries\Currencies\ICurrencyDeflationFactory.cs" />
+    <Compile Include="Dictionaries\Currencies\ICurrencyNotMaleDeflectionAfterComma.cs" />
+    <Compile Include="Dictionaries\Currencies\ICurrencyNotMaleDeflectionBeforeComma.cs" />
+    <Compile Include="Dictionaries\Currencies\JpyCurrencyDeflation.cs" />
+    <Compile Include="Dictionaries\Currencies\LtlCurrencyDeflation.cs" />
+    <Compile Include="Dictionaries\Currencies\NokCurrencyDeflation.cs" />
+    <Compile Include="Dictionaries\Currencies\PercentageDeflation.cs" />
+    <Compile Include="Dictionaries\Currencies\PlnCurrencyDeflation.cs" />
+    <Compile Include="Dictionaries\Currencies\SekCurrencyDeflation.cs" />
+    <Compile Include="Dictionaries\Currencies\UsdCurrencyDeflation.cs" />
     <Compile Include="Dictionaries\IDictionaries.cs" />
+    <Compile Include="INumberToTextOptions.cs" />
     <Compile Include="NumberToText.cs" />
     <Compile Include="Algorithms\CommonAlgorithm.cs" />
     <Compile Include="Algorithms\IAlgorithm.cs" />

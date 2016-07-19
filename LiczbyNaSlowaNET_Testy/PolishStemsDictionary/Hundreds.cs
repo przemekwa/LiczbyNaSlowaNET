@@ -13,7 +13,7 @@ namespace LiczbyNaSlowaNET_Testy.PolishStemsDictionary
         [TestMethod]
         public void Test_123()
         {
-            Assert.AreEqual("sto dwadziescia trzy", NumberToText.Convert(123, this.NumberToTextOptions));
+            Assert.AreEqual("sto dwadzieścia trzy", NumberToText.Convert(123, this.NumberToTextOptions));
         }
 
         [TestMethod]

@@ -1,6 +1,7 @@
 ﻿
 // Copyright (c) 2014 Przemek Walkowski
 
+using LiczbyNaSlowaNET.Currencies;
 using System.Linq;
 using System.Text;
 
@@ -8,6 +9,10 @@ namespace LiczbyNaSlowaNET
 {
     internal sealed class CurrencyAlgorithm : Algorithm
     {
+        public CurrencyAlgorithm(IDictionaries dictionary) :
+           base(dictionary)
+        { }
+
         private StringBuilder result = new StringBuilder();
        
         private int hundreds;
@@ -40,7 +45,7 @@ namespace LiczbyNaSlowaNET
                     partialResult.Append(Dictionaries.Unity[10]).ToString();
                     partialResult.Append(" ");
 
-                    partialResult.Append(Dictionaries.Current[(int)currentPhase, 2]).ToString();
+                    partialResult.Append(this.Options.Currency.GetDeflationTable[(int)currentPhase, 2]).ToString();
 
                     result.Append(partialResult.ToString().Trim());
 
@@ -88,12 +93,21 @@ namespace LiczbyNaSlowaNET
                         var tempPartialResult = partialResult.ToString().Trim();
 
                         partialResult.Clear();
+                        var properUnity = Dictionaries.Unity;
+                        if (currentPhase == phase.afterComma && this.Options.Currency is ICurrencyNotMaleDeflectionAfterComma && this.tens == 0)
+                        {
+                            properUnity = (this.Options.Currency as ICurrencyNotMaleDeflectionAfterComma).OverrideAfterCommaUnity;
+                        }
+                        if (currentPhase == phase.beforeComma && this.Options.Currency is ICurrencyNotMaleDeflectionBeforeComma)
+                        {
+                            properUnity = (this.Options.Currency as ICurrencyNotMaleDeflectionBeforeComma).OverrideBeforeCommaUnity;
+                        }
 
                         partialResult.AppendFormat("{0}{1}{2}{3}{4}{5}",
                             this.CheckWhitespace(Dictionaries.Hundreds[this.hundreds]),
                             this.CheckWhitespace(Dictionaries.Tens[this.tens]),
                             this.CheckWhitespace(Dictionaries.OthersTens[this.othersTens]),
-                            this.CheckWhitespace(Dictionaries.Unity[this.unity]),
+                            this.CheckWhitespace(properUnity[this.unity]),
                             this.CheckWhitespace(Dictionaries.Endings[this.order, grammarForm]),
                             this.CheckWhitespace(tempPartialResult));
                     }
@@ -103,7 +117,7 @@ namespace LiczbyNaSlowaNET
                     tempNumber = tempNumber / 1000;
                 }
 
-                partialResult.Append(this.CheckWhitespace(Dictionaries.Current[(int)this.currentPhase, GetCurrencyForm(number)]));
+                partialResult.Append(this.CheckWhitespace(this.Options.Currency.GetDeflationTable[(int)this.currentPhase, GetCurrencyForm(number)]));
 
                 result.Append(partialResult.ToString().Trim());
 
