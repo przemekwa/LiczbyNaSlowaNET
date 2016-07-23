@@ -27,13 +27,13 @@ namespace LiczbyNaSlowaNET_Testy.PolishStemsDictionary
         [TestMethod]
         public void Test_2000000056()
         {
-            Assert.AreEqual("dwa miliardy piecdziesiat szesc", NumberToText.Convert(2000000056, this.NumberToTextOptions));
+            Assert.AreEqual("dwa miliardy pięćdziesiąt sześć", NumberToText.Convert(2000000056, this.NumberToTextOptions));
         }
 
         [TestMethod]
         public void Test_2000000206()
         {
-            Assert.AreEqual("dwa miliardy dwiescie szesc", NumberToText.Convert(2000000206, this.NumberToTextOptions));
+            Assert.AreEqual("dwa miliardy dwieście sześć", NumberToText.Convert(2000000206, this.NumberToTextOptions));
         }
     }
 }

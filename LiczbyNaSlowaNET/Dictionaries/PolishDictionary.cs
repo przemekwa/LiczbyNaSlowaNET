@@ -1,6 +1,6 @@
-﻿
-// Copyright (c) 2014 Przemek Walkowski
+﻿// Copyright (c) 2014 Przemek Walkowski
 
+using LiczbyNaSlowaNET.Currencies;
 using System;
 using System.Collections.Generic;
 
@@ -8,7 +8,7 @@ namespace LiczbyNaSlowaNET
 {
     public class PolishDictionary : IDictionaries
     {
-        public PolishDictionary()
+        public PolishDictionary(List<ICurrencyDeflation> currencyDeflation)
         {
             unity = new List<string>
                 {
@@ -30,7 +30,7 @@ namespace LiczbyNaSlowaNET
                     "","sto", "dwiescie","trzysta" , "czterysta", "piecset", "szescset", "siedemset", "osiemset", "dziewiecset"
                 };
 
-            endings = new string[,] 
+            endings = new string[,]
             {
                 {"","",""},
                 {"tysiac","tysiace","tysiecy"},
@@ -45,30 +45,33 @@ namespace LiczbyNaSlowaNET
                 "plus", "minus"
             };
 
-            current = new string[,] 
+            current = new string[,]
             {
                 {"","",""},
                 {"zloty","zlote","zlotych"},
                 {"grosz","grosze","groszy"}
             };
+            currency = currencyDeflation;
         }
 
-        private  string[,] endings;
+        private string[,] endings;
 
-        private  List<String> unity;
+        private List<String> unity;
 
-        private  List<String> othersTens;
+        private List<String> othersTens;
 
-        private  List<String> tens;
+        private List<String> tens;
 
-        private  List<String> hundreds ;
+        private List<String> hundreds;
 
-        private  List<String> sign;
+        private List<String> sign;
 
-        private  string[,] current;
+        private string[,] current;
 
+        private readonly List<ICurrencyDeflation> currency;
+        private bool hasStems = false;
 
-        public  List<String> Unity
+        public List<String> Unity
         {
             get
             {
@@ -76,7 +79,7 @@ namespace LiczbyNaSlowaNET
             }
         }
 
-        public  List<String> OthersTens
+        public List<String> OthersTens
         {
             get
             {
@@ -84,7 +87,7 @@ namespace LiczbyNaSlowaNET
             }
         }
 
-        public  List<String> Tens
+        public List<String> Tens
         {
             get
             {
@@ -92,7 +95,7 @@ namespace LiczbyNaSlowaNET
             }
         }
 
-        public  List<String> Hundreds
+        public List<String> Hundreds
         {
             get
             {
@@ -100,7 +103,7 @@ namespace LiczbyNaSlowaNET
             }
         }
 
-        public  string[,] Endings
+        public string[,] Endings
         {
             get
             {
@@ -108,7 +111,7 @@ namespace LiczbyNaSlowaNET
             }
         }
 
-        public  List<String> Sign
+        public List<String> Sign
         {
             get
             {
@@ -116,11 +119,27 @@ namespace LiczbyNaSlowaNET
             }
         }
 
-        public  string[,] Current
+        public string[,] Current
         {
             get
             {
                 return current;
+            }
+        }
+
+        public List<ICurrencyDeflation> Currency
+        {
+            get
+            {
+                return currency;
+            }
+        }
+
+        public bool HasStems
+        {
+            get
+            {
+                return hasStems;
             }
         }
     }

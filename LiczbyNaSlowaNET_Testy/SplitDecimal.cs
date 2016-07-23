@@ -4,6 +4,7 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LiczbyNaSlowaNET;
+using LiczbyNaSlowaNET.Currencies;
 
 namespace LiczbyNaSlowaNET_Testy
 {
@@ -15,7 +16,7 @@ namespace LiczbyNaSlowaNET_Testy
         {
             var options = new NumberToTextOptions
             {
-                curency = Currency.None,
+                Currency = new EmptyCurrencyDeflation(),
                 SplitDecimal = "i"
             };
 
@@ -28,7 +29,7 @@ namespace LiczbyNaSlowaNET_Testy
         {
             var options = new NumberToTextOptions
             {
-                curency = Currency.PL,
+                Currency = new PlnCurrencyDeflation(),
                 SplitDecimal = "i"
             };
 
@@ -41,7 +42,7 @@ namespace LiczbyNaSlowaNET_Testy
         {
             var options = new NumberToTextOptions
             {
-                curency = Currency.PL,
+                Currency = new PlnCurrencyDeflation(),
                 SplitDecimal = "i"
             };
 
@@ -54,7 +55,7 @@ namespace LiczbyNaSlowaNET_Testy
         {
             var options = new NumberToTextOptions
             {
-                curency = Currency.PL,
+                Currency = new PlnCurrencyDeflation(),
                 SplitDecimal = " oraz "
             };
 
@@ -66,7 +67,7 @@ namespace LiczbyNaSlowaNET_Testy
         {
             var options = new NumberToTextOptions
             {
-                curency = Currency.PL,
+                Currency = new PlnCurrencyDeflation(),
             };
 
             Assert.AreEqual("zero zlotych dwanascie groszy", NumberToText.Convert(0.12M, options));

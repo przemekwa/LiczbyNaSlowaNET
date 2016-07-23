@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LiczbyNaSlowaNET.Currencies;
+using System;
 using System.Collections.Generic;
 
 namespace LiczbyNaSlowaNET
@@ -12,5 +13,7 @@ namespace LiczbyNaSlowaNET
         string[,] Endings{ get; }
         List<String> Sign{ get; }
         string[,] Current{ get; }
+        List<ICurrencyDeflation> Currency { get; }
+        bool HasStems { get; }
     }
 }

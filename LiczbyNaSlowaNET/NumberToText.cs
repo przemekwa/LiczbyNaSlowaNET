@@ -1,8 +1,11 @@
 ﻿
 // Copyright (c) 2014 Przemek Walkowski
 
+using LiczbyNaSlowaNET.Currencies;
 using Ninject;
+using Ninject.Extensions.Conventions;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace LiczbyNaSlowaNET
 {
@@ -22,7 +25,10 @@ namespace LiczbyNaSlowaNET
             kernel.Bind<CommonAlgorithm>().ToSelf();
             kernel.Bind<CurrencyAlgorithm>().ToSelf();
             kernel.Bind<NumberToTextOptions>().ToSelf();
+            kernel.Bind<ICurrencyDeflationFactory>().To<CurrencyDeflationFactory>().WithConstructorArgument("withStems",kernel.Get<IDictionaries>().HasStems);
+            kernel.Bind(x => x.FromAssemblyContaining<ICurrencyDeflation>().SelectAllClasses().InheritedFrom<ICurrencyDeflation>().BindAllInterfaces());
         }
+
         
         /// <summary>
         /// Convert number into words.
@@ -33,33 +39,33 @@ namespace LiczbyNaSlowaNET
         {
             var options = kernel.Get<NumberToTextOptions>();
 
-            options.curency = currency;
+            ConvertToICurrenctyDeflation(currency, options);
 
-            return CommonConver(new int[] { number }, options);
+            return CommonConvert(new int[] { number }, options);
         }
 
         public static string Convert(int number, NumberToTextOptions options)
         {
-            return CommonConver(new int[] { number }, options);
+            return CommonConvert(new int[] { number }, options);
         }
 
         public static string Convert(decimal number, Currency currency = Currency.None)
         {
             var options = kernel.Get<NumberToTextOptions>();
 
-            options.curency = currency;
+            ConvertToICurrenctyDeflation(currency, options);
 
-            return CommonConver(PrepareNumbers(number), options);
+            return CommonConvert(PrepareNumbers(number), options);
         }
 
         public static string Convert(decimal number, NumberToTextOptions options)
         {
-            return CommonConver(PrepareNumbers(number), options);
+            return CommonConvert(PrepareNumbers(number), options);
         }
 
-        private static string CommonConver(IEnumerable<int> numbers, NumberToTextOptions options)
+        private static string CommonConvert(IEnumerable<int> numbers, NumberToTextOptions options)
         {
-            var algorithm = GetAlgorithm(options.curency);
+            var algorithm = GetAlgorithm(options.Currency);
 
             algorithm.Dictionaries = options.Dictionary ?? kernel.Get<IDictionaries>(); 
             algorithm.Numbers = numbers;
@@ -68,20 +74,21 @@ namespace LiczbyNaSlowaNET
             return algorithm.Build();
         }
 
-        private static IAlgorithm GetAlgorithm(Currency currency)
+        private static IAlgorithm GetAlgorithm(ICurrencyDeflation currency)
         {
-           switch (currency)
+            if (currency.CurrencyCode.Equals(string.Empty))
             {
-                case Currency.PL:
-                    return kernel.Get<CurrencyAlgorithm>();
-                default:
-                    return kernel.Get<CommonAlgorithm>();
+                return kernel.Get<CommonAlgorithm>();
+            }
+            else
+            {
+                return kernel.Get<CurrencyAlgorithm>();
             }
         }
 
         private static IEnumerable<int> PrepareNumbers(decimal numbers)
        {
-            var splitNumber = numbers.ToString().Replace('.', '@').Replace(',', '@').Split('@');
+            var splitNumber = numbers.ToString(CultureInfo.InvariantCulture).Replace('.', '@').Replace(',', '@').Split('@');
 
             if (splitNumber.Length > 1 && splitNumber[1].Length == 1)
             {
@@ -101,6 +108,52 @@ namespace LiczbyNaSlowaNET
             }
 
             return allNumbers;
+        }
+        private static void ConvertToICurrenctyDeflation(Currency currency, NumberToTextOptions options)
+        {
+            if (currency == Currency.None)
+            {
+                options.Currency = kernel.Get<ICurrencyDeflationFactory>().CreateInstance(string.Empty);
+            }
+            else
+            {
+                options.Currency = kernel.Get<ICurrencyDeflationFactory>().CreateInstance("PLN");
+            }
+        }
+        /// <summary>
+        /// Converts decimal number with currency, based on currency ISO code
+        /// </summary>
+        /// <param name="number">Number to convert</param>
+        /// <param name="currencyCode">Currency Code as given in ISO 4217</param>
+        /// <returns></returns>
+        public static string Convert(decimal number, string currencyCode)
+        {
+            var options = kernel.Get<NumberToTextOptions>();
+            options.Currency = kernel.Get<ICurrencyDeflationFactory>().CreateInstance(currencyCode);
+            return CommonConvert(PrepareNumbers(number), options);
+        }
+        /// <summary>
+        /// Converts integer number with currency, based on currency ISO code
+        /// </summary>
+        /// <param name="number">Integer to convert</param>
+        /// <param name="currencyCode">Currency code asgiven in ISO 4217</param>
+        /// <returns></returns>
+        public static string Convert(int number, string currencyCode)
+        {
+            var options = kernel.Get<NumberToTextOptions>();
+            options.Currency = kernel.Get<ICurrencyDeflationFactory>().CreateInstance(currencyCode);
+            return CommonConvert(PrepareNumbers(number), options);
+        }
+
+        /// <summary>
+        /// Returns list of defined/available currencies
+        /// </summary>
+        public static List<ICurrencyDeflation> DefinedCurrencies
+        {
+            get
+            {
+                return kernel.Get<CurrencyDeflationFactory>().CurrencyList;
+            }
         }
 
     }

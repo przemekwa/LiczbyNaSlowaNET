@@ -1,31 +1,31 @@
-﻿namespace LiczbyNaSlowaNET
+﻿using LiczbyNaSlowaNET.Currencies;
+
+namespace LiczbyNaSlowaNET
 {
-    public class NumberToTextOptions
+    public class NumberToTextOptions : INumberToTextOptions
     {
-        private Currency _currency = Currency.None;
+        private ICurrencyDeflation _currency;
         private string _splitDecimal = string.Empty;
 
         private IDictionaries dictionary;
+
+        public ICurrencyDeflation Currency
+        {
+            get
+            {
+                return this._currency;
+            }
+            set
+            {
+                this._currency = value;
+            }
+        }
 
         public IDictionaries Dictionary
         {
             get { return dictionary; }
             set { dictionary = value; }
         }
-
-
-        public Currency curency 
-        { 
-            get 
-            {
-                return this._currency; 
-            } 
-            set 
-            {
-                this._currency = value;
-            } 
-        }
-
         public string SplitDecimal
         {
             get
@@ -38,5 +38,12 @@
             }
         }
 
+        public bool WithStems
+        {
+            get
+            {
+                return Currency.HasStems;
+            }
+        }
     }
 }
