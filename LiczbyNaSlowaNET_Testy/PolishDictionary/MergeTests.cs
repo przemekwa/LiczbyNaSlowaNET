@@ -33,22 +33,32 @@ namespace LiczbyNaSlowaNET_Testy.PolishDictionary
                  Converter = Converter.PL2 //With stems
              })
 
+            //TODO: Pomysł 3
 
             var test = NumberToText.Convert(2.3M, new NumberToTextOptions
             {
-                Converter = Converter.PL
+                Converter = Converter.ToPolsih
                 CurrencySymbol = Currency.PLN,
             })
 
 
              var test = NumberToText.Convert(2.3M, new NumberToTextOptions
              {
-                 Converter = Converter.PL2 //With stems
+                 Converter = Converter.ToPolishWithStems //With stems
                  CurrencySymbol = Currency.PLN,
                  SplitDecimal = ".",
              })
 
 
-        }
+             var test = NumberToText.Convert(2.3M, Converter.ToPolishWithStems, CurrencySymbol = Currency.PLN);
+
+
+        // TODO: Pomysł 4
+
+        var test = NumberToText.Convert(2.3M, Converter.ToPolishWithStems);
+
+        var test = CurrencyToText.Convert(2.3M, Converter.ToPolishWithStems, CurrencySymbol = Currency.PLN);
+
+    }
     }
 }
