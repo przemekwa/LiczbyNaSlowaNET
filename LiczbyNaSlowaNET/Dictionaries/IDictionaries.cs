@@ -1,4 +1,5 @@
 ﻿
+// Copyright (c) 2016 Przemek Walkowski
 
 namespace LiczbyNaSlowaNET.Dictionaries
 {

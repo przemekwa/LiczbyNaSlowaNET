@@ -1,12 +1,12 @@
 ﻿
 // Copyright (c) 2014 Przemek Walkowski
 
-using LiczbyNaSlowaNET.Dictionaries;
-
 namespace LiczbyNaSlowaNET.Algorithms
 {
     using System.Linq;
     using System.Text;
+
+    using Dictionaries;
 
     internal sealed class CommonAlgorithm : Algorithm
     {

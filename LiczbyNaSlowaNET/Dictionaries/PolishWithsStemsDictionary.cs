@@ -12,27 +12,27 @@ namespace LiczbyNaSlowaNET.Dictionaries
     {
         public PolishWithsStemsDictionary(List<ICurrencyDeflation> currencyDeflation)
         {
-            unity = new List<string>
+            Unity = new List<string>
                 {
                     "","jeden","dwa" , "trzy", "cztery", "pięć", "sześć", "siedem", "osiem", "dziewięć","zero"
                 };
 
-            othersTens = new List<string>
+            OthersTens = new List<string>
                 {
                     "","jedenaście", "dwanaście","trzynaście" , "czternaście", "piętnaście", "szesnaście", "siedemnaście", "osiemnaście", "dziewiętnaście"
                 };
 
-            tens = new List<string>
+            Tens = new List<string>
                 {
                     "","dziesięć", "dwadzieścia","trzydzieści" , "czterdzieści", "pięćdziesiąt", "sześćdziesiąt", "siedemdziesiąt", "osiemdziesiąt", "dziewięćdziesiąt"
                 };
 
-            hundreds = new List<string>
+            Hundreds = new List<string>
                 {
                     "","sto", "dwieście","trzysta" , "czterysta", "pięćset", "sześćset", "siedemset", "osiemset", "dziewięćset"
                 };
 
-            endings = new string[,]
+            Endings = new string[,]
             {
                  {"","",""},
                 {"tysiąc","tysiące","tysięcy"},
@@ -42,108 +42,36 @@ namespace LiczbyNaSlowaNET.Dictionaries
                 {"biliard","biliardy","biliardów"}
             };
 
-            sign = new List<string>
+            Sign = new List<string>
             {
                 "plus", "minus"
             };
 
-            current = new string[,]
+            Current = new string[,]
             {
                 {"","",""},
                 {"złoty","złote","złotych"},
                 {"grosz","grosze","groszy"}
             };
-            currency = currencyDeflation;
+            Currency = currencyDeflation;
         }
 
-        private string[,] endings;
+        public List<string> Unity { get; }
 
-        private List<String> unity;
+        public List<string> OthersTens { get; }
 
-        private List<String> othersTens;
+        public List<string> Tens { get; }
 
-        private List<String> tens;
+        public List<string> Hundreds { get; }
 
-        private List<String> hundreds;
+        public string[,] Endings { get; }
 
-        private List<String> sign;
+        public List<string> Sign { get; }
 
-        private string[,] current;
+        public string[,] Current { get; }
 
-        private readonly List<ICurrencyDeflation> currency;
+        public List<ICurrencyDeflation> Currency { get; }
 
-        private bool hasStems =true;
-
-        public List<String> Unity
-        {
-            get
-            {
-                return unity;
-            }
-        }
-
-        public List<String> OthersTens
-        {
-            get
-            {
-                return othersTens;
-            }
-        }
-
-        public List<String> Tens
-        {
-            get
-            {
-                return tens;
-            }
-        }
-
-        public List<String> Hundreds
-        {
-            get
-            {
-                return hundreds;
-            }
-        }
-
-        public string[,] Endings
-        {
-            get
-            {
-                return endings;
-            }
-        }
-
-        public List<String> Sign
-        {
-            get
-            {
-                return sign;
-            }
-        }
-
-        public string[,] Current
-        {
-            get
-            {
-                return current;
-            }
-        }
-
-        public List<ICurrencyDeflation> Currency
-        {
-            get
-            {
-                return currency;
-            }
-        }
-
-        public bool HasStems
-        {
-            get
-            {
-                return hasStems;
-            }
-        }
+        public bool HasStems { get; } = true;
     }
 }
