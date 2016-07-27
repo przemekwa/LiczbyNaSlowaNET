@@ -1,19 +1,19 @@
 ﻿
 // Copyright (c) 2014 Przemek Walkowski
 
-using LiczbyNaSlowaNET.Currencies;
-using System.Linq;
-using System.Text;
-
-namespace LiczbyNaSlowaNET
+namespace LiczbyNaSlowaNET.Algorithms
 {
+    using Currencies;
+    using System.Linq;
+    using System.Text;
+
     internal sealed class CurrencyAlgorithm : Algorithm
     {
         public CurrencyAlgorithm(IDictionaries dictionary) :
            base(dictionary)
         { }
 
-        private StringBuilder result = new StringBuilder();
+        private readonly StringBuilder result = new StringBuilder();
        
         private int hundreds;
                 
@@ -27,13 +27,10 @@ namespace LiczbyNaSlowaNET
 
         private phase currentPhase;
 
-        private int[] tempGrammarForm = new int[] { 2, 3, 4 };
-
+        private readonly int[] tempGrammarForm = new int[] { 2, 3, 4 };
 
         public override string Build()
         {
-            int grammarForm = 0;
-
             this.currentPhase = phase.beforeComma;
 
             foreach (var number in Numbers)
@@ -85,7 +82,7 @@ namespace LiczbyNaSlowaNET
                         this.othersTens = 0;
                     }
 
-                    grammarForm = this.GetGrammaForm();
+                    var grammarForm = this.GetGrammaForm();
                     
 
                     if ((this.hundreds + this.unity + this.othersTens + this.tens) > 0)
@@ -134,8 +131,6 @@ namespace LiczbyNaSlowaNET
 
             return result.ToString().Trim();
         }
-
-        
 
         private int GetCurrencyForm(int number)
         {

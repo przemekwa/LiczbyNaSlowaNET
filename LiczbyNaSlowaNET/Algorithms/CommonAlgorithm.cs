@@ -1,11 +1,11 @@
 ﻿
 // Copyright (c) 2014 Przemek Walkowski
 
-using System.Linq;
-using System.Text;
-
-namespace LiczbyNaSlowaNET
+namespace LiczbyNaSlowaNET.Algorithms
 {
+    using System.Linq;
+    using System.Text;
+
     internal sealed class CommonAlgorithm : Algorithm
     {
         public CommonAlgorithm(IDictionaries dictionary) :
@@ -13,7 +13,8 @@ namespace LiczbyNaSlowaNET
         {
 
         }
-        private StringBuilder result = new StringBuilder();
+
+        private readonly StringBuilder result = new StringBuilder();
 
         private int hundreds;
       
@@ -29,7 +30,7 @@ namespace LiczbyNaSlowaNET
 
         private phase currentPhase;
 
-        private int[] tempGrammarForm = new int[] { 2, 3, 4 };
+        private readonly int[] tempGrammarForm = new int[] { 2, 3, 4 };
 
         public override string Build()
         {
@@ -41,7 +42,8 @@ namespace LiczbyNaSlowaNET
 
                 if (number == 0)
                 {
-                    partialResult.Append(Dictionaries.Unity[10]).ToString();
+                    partialResult.Append(Dictionaries.Unity[10]);
+
                     this.currentPhase = phase.afterComma;
                 }
 

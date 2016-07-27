@@ -6,6 +6,7 @@ using Ninject;
 using Ninject.Extensions.Conventions;
 using System.Collections.Generic;
 using System.Globalization;
+using LiczbyNaSlowaNET.Algorithms;
 
 namespace LiczbyNaSlowaNET
 {

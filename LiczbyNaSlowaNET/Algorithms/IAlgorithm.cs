@@ -1,10 +1,10 @@
 ﻿
 // Copyright (c) 2014 Przemek Walkowski
 
-using System.Collections.Generic;
-
-namespace LiczbyNaSlowaNET
+namespace LiczbyNaSlowaNET.Algorithms
 {
+    using System.Collections.Generic;
+
     internal interface IAlgorithm
     {
         IEnumerable<int> Numbers { get; set; }

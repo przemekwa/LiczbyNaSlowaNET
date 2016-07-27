@@ -16,7 +16,6 @@ namespace LiczbyNaSlowaNET_Testy.PolishStemsDictionary
     [TestClass]
     public class CurrencyDecimal :TestBase
     {
-
         private static IKernel kernel;
         public CurrencyDecimal()
         {
