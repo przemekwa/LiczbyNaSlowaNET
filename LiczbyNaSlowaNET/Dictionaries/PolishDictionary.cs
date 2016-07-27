@@ -1,11 +1,13 @@
-﻿// Copyright (c) 2014 Przemek Walkowski
+﻿
+// Copyright (c) 2014 Przemek Walkowski
 
-using LiczbyNaSlowaNET.Dictionaries.Currencies;
-using System;
-using System.Collections.Generic;
-
-namespace LiczbyNaSlowaNET
+namespace LiczbyNaSlowaNET.Dictionaries
 {
+    using System;
+    using System.Collections.Generic;
+
+    using Currencies;
+
     public class PolishDictionary : IDictionaries
     {
         public PolishDictionary(List<ICurrencyDeflation> currencyDeflation)

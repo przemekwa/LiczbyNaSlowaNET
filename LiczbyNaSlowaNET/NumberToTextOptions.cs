@@ -1,4 +1,8 @@
-﻿using LiczbyNaSlowaNET.Dictionaries.Currencies;
+﻿
+// Copyright (c) 2014 Przemek Walkowski
+
+using LiczbyNaSlowaNET.Dictionaries;
+using LiczbyNaSlowaNET.Dictionaries.Currencies;
 
 namespace LiczbyNaSlowaNET
 {

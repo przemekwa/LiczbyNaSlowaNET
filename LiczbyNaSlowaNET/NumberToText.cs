@@ -1,15 +1,17 @@
 ﻿
 // Copyright (c) 2014 Przemek Walkowski
 
-using LiczbyNaSlowaNET.Dictionaries.Currencies;
-using Ninject;
-using Ninject.Extensions.Conventions;
-using System.Collections.Generic;
-using System.Globalization;
-using LiczbyNaSlowaNET.Algorithms;
+using LiczbyNaSlowaNET.Dictionaries;
 
 namespace LiczbyNaSlowaNET
 {
+    using Dictionaries.Currencies;
+    using Ninject;
+    using Ninject.Extensions.Conventions;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using Algorithms;
+
     internal enum phase { beforeComma = 1, afterComma };
 
     public enum Currency { None, PL };

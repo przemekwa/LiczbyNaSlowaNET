@@ -5,6 +5,7 @@ using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LiczbyNaSlowaNET;
 using System.Globalization;
+using LiczbyNaSlowaNET.Dictionaries;
 using Ninject;
 using LiczbyNaSlowaNET.Dictionaries.Currencies;
 using Ninject.Extensions.Conventions;

@@ -1,9 +1,11 @@
-﻿using LiczbyNaSlowaNET.Dictionaries.Currencies;
-using System;
-using System.Collections.Generic;
+﻿
 
-namespace LiczbyNaSlowaNET
+namespace LiczbyNaSlowaNET.Dictionaries
 {
+    using Dictionaries.Currencies;
+    using System;
+    using System.Collections.Generic;
+
     public interface IDictionaries
     {
         List<String> Unity { get; }

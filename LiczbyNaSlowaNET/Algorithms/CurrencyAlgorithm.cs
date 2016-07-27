@@ -7,6 +7,7 @@ namespace LiczbyNaSlowaNET.Algorithms
     using System.Text;
 
     using Dictionaries.Currencies;
+    using Dictionaries;
 
     internal sealed class CurrencyAlgorithm : Algorithm
     {
