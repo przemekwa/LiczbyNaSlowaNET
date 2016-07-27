@@ -1,4 +1,4 @@
-﻿namespace LiczbyNaSlowaNET.Currencies
+﻿namespace LiczbyNaSlowaNET.Dictionaries.Currencies
 {
     /// <summary>
     ///     Interface for classes that define deflation table for specific currency.

@@ -4,7 +4,7 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LiczbyNaSlowaNET;
-using LiczbyNaSlowaNET.Currencies;
+using LiczbyNaSlowaNET.Dictionaries.Currencies;
 
 namespace LiczbyNaSlowaNET_Testy
 {

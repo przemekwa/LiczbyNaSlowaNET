@@ -1,7 +1,7 @@
 ﻿
 // Copyright (c) 2014 Przemek Walkowski
 
-using LiczbyNaSlowaNET.Currencies;
+using LiczbyNaSlowaNET.Dictionaries.Currencies;
 using Ninject;
 using Ninject.Extensions.Conventions;
 using System.Collections.Generic;

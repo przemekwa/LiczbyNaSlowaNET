@@ -3,9 +3,10 @@
 
 namespace LiczbyNaSlowaNET.Algorithms
 {
-    using Currencies;
     using System.Linq;
     using System.Text;
+
+    using Dictionaries.Currencies;
 
     internal sealed class CurrencyAlgorithm : Algorithm
     {

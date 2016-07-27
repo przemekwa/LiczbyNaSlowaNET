@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace LiczbyNaSlowaNET.Currencies
+namespace LiczbyNaSlowaNET.Dictionaries.Currencies
 {
     public class NokCurrencyDeflation : ICurrencyDeflation, ICurrencyNotMaleDeflectionBeforeComma
     {

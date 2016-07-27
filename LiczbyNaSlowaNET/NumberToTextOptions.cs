@@ -1,4 +1,4 @@
-﻿using LiczbyNaSlowaNET.Currencies;
+﻿using LiczbyNaSlowaNET.Dictionaries.Currencies;
 
 namespace LiczbyNaSlowaNET
 {

@@ -1,6 +1,6 @@
 ﻿// Copyright (c) 2014 Przemek Walkowski
 
-using LiczbyNaSlowaNET.Currencies;
+using LiczbyNaSlowaNET.Dictionaries.Currencies;
 using System;
 using System.Collections.Generic;
 

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace LiczbyNaSlowaNET.Currencies
+namespace LiczbyNaSlowaNET.Dictionaries.Currencies
 {
     /// <summary>
     ///     Interface for classes that define factory able to create currency defaltion instances.

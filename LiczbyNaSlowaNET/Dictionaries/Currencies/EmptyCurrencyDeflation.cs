@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace LiczbyNaSlowaNET.Currencies
+namespace LiczbyNaSlowaNET.Dictionaries.Currencies
 {
     public class EmptyCurrencyDeflation : ICurrencyDeflation
     {

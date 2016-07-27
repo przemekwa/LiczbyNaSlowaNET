@@ -1,4 +1,4 @@
-﻿using LiczbyNaSlowaNET.Currencies;
+﻿using LiczbyNaSlowaNET.Dictionaries.Currencies;
 using System;
 using System.Collections.Generic;
 

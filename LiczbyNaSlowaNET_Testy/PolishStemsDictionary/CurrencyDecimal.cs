@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LiczbyNaSlowaNET;
 using System.Globalization;
 using Ninject;
-using LiczbyNaSlowaNET.Currencies;
+using LiczbyNaSlowaNET.Dictionaries.Currencies;
 using Ninject.Extensions.Conventions;
 
 namespace LiczbyNaSlowaNET_Testy.PolishStemsDictionary

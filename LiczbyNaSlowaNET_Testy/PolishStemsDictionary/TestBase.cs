@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using LiczbyNaSlowaNET;
-using LiczbyNaSlowaNET.Currencies;
+using LiczbyNaSlowaNET.Dictionaries.Currencies;
 
 namespace LiczbyNaSlowaNET_Testy.PolishStemsDictionary
 {
