@@ -1,6 +1,4 @@
-﻿using Ninject;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace LiczbyNaSlowaNET.Dictionaries.Currencies
 {

@@ -3,7 +3,6 @@
 
 namespace LiczbyNaSlowaNET.Dictionaries
 {
-    using System;
     using System.Collections.Generic;
 
     using Currencies;
@@ -12,27 +11,27 @@ namespace LiczbyNaSlowaNET.Dictionaries
     {
         public PolishDictionary(List<ICurrencyDeflation> currencyDeflation)
         {
-            unity = new List<string>
+            Unity = new List<string>
                 {
                     "","jeden","dwa" , "trzy", "cztery", "piec", "szesc", "siedem", "osiem", "dziewiec","zero"
                 };
 
-            othersTens = new List<string>
+            OthersTens = new List<string>
                 {
                     "","jedenascie", "dwanascie","trzynascie" , "czternascie", "pietnascie", "szesnascie", "siedemnascie", "osiemnascie", "dziewietnascie"
                 };
 
-            tens = new List<string>
+            Tens = new List<string>
                 {
                     "","dziesiec", "dwadziescia","trzydziesci" , "czterdziesci", "piecdziesiat", "szescdziesiat", "siedemdziesiat", "osiemdziesiat", "dziewiecdziesiat"
                 };
 
-            hundreds = new List<string>
+            Hundreds = new List<string>
                 {
                     "","sto", "dwiescie","trzysta" , "czterysta", "piecset", "szescset", "siedemset", "osiemset", "dziewiecset"
                 };
 
-            endings = new string[,]
+            Endings = new[,]
             {
                 {"","",""},
                 {"tysiac","tysiace","tysiecy"},
@@ -42,107 +41,36 @@ namespace LiczbyNaSlowaNET.Dictionaries
                 {"biliard","biliardy","biliardow"}
             };
 
-            sign = new List<string>
+            Sign = new List<string>
             {
                 "plus", "minus"
             };
 
-            current = new string[,]
+            Current = new[,]
             {
                 {"","",""},
                 {"zloty","zlote","zlotych"},
                 {"grosz","grosze","groszy"}
             };
-            currency = currencyDeflation;
+            Currency = currencyDeflation;
         }
 
-        private string[,] endings;
+        public List<string> Unity { get; }
 
-        private List<String> unity;
+        public List<string> OthersTens { get; }
 
-        private List<String> othersTens;
+        public List<string> Tens { get; }
 
-        private List<String> tens;
+        public List<string> Hundreds { get; }
 
-        private List<String> hundreds;
+        public string[,] Endings { get; }
 
-        private List<String> sign;
+        public List<string> Sign { get; }
 
-        private string[,] current;
+        public string[,] Current { get; }
 
-        private readonly List<ICurrencyDeflation> currency;
-        private bool hasStems = false;
+        public List<ICurrencyDeflation> Currency { get; }
 
-        public List<String> Unity
-        {
-            get
-            {
-                return unity;
-            }
-        }
-
-        public List<String> OthersTens
-        {
-            get
-            {
-                return othersTens;
-            }
-        }
-
-        public List<String> Tens
-        {
-            get
-            {
-                return tens;
-            }
-        }
-
-        public List<String> Hundreds
-        {
-            get
-            {
-                return hundreds;
-            }
-        }
-
-        public string[,] Endings
-        {
-            get
-            {
-                return endings;
-            }
-        }
-
-        public List<String> Sign
-        {
-            get
-            {
-                return sign;
-            }
-        }
-
-        public string[,] Current
-        {
-            get
-            {
-                return current;
-            }
-        }
-
-        public List<ICurrencyDeflation> Currency
-        {
-            get
-            {
-                return currency;
-            }
-        }
-
-        public bool HasStems
-        {
-            get
-            {
-                return hasStems;
-            }
-        }
+        public bool HasStems { get; } = false;
     }
 }
