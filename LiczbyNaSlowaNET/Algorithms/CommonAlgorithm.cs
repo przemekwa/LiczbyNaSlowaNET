@@ -97,12 +97,12 @@ namespace LiczbyNaSlowaNET.Algorithms
                         partialResult.Clear();
 
                         partialResult.AppendFormat("{0}{1}{2}{3}{4}{5}",
-                            this.CheckWhitespace(Dictionaries.Hundreds[this.hundreds]),
-                            this.CheckWhitespace(Dictionaries.Tens[this.tens]),
-                            this.CheckWhitespace(Dictionaries.OthersTens[this.othersTens]),
-                            this.CheckWhitespace(Dictionaries.Unity[this.unity]),
-                            this.CheckWhitespace(Dictionaries.Endings[this.order, this.grammarForm]),                  
-                            this.CheckWhitespace(temp));
+                            this.SetSpaceBeforeString(Dictionaries.Hundreds[this.hundreds]),
+                            this.SetSpaceBeforeString(Dictionaries.Tens[this.tens]),
+                            this.SetSpaceBeforeString(Dictionaries.OthersTens[this.othersTens]),
+                            this.SetSpaceBeforeString(Dictionaries.Unity[this.unity]),
+                            this.SetSpaceBeforeString(Dictionaries.Endings[this.order, this.grammarForm]),                  
+                            this.SetSpaceBeforeString(temp));
                     }
 
                     this.order += 1;

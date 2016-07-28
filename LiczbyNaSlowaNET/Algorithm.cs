@@ -26,9 +26,9 @@ namespace LiczbyNaSlowaNET
 
         public abstract string Build();
 
-        public virtual string CheckWhitespace(string ciag)
+        public virtual string SetSpaceBeforeString(string @string)
         {
-            return String.IsNullOrEmpty(ciag) ? string.Empty : " " + ciag;
+            return string.IsNullOrEmpty(@string) ? string.Empty : " " + @string;
         }
     }
 }

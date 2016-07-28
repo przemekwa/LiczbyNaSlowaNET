@@ -106,12 +106,12 @@ namespace LiczbyNaSlowaNET.Algorithms
                         }
 
                         partialResult.AppendFormat("{0}{1}{2}{3}{4}{5}",
-                            this.CheckWhitespace(Dictionaries.Hundreds[this.hundreds]),
-                            this.CheckWhitespace(Dictionaries.Tens[this.tens]),
-                            this.CheckWhitespace(Dictionaries.OthersTens[this.othersTens]),
-                            this.CheckWhitespace(properUnity[this.unity]),
-                            this.CheckWhitespace(Dictionaries.Endings[this.order, grammarForm]),
-                            this.CheckWhitespace(tempPartialResult));
+                            this.SetSpaceBeforeString(Dictionaries.Hundreds[this.hundreds]),
+                            this.SetSpaceBeforeString(Dictionaries.Tens[this.tens]),
+                            this.SetSpaceBeforeString(Dictionaries.OthersTens[this.othersTens]),
+                            this.SetSpaceBeforeString(properUnity[this.unity]),
+                            this.SetSpaceBeforeString(Dictionaries.Endings[this.order, grammarForm]),
+                            this.SetSpaceBeforeString(tempPartialResult));
                     }
 
                     this.order += 1;
@@ -119,7 +119,7 @@ namespace LiczbyNaSlowaNET.Algorithms
                     tempNumber = tempNumber / 1000;
                 }
 
-                partialResult.Append(this.CheckWhitespace(this.Options.Currency.GetDeflationTable[(int)this.currentPhase, GetCurrencyForm(number)]));
+                partialResult.Append(this.SetSpaceBeforeString(this.Options.Currency.GetDeflationTable[(int)this.currentPhase, GetCurrencyForm(number)]));
 
                 result.Append(partialResult.ToString().Trim());
 
