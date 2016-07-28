@@ -1,6 +1,8 @@
 ﻿
 // Copyright (c) 2014 Przemek Walkowski
 
+using System;
+
 namespace LiczbyNaSlowaNET
 {
     using Dictionaries.Currencies;
@@ -57,6 +59,8 @@ namespace LiczbyNaSlowaNET
 
             ConvertToICurrenctyDeflation(currency, options);
 
+
+
             return CommonConvert(PrepareNumbers(number), options);
         }
 
@@ -90,7 +94,8 @@ namespace LiczbyNaSlowaNET
 
         private static IEnumerable<int> PrepareNumbers(decimal numbers)
        {
-            var splitNumber = numbers.ToString(CultureInfo.InvariantCulture).Replace('.', '@').Replace(',', '@').Split('@');
+
+            var splitNumber = Math.Round(numbers, 2).ToString(CultureInfo.InvariantCulture).Replace('.', '@').Replace(',', '@').Split('@');
 
             if (splitNumber.Length > 1 && splitNumber[1].Length == 1)
             {

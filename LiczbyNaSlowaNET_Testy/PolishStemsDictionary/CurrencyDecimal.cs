@@ -29,9 +29,9 @@ namespace LiczbyNaSlowaNET_Testy.PolishStemsDictionary
             kernel.Bind(x => x.FromAssemblyContaining<ICurrencyDeflation>().SelectAllClasses().InheritedFrom<ICurrencyDeflation>().BindAllInterfaces());
         }
        [Fact]
-        public void Test_Currency_6_416()
+        public void Test_Currency_6_486()
         {
-            Assert.Equal("sześć złotych czterdzieści dwa grosze", NumberToText.Convert(6.416M, CreateNumberToTextOption("PLN")));
+            Assert.Equal("sześć złotych czterdzieści dziewięć groszy", NumberToText.Convert(6.486M, CreateNumberToTextOption("PLN")));
         }
 
         private static NumberToTextOptions CreateNumberToTextOption(string currencyCode)
