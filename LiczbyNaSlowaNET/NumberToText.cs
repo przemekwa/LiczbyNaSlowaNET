@@ -1,17 +1,17 @@
 ﻿
 // Copyright (c) 2014 Przemek Walkowski
 
-using System;
-
 namespace LiczbyNaSlowaNET
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+
+    using Algorithms;
+    using Dictionaries;
     using Dictionaries.Currencies;
     using Ninject;
     using Ninject.Extensions.Conventions;
-    using System.Collections.Generic;
-    using System.Globalization;
-    using Algorithms;
-    using Dictionaries;
 
     internal enum Phase { BeforeComma = 1, AfterComma };
 
@@ -85,7 +85,6 @@ namespace LiczbyNaSlowaNET
             {
                 return kernel.Get<CommonAlgorithm>();
             }
-
 
             return kernel.Get<CurrencyAlgorithm>();
         }
