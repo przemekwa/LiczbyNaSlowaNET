@@ -4,6 +4,8 @@ namespace LiczbyNaSlowaNET.Dictionaries.Currencies
 {
     public class EurCurrencyDeflation : ICurrencyDeflation
     {
+        //TODO Dlaczego CurrencyCode jest typu string. Powinien być typu Currency
+
         public string CurrencyCode => "EUR";
 
         public string[,] GetDeflationTable

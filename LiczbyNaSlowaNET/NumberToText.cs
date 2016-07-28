@@ -94,7 +94,9 @@ namespace LiczbyNaSlowaNET
 
         private static IAlgorithm GetAlgorithm(ICurrencyDeflation currency)
         {
-            if (currency.CurrencyCode.Equals(string.Empty))
+            //TODO Ten kawałek jest nie przetestowany. CurrencyCode nie mozemy być typu string.
+
+            if (currency.CurrencyCode.Equals("NONE"))
             {
                 return _kernel.Get<CommonAlgorithm>();
             }
