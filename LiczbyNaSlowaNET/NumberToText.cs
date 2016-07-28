@@ -11,7 +11,7 @@ namespace LiczbyNaSlowaNET
     using Algorithms;
     using Dictionaries;
 
-    internal enum phase { beforeComma = 1, afterComma };
+    internal enum Phase { BeforeComma = 1, AfterComma };
 
     public enum Currency { None, PL };
 
@@ -99,7 +99,7 @@ namespace LiczbyNaSlowaNET
             
             var allNumbers = new List<int>();
 
-            foreach (string t in splitNumber)
+            foreach (var t in splitNumber)
             {
                 int intNumber;
 

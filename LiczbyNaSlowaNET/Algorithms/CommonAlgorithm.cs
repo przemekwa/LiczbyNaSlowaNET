@@ -30,13 +30,13 @@ namespace LiczbyNaSlowaNET.Algorithms
 
         private int grammarForm;
 
-        private phase currentPhase;
+        private Phase currentPhase;
 
         private readonly int[] tempGrammarForm = new int[] { 2, 3, 4 };
 
         public override string Build()
         {
-            this.currentPhase = phase.beforeComma;
+            this.currentPhase = Phase.BeforeComma;
 
             foreach (var number in Numbers)
             {
@@ -46,7 +46,7 @@ namespace LiczbyNaSlowaNET.Algorithms
                 {
                     partialResult.Append(Dictionaries.Unity[10]);
 
-                    this.currentPhase = phase.afterComma;
+                    this.currentPhase = Phase.AfterComma;
                 }
 
                 if (number < 0)
@@ -114,13 +114,13 @@ namespace LiczbyNaSlowaNET.Algorithms
 
                 result.Append(" ");
 
-                if (this.currentPhase == phase.beforeComma && !string.IsNullOrEmpty(Options.SplitDecimal))
+                if (this.currentPhase == Phase.BeforeComma && !string.IsNullOrEmpty(Options.SplitDecimal))
                 {
                     result.Append(Options.SplitDecimal);
                     result.Append(" ");
                 }
 
-                this.currentPhase = phase.afterComma;
+                this.currentPhase = Phase.AfterComma;
             }
 
             return result.ToString().Trim();

@@ -27,13 +27,13 @@ namespace LiczbyNaSlowaNET.Algorithms
 
         private int order;
 
-        private phase currentPhase;
+        private Phase currentPhase;
 
-        private readonly int[] tempGrammarForm = new int[] { 2, 3, 4 };
+        private readonly int[] tempGrammarForm = { 2, 3, 4 };
 
         public override string Build()
         {
-            this.currentPhase = phase.beforeComma;
+            this.currentPhase = Phase.BeforeComma;
 
             foreach (var number in Numbers)
             {
@@ -51,7 +51,7 @@ namespace LiczbyNaSlowaNET.Algorithms
 
                     result.Append(" ");
 
-                    this.currentPhase = phase.afterComma;
+                    this.currentPhase = Phase.AfterComma;
 
                     continue;
                    
@@ -94,11 +94,13 @@ namespace LiczbyNaSlowaNET.Algorithms
 
                         partialResult.Clear();
                         var properUnity = Dictionaries.Unity;
-                        if (currentPhase == phase.afterComma && this.Options.Currency is ICurrencyNotMaleDeflectionAfterComma && this.tens == 0)
+
+                        if (currentPhase == Phase.AfterComma && this.Options.Currency is ICurrencyNotMaleDeflectionAfterComma && this.tens == 0)
                         {
                             properUnity = (this.Options.Currency as ICurrencyNotMaleDeflectionAfterComma).OverrideAfterCommaUnity;
                         }
-                        if (currentPhase == phase.beforeComma && this.Options.Currency is ICurrencyNotMaleDeflectionBeforeComma)
+
+                        if (currentPhase == Phase.BeforeComma && this.Options.Currency is ICurrencyNotMaleDeflectionBeforeComma)
                         {
                             properUnity = (this.Options.Currency as ICurrencyNotMaleDeflectionBeforeComma).OverrideBeforeCommaUnity;
                         }
@@ -123,13 +125,13 @@ namespace LiczbyNaSlowaNET.Algorithms
 
                 result.Append(" ");
 
-                if (this.currentPhase == phase.beforeComma && !string.IsNullOrEmpty(Options.SplitDecimal))
+                if (this.currentPhase == Phase.BeforeComma && !string.IsNullOrEmpty(Options.SplitDecimal))
                 {
                     result.Append(Options.SplitDecimal);
                     result.Append(" ");
                 }
 
-                this.currentPhase = phase.afterComma;
+                this.currentPhase = Phase.AfterComma;
             }
 
             return result.ToString().Trim();

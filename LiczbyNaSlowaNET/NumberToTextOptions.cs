@@ -1,53 +1,19 @@
 ﻿
 // Copyright (c) 2014 Przemek Walkowski
 
-using LiczbyNaSlowaNET.Dictionaries;
-using LiczbyNaSlowaNET.Dictionaries.Currencies;
-
 namespace LiczbyNaSlowaNET
 {
+    using Dictionaries;
+    using Dictionaries.Currencies;
+
     public class NumberToTextOptions : INumberToTextOptions
     {
-        private ICurrencyDeflation _currency;
-        private string _splitDecimal = string.Empty;
+        public ICurrencyDeflation Currency { get; set; }
 
-        private IDictionaries dictionary;
+        public IDictionaries Dictionary { get; set; }
 
-        public ICurrencyDeflation Currency
-        {
-            get
-            {
-                return this._currency;
-            }
-            set
-            {
-                this._currency = value;
-            }
-        }
+        public string SplitDecimal { get; set; } = string.Empty;
 
-        public IDictionaries Dictionary
-        {
-            get { return dictionary; }
-            set { dictionary = value; }
-        }
-        public string SplitDecimal
-        {
-            get
-            {
-                return this._splitDecimal;
-            }
-            set
-            {
-                this._splitDecimal = value;
-            }
-        }
-
-        public bool WithStems
-        {
-            get
-            {
-                return Currency.HasStems;
-            }
-        }
+        public bool WithStems => Currency.HasStems;
     }
 }
