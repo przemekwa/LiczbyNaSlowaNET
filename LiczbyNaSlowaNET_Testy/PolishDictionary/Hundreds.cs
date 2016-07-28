@@ -2,42 +2,43 @@
 // Copyright (c) 2014 Przemek Walkowski
 
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using LiczbyNaSlowaNET;
+using Xunit;
 
 namespace LiczbyNaSlowaNET_Testy
 {
-    [TestClass]
+    
     public class Hundreds
     {
-        [TestMethod]
+       [Fact]
         public void Test_123()
         {
-            Assert.AreEqual("sto dwadziescia trzy", NumberToText.Convert(123));
+            Assert.Equal("sto dwadziescia trzy", NumberToText.Convert(123));
         }
 
-        [TestMethod]
+       [Fact]
         public void Test_403()
         {
-            Assert.AreEqual("czterysta trzy", NumberToText.Convert(403));
+            Assert.Equal("czterysta trzy", NumberToText.Convert(403));
         }
 
-        [TestMethod]
+       [Fact]
         public void Test_320()
         {
-            Assert.AreEqual("trzysta dwadziescia", NumberToText.Convert(320));
+            Assert.Equal("trzysta dwadziescia", NumberToText.Convert(320));
         }
 
-        [TestMethod]
+       [Fact]
         public void Test_700()
         {
-            Assert.AreEqual("siedemset", NumberToText.Convert(700));
+            Assert.Equal("siedemset", NumberToText.Convert(700));
         }
 
-        [TestMethod]
+       [Fact]
         public void Test_999()
         {
-            Assert.AreEqual("dziewiecset dziewiecdziesiat dziewiec", NumberToText.Convert(999));
+            Assert.Equal("dziewiecset dziewiecdziesiat dziewiec", NumberToText.Convert(999));
         }
     }
 }

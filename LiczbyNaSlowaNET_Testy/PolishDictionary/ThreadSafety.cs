@@ -1,5 +1,5 @@
 ﻿using LiczbyNaSlowaNET;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,16 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Xunit;
 
 
 namespace LiczbyNaSlowaNET_Testy
 {
-    [TestClass]
+    
     public class ThreadSafety
     {
         List<string> testResult = new List<string>();
-        [Ignore]
-        [TestMethod]
+
+        [Fact(Skip = "Refaktoryzacja potrzebna. Test nie do końca skuteczny")]
+        // TODO: Test na ThreadSafetyTest jest nie do końca dobry. Potrzeba refaktoryzacja.
         public void ThreadSafetyTest()
         {
            var taskList = new List<Task>();
@@ -44,7 +46,7 @@ namespace LiczbyNaSlowaNET_Testy
 
           foreach( var s in testResult.Where(s=>s != null))
           {
-              Assert.AreNotEqual(true, s.Length > 99, s);
+              Assert.NotEqual(true, s.Length > 99);
           }
         }
 

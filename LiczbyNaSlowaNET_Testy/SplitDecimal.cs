@@ -2,16 +2,17 @@
 // Copyright (c) 2014 Przemek Walkowski
 
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using LiczbyNaSlowaNET;
 using LiczbyNaSlowaNET.Dictionaries.Currencies;
+using Xunit;
 
 namespace LiczbyNaSlowaNET_Testy
 {
-    [TestClass]
+    
     public class SplitDecimal
     {
-        [TestMethod]
+       [Fact]
         public void Test_SplitDecimal_50_50()
         {
             var options = new NumberToTextOptions
@@ -20,11 +21,11 @@ namespace LiczbyNaSlowaNET_Testy
                 SplitDecimal = "i"
             };
 
-            Assert.AreEqual("piecdziesiat i piecdziesiat", NumberToText.Convert(50.50M, options));
+            Assert.Equal("piecdziesiat i piecdziesiat", NumberToText.Convert(50.50M, options));
         }
 
 
-        [TestMethod]
+       [Fact]
         public void Test_SplitDecimal_5_5()
         {
             var options = new NumberToTextOptions
@@ -34,10 +35,10 @@ namespace LiczbyNaSlowaNET_Testy
             };
 
 
-            Assert.AreEqual("piec zlotych i piecdziesiat groszy", NumberToText.Convert(5.5M, options));
+            Assert.Equal("piec zlotych i piecdziesiat groszy", NumberToText.Convert(5.5M, options));
         }
 
-        [TestMethod]
+       [Fact]
         public void Test_SplitDecimal_12_23()
         {
             var options = new NumberToTextOptions
@@ -47,10 +48,10 @@ namespace LiczbyNaSlowaNET_Testy
             };
 
 
-            Assert.AreEqual("dwanascie zlotych i dwadziescia trzy grosze", NumberToText.Convert(12.23M, options));
+            Assert.Equal("dwanascie zlotych i dwadziescia trzy grosze", NumberToText.Convert(12.23M, options));
         }
 
-        [TestMethod]
+       [Fact]
         public void Test_SplitDecimal_12_02()
         {
             var options = new NumberToTextOptions
@@ -59,10 +60,10 @@ namespace LiczbyNaSlowaNET_Testy
                 SplitDecimal = " oraz "
             };
 
-            Assert.AreEqual("dwanascie zlotych  oraz  dwa grosze", NumberToText.Convert(12.02M, options));
+            Assert.Equal("dwanascie zlotych  oraz  dwa grosze", NumberToText.Convert(12.02M, options));
         }
 
-        [TestMethod]
+       [Fact]
         public void Test_SplitDecimal_0_12()
         {
             var options = new NumberToTextOptions
@@ -70,7 +71,7 @@ namespace LiczbyNaSlowaNET_Testy
                 Currency = new PlnCurrencyDeflation(),
             };
 
-            Assert.AreEqual("zero zlotych dwanascie groszy", NumberToText.Convert(0.12M, options));
+            Assert.Equal("zero zlotych dwanascie groszy", NumberToText.Convert(0.12M, options));
         }
     }
 }

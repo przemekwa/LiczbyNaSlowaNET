@@ -2,42 +2,43 @@
 // Copyright (c) 2014 Przemek Walkowski
 
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using LiczbyNaSlowaNET;
+using Xunit;
 
 namespace LiczbyNaSlowaNET_Testy
 {
-    [TestClass]
+    
     public class Tens
     {
-        [TestMethod]
+       [Fact]
         public void Test_11()
         {
-            Assert.AreEqual("jedenascie", NumberToText.Convert(11));
+            Assert.Equal("jedenascie", NumberToText.Convert(11));
         }
 
-        [TestMethod]
+       [Fact]
         public void Test_13()
         {
-            Assert.AreEqual("trzynascie", NumberToText.Convert(13));
+            Assert.Equal("trzynascie", NumberToText.Convert(13));
         }
 
-        [TestMethod]
+       [Fact]
         public void Test_18()
         {
-            Assert.AreEqual("osiemnascie", NumberToText.Convert(18));
+            Assert.Equal("osiemnascie", NumberToText.Convert(18));
         }
 
-        [TestMethod]
+       [Fact]
         public void Test_20()
         {
-            Assert.AreEqual("dwadziescia", NumberToText.Convert(20));
+            Assert.Equal("dwadziescia", NumberToText.Convert(20));
         }
 
-        [TestMethod]
+       [Fact]
         public void Test_84()
         {
-            Assert.AreEqual("osiemdziesiat cztery", NumberToText.Convert(84));
+            Assert.Equal("osiemdziesiat cztery", NumberToText.Convert(84));
         }
     }
 }

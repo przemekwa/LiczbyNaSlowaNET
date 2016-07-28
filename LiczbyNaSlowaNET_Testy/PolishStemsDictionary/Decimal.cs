@@ -2,73 +2,74 @@
 // Copyright (c) 2014 Przemek Walkowski
 
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using LiczbyNaSlowaNET;
+using Xunit;
 
 namespace LiczbyNaSlowaNET_Testy.PolishStemsDictionary
 {
-    [TestClass]
+    
     public class Decimal : TestBase
     {
-        [TestMethod]
+       [Fact]
         public void Test_4_4()
         {
-            Assert.AreEqual("cztery czterdzieści", NumberToText.Convert(4.4M, this.NumberToTextOptions));
+            Assert.Equal("cztery czterdzieści", NumberToText.Convert(4.4M, this.NumberToTextOptions));
         }
 
-        [TestMethod]
+       [Fact]
         public void Test_4_40()
         {
-            Assert.AreEqual("cztery czterdzieści", NumberToText.Convert(4.40M, this.NumberToTextOptions));
+            Assert.Equal("cztery czterdzieści", NumberToText.Convert(4.40M, this.NumberToTextOptions));
         }
 
 
-        [TestMethod]
+       [Fact]
         public void Test_12_23()
         {
-            Assert.AreEqual("dwanaście dwadzieścia trzy", NumberToText.Convert(12.23M, this.NumberToTextOptions));
+            Assert.Equal("dwanaście dwadzieścia trzy", NumberToText.Convert(12.23M, this.NumberToTextOptions));
         }
 
-        [TestMethod]
+       [Fact]
         public void Test_12()
         {
-            Assert.AreEqual("dwanaście", NumberToText.Convert(12M, this.NumberToTextOptions));
+            Assert.Equal("dwanaście", NumberToText.Convert(12M, this.NumberToTextOptions));
         }
 
-        [TestMethod]
+       [Fact]
         public void Test_0_12()
         {
-            Assert.AreEqual("zero dwanaście", NumberToText.Convert(0.12M, this.NumberToTextOptions));
+            Assert.Equal("zero dwanaście", NumberToText.Convert(0.12M, this.NumberToTextOptions));
         }
 
-        [TestMethod]
+       [Fact]
         public void Test_Infinity()
         {
-            Assert.AreEqual("", NumberToText.Convert(999999999999999999999M));
+            Assert.Equal("", NumberToText.Convert(999999999999999999999M));
         }
 
-        [TestMethod]
+       [Fact]
         public void Test_13_0()
         {
-            Assert.AreEqual("trzynascie zero", NumberToText.Convert(13.0M));
+            Assert.Equal("trzynascie zero", NumberToText.Convert(13.0M));
         }
 
-        [TestMethod]
+       [Fact]
         public void Test_141000_23()
         {
-            Assert.AreEqual("czternascie tysiecy sto dwadziescia trzy", NumberToText.Convert(14100.23M));
+            Assert.Equal("czternascie tysiecy sto dwadziescia trzy", NumberToText.Convert(14100.23M));
         }
 
-        [TestMethod]
+       [Fact]
         public void Test_141000_230()
         {
-            Assert.AreEqual("czternascie tysiecy sto dwadziescia trzy", NumberToText.Convert(14100.23M));
+            Assert.Equal("czternascie tysiecy sto dwadziescia trzy", NumberToText.Convert(14100.23M));
         }
 
-        [TestMethod]
+       [Fact]
         public void Test_141000_23030()
         {
-            Assert.AreEqual("czternascie tysiecy sto dwadziescia trzy", NumberToText.Convert(14100.23M));
+            Assert.Equal("czternascie tysiecy sto dwadziescia trzy", NumberToText.Convert(14100.23M));
         }
 
 

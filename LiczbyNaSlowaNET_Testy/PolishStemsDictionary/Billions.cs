@@ -2,38 +2,39 @@
 // Copyright (c) 2014 Przemek Walkowski
 
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using LiczbyNaSlowaNET;
+using Xunit;
 
 namespace LiczbyNaSlowaNET_Testy.PolishStemsDictionary
 {
-    [TestClass]
+    
     public class Billions : TestBase
     {
        
 
-        [TestMethod]
+       [Fact]
         public void Test_2000000000()
         {
-            Assert.AreEqual("dwa miliardy", NumberToText.Convert(2000000000, this.NumberToTextOptions));
+            Assert.Equal("dwa miliardy", NumberToText.Convert(2000000000, this.NumberToTextOptions));
         }
 
-        [TestMethod]
+       [Fact]
         public void Test_2000000006()
         {
-            Assert.AreEqual("dwa miliardy sześć", NumberToText.Convert(2000000006, this.NumberToTextOptions));
+            Assert.Equal("dwa miliardy sześć", NumberToText.Convert(2000000006, this.NumberToTextOptions));
         }
 
-        [TestMethod]
+       [Fact]
         public void Test_2000000056()
         {
-            Assert.AreEqual("dwa miliardy pięćdziesiąt sześć", NumberToText.Convert(2000000056, this.NumberToTextOptions));
+            Assert.Equal("dwa miliardy pięćdziesiąt sześć", NumberToText.Convert(2000000056, this.NumberToTextOptions));
         }
 
-        [TestMethod]
+       [Fact]
         public void Test_2000000206()
         {
-            Assert.AreEqual("dwa miliardy dwieście sześć", NumberToText.Convert(2000000206, this.NumberToTextOptions));
+            Assert.Equal("dwa miliardy dwieście sześć", NumberToText.Convert(2000000206, this.NumberToTextOptions));
         }
     }
 }

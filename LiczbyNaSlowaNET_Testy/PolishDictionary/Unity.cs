@@ -2,24 +2,25 @@
 // Copyright (c) 2014 Przemek Walkowski
 
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using LiczbyNaSlowaNET;
+using Xunit;
 
 namespace LiczbyNaSlowaNET_Testy
 {
-    [TestClass]
+    
     public class Unity
     {
-        [TestMethod]
+       [Fact]
         public void Test_0()
         {
-            Assert.AreEqual("zero", NumberToText.Convert(0));
+            Assert.Equal("zero", NumberToText.Convert(0));
         }
 
-        [TestMethod]
+       [Fact]
         public void Test_3()
         {
-            Assert.AreEqual("trzy", NumberToText.Convert(3));
+            Assert.Equal("trzy", NumberToText.Convert(3));
         }
     }
 }
