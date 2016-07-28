@@ -9,12 +9,12 @@ namespace LiczbyNaSlowaNET.Dictionaries
 
     public interface IDictionaries
     {
-        List<String> Unity { get; }
-        List<String> OthersTens { get; }
-        List<String> Tens{ get; }
-        List<String> Hundreds{ get; }
+        List<string> Unity { get; }
+        List<string> OthersTens { get; }
+        List<string> Tens{ get; }
+        List<string> Hundreds{ get; }
         string[,] Endings{ get; }
-        List<String> Sign{ get; }
+        List<string> Sign{ get; }
         string[,] Current{ get; }
         List<ICurrencyDeflation> Currency { get; }
         bool HasStems { get; }

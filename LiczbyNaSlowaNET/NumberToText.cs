@@ -1,8 +1,6 @@
 ﻿
 // Copyright (c) 2014 Przemek Walkowski
 
-using LiczbyNaSlowaNET.Dictionaries;
-
 namespace LiczbyNaSlowaNET
 {
     using Dictionaries.Currencies;
@@ -11,6 +9,7 @@ namespace LiczbyNaSlowaNET
     using System.Collections.Generic;
     using System.Globalization;
     using Algorithms;
+    using Dictionaries;
 
     internal enum phase { beforeComma = 1, afterComma };
 
@@ -100,11 +99,11 @@ namespace LiczbyNaSlowaNET
             
             var allNumbers = new List<int>();
 
-            for (int i = 0; i < splitNumber.Length; i++)
+            foreach (string t in splitNumber)
             {
                 int intNumber;
 
-                if (int.TryParse(splitNumber[i], out intNumber))
+                if (int.TryParse(t, out intNumber))
                 {
                     allNumbers.Add(intNumber);
                 }
@@ -151,13 +150,6 @@ namespace LiczbyNaSlowaNET
         /// <summary>
         /// Returns list of defined/available currencies
         /// </summary>
-        public static List<ICurrencyDeflation> DefinedCurrencies
-        {
-            get
-            {
-                return kernel.Get<CurrencyDeflationFactory>().CurrencyList;
-            }
-        }
-
+        public static List<ICurrencyDeflation> DefinedCurrencies => kernel.Get<CurrencyDeflationFactory>().CurrencyList;
     }
 }

@@ -41,10 +41,11 @@ namespace LiczbyNaSlowaNET.Algorithms
 
                 if (number == 0)
                 {
-                    partialResult.Append(Dictionaries.Unity[10]).ToString();
+                    partialResult.Append(Dictionaries.Unity[10]);
+
                     partialResult.Append(" ");
 
-                    partialResult.Append(this.Options.Currency.GetDeflationTable[(int)currentPhase, 2]).ToString();
+                    partialResult.Append(this.Options.Currency.GetDeflationTable[(int) currentPhase, 2]);
 
                     result.Append(partialResult.ToString().Trim());
 
@@ -142,18 +143,17 @@ namespace LiczbyNaSlowaNET.Algorithms
 
             var unity = number % 10;
 
-                if (unity == 1 && (hundreds + tens + othersTens == 0))
-                {
-                    return 0;
-                }
-                else if (tempGrammarForm.Contains(unity) && tens != 1)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
+            if (unity == 1 && (hundreds + tens + othersTens == 0))
+            {
+                return 0;
+            }
+
+            if (tempGrammarForm.Contains(unity) && tens != 1)
+            {
+                return 1;
+            }
+
+            return 2;
         }
 
         private int GetGrammaForm()
@@ -162,16 +162,13 @@ namespace LiczbyNaSlowaNET.Algorithms
             {
                 return  0;
             }
-            else if (tempGrammarForm.Contains(this.unity))
+
+            if (tempGrammarForm.Contains(this.unity))
             {
                 return 1;
             }
-            else
-            {
-                return 2;
-            }
-        }
 
-        
+            return 2;
+        }
     }
 }
