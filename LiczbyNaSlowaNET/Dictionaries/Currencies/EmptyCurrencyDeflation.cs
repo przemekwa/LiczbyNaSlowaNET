@@ -7,7 +7,8 @@ namespace LiczbyNaSlowaNET.Dictionaries.Currencies
         public EmptyCurrencyDeflation()
         { 
         }
-        public string CurrencyCode => string.Empty;
+
+        public string CurrencyCode => "NONE";
 
         public string[,] GetDeflationTable => new[,]
         {

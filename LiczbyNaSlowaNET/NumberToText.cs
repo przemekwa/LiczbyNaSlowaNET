@@ -17,7 +17,7 @@ namespace LiczbyNaSlowaNET
 
     public enum Currency
     {
-        None,
+        NONE,
         PLN,
         CHF,
         CZK,
@@ -67,7 +67,7 @@ namespace LiczbyNaSlowaNET
             return CommonConvert(new int[] { number }, options);
         }
 
-        public static string Convert(decimal number, Currency currency = Currency.None)
+        public static string Convert(decimal number, Currency currency = Currency.NONE)
         {
             var options = _kernel.Get<NumberToTextOptions>();
 
@@ -125,19 +125,12 @@ namespace LiczbyNaSlowaNET
 
             return allNumbers;
         }
+
         private static void ConvertToICurrenctyDeflation(Currency currency, INumberToTextOptions options)
         {
-            if (currency == Currency.None)
-            {
-                options.Currency = _kernel.Get<ICurrencyDeflationFactory>().CreateInstance(string.Empty);
-            }
-            else
-            {
-                var currencyCode = currency.ToString().ToUpper();
-
-                options.Currency = _kernel.Get<ICurrencyDeflationFactory>().CreateInstance(currencyCode);
-            }
+            options.Currency = _kernel.Get<ICurrencyDeflationFactory>().CreateInstance(currency.ToString());
         }
+
         /// <summary>
         /// Converts decimal number with currency, based on currency ISO code
         /// </summary>
