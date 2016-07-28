@@ -4,7 +4,7 @@ namespace LiczbyNaSlowaNET.Dictionaries.Currencies
 {
     public class CurrencyDeflationFactory : ICurrencyDeflationFactory
     {
-        private readonly List<string> _availableCurrencyDeflations = new List<string>();
+        private readonly List<string> availableCurrencyDeflations = new List<string>();
         private bool withStems;
         public CurrencyDeflationFactory(List<ICurrencyDeflation> definedDeflations,bool withStems)
         {
@@ -16,12 +16,12 @@ namespace LiczbyNaSlowaNET.Dictionaries.Currencies
         {
             get
             {
-                _availableCurrencyDeflations.Clear();
+                availableCurrencyDeflations.Clear();
                 foreach (var item in CurrencyList)
                 {
-                    _availableCurrencyDeflations.Add(item.CurrencyCode);
+                    availableCurrencyDeflations.Add(item.CurrencyCode);
                 }
-                return _availableCurrencyDeflations;
+                return availableCurrencyDeflations;
             }
         }
 

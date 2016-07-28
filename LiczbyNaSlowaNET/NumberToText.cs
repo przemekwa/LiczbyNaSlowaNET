@@ -15,22 +15,22 @@ namespace LiczbyNaSlowaNET
 
     internal enum Phase { BeforeComma = 1, AfterComma };
 
-    public enum Currency { None, PL };
+    public enum Currency { None, PLN, CHF, CZK, EUR, HUF,JPY,LTL,NOK,SEK, USD   };
 
     public static class NumberToText
     {
-        private static IKernel kernel;
+        private static IKernel _kernel;
 
         static NumberToText()
         {
-            kernel = new StandardKernel();
+            _kernel = new StandardKernel();
 
-            kernel.Bind(typeof(IDictionaries)).To<PolishDictionary>();
-            kernel.Bind<CommonAlgorithm>().ToSelf();
-            kernel.Bind<CurrencyAlgorithm>().ToSelf();
-            kernel.Bind<NumberToTextOptions>().ToSelf();
-            kernel.Bind<ICurrencyDeflationFactory>().To<CurrencyDeflationFactory>().WithConstructorArgument("withStems",kernel.Get<IDictionaries>().HasStems);
-            kernel.Bind(x => x.FromAssemblyContaining<ICurrencyDeflation>().SelectAllClasses().InheritedFrom<ICurrencyDeflation>().BindAllInterfaces());
+            _kernel.Bind(typeof(IDictionaries)).To<PolishDictionary>();
+            _kernel.Bind<CommonAlgorithm>().ToSelf();
+            _kernel.Bind<CurrencyAlgorithm>().ToSelf();
+            _kernel.Bind<NumberToTextOptions>().ToSelf();
+            _kernel.Bind<ICurrencyDeflationFactory>().To<CurrencyDeflationFactory>().WithConstructorArgument("withStems",_kernel.Get<IDictionaries>().HasStems);
+            _kernel.Bind(x => x.FromAssemblyContaining<ICurrencyDeflation>().SelectAllClasses().InheritedFrom<ICurrencyDeflation>().BindAllInterfaces());
         }
 
 
@@ -42,7 +42,7 @@ namespace LiczbyNaSlowaNET
         /// <returns>he words describe number</returns>
         public static string Convert(int number, Currency currency)
         {
-            var options = kernel.Get<NumberToTextOptions>();
+            var options = _kernel.Get<NumberToTextOptions>();
 
             ConvertToICurrenctyDeflation(currency, options);
 
@@ -56,7 +56,7 @@ namespace LiczbyNaSlowaNET
 
         public static string Convert(decimal number, Currency currency = Currency.None)
         {
-            var options = kernel.Get<NumberToTextOptions>();
+            var options = _kernel.Get<NumberToTextOptions>();
 
             ConvertToICurrenctyDeflation(currency, options);
 
@@ -72,7 +72,7 @@ namespace LiczbyNaSlowaNET
         {
             var algorithm = GetAlgorithm(options.Currency);
 
-            algorithm.Dictionaries = options.Dictionary ?? kernel.Get<IDictionaries>(); 
+            algorithm.Dictionaries = options.Dictionary ?? _kernel.Get<IDictionaries>(); 
             algorithm.Numbers = numbers;
             algorithm.Options = options;
 
@@ -83,10 +83,10 @@ namespace LiczbyNaSlowaNET
         {
             if (currency.CurrencyCode.Equals(string.Empty))
             {
-                return kernel.Get<CommonAlgorithm>();
+                return _kernel.Get<CommonAlgorithm>();
             }
 
-            return kernel.Get<CurrencyAlgorithm>();
+            return _kernel.Get<CurrencyAlgorithm>();
         }
 
         private static IEnumerable<int> PrepareNumbers(decimal numbers)
@@ -116,11 +116,13 @@ namespace LiczbyNaSlowaNET
         {
             if (currency == Currency.None)
             {
-                options.Currency = kernel.Get<ICurrencyDeflationFactory>().CreateInstance(string.Empty);
+                options.Currency = _kernel.Get<ICurrencyDeflationFactory>().CreateInstance(string.Empty);
             }
             else
             {
-                options.Currency = kernel.Get<ICurrencyDeflationFactory>().CreateInstance("PLN");
+                var currencyCode = currency.ToString().ToUpper();
+
+                options.Currency = _kernel.Get<ICurrencyDeflationFactory>().CreateInstance(currencyCode);
             }
         }
         /// <summary>
@@ -131,8 +133,8 @@ namespace LiczbyNaSlowaNET
         /// <returns></returns>
         public static string Convert(decimal number, string currencyCode)
         {
-            var options = kernel.Get<NumberToTextOptions>();
-            options.Currency = kernel.Get<ICurrencyDeflationFactory>().CreateInstance(currencyCode);
+            var options = _kernel.Get<NumberToTextOptions>();
+            options.Currency = _kernel.Get<ICurrencyDeflationFactory>().CreateInstance(currencyCode);
             return CommonConvert(PrepareNumbers(number), options);
         }
         /// <summary>
@@ -143,14 +145,14 @@ namespace LiczbyNaSlowaNET
         /// <returns></returns>
         public static string Convert(int number, string currencyCode)
         {
-            var options = kernel.Get<NumberToTextOptions>();
-            options.Currency = kernel.Get<ICurrencyDeflationFactory>().CreateInstance(currencyCode);
+            var options = _kernel.Get<NumberToTextOptions>();
+            options.Currency = _kernel.Get<ICurrencyDeflationFactory>().CreateInstance(currencyCode);
             return CommonConvert(PrepareNumbers(number), options);
         }
 
         /// <summary>
         /// Returns list of defined/available currencies
         /// </summary>
-        public static List<ICurrencyDeflation> DefinedCurrencies => kernel.Get<CurrencyDeflationFactory>().CurrencyList;
+        public static List<ICurrencyDeflation> DefinedCurrencies => _kernel.Get<CurrencyDeflationFactory>().CurrencyList;
     }
 }

@@ -61,7 +61,7 @@ namespace LiczbyNaSlowaNET_Testy
                 {
                     var decimalNumber = decimal.Parse(beforeComma + "," + afterComma);
 
-                    testResult.Add(string.Format("{0} -> {1}", decimalNumber, NumberToText.Convert(decimalNumber, Currency.PL)));
+                    testResult.Add(string.Format("{0} -> {1}", decimalNumber, NumberToText.Convert(decimalNumber, Currency.PLN)));
                 }
             }
         }
