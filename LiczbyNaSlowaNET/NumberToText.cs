@@ -33,12 +33,13 @@ namespace LiczbyNaSlowaNET
             kernel.Bind(x => x.FromAssemblyContaining<ICurrencyDeflation>().SelectAllClasses().InheritedFrom<ICurrencyDeflation>().BindAllInterfaces());
         }
 
-        
+
         /// <summary>
-        /// Convert number into words.
+        /// Convert (int) number into words.
         /// </summary>
         /// <param name="number">Number to convert</param>
-        /// <returns>The words describe number</returns>
+        /// <param name="currency">Currency of number</param>
+        /// <returns>he words describe number</returns>
         public static string Convert(int number, Currency currency)
         {
             var options = kernel.Get<NumberToTextOptions>();
@@ -59,8 +60,6 @@ namespace LiczbyNaSlowaNET
 
             ConvertToICurrenctyDeflation(currency, options);
 
-
-
             return CommonConvert(PrepareNumbers(number), options);
         }
 
@@ -68,7 +67,7 @@ namespace LiczbyNaSlowaNET
         {
             return CommonConvert(PrepareNumbers(number), options);
         }
-
+        
         private static string CommonConvert(IEnumerable<int> numbers, NumberToTextOptions options)
         {
             var algorithm = GetAlgorithm(options.Currency);
@@ -86,15 +85,13 @@ namespace LiczbyNaSlowaNET
             {
                 return kernel.Get<CommonAlgorithm>();
             }
-            else
-            {
-                return kernel.Get<CurrencyAlgorithm>();
-            }
+
+
+            return kernel.Get<CurrencyAlgorithm>();
         }
 
         private static IEnumerable<int> PrepareNumbers(decimal numbers)
        {
-
             var splitNumber = Math.Round(numbers, 2).ToString(CultureInfo.InvariantCulture).Replace('.', '@').Replace(',', '@').Split('@');
 
             if (splitNumber.Length > 1 && splitNumber[1].Length == 1)
@@ -116,7 +113,7 @@ namespace LiczbyNaSlowaNET
 
             return allNumbers;
         }
-        private static void ConvertToICurrenctyDeflation(Currency currency, NumberToTextOptions options)
+        private static void ConvertToICurrenctyDeflation(Currency currency, INumberToTextOptions options)
         {
             if (currency == Currency.None)
             {

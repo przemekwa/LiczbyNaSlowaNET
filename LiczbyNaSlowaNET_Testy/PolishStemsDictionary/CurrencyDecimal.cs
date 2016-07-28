@@ -48,7 +48,7 @@ namespace LiczbyNaSlowaNET_Testy.PolishStemsDictionary
        [Fact]
         public void Test_Currency_6_400()
         {
-            Assert.Equal("sześć złotych czterysta groszy", NumberToText.Convert(6.400M, CreateNumberToTextOption("PLN")));
+            Assert.Equal("sześć złotych czterdzieści groszy", NumberToText.Convert(6.400M, CreateNumberToTextOption("PLN")));
         }
 
        [Fact]
