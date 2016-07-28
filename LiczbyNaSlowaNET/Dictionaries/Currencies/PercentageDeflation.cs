@@ -4,22 +4,14 @@ namespace LiczbyNaSlowaNET.Dictionaries.Currencies
 {
     public class PercentageDeflation : ICurrencyDeflation, ICurrencyNotMaleDeflectionAfterComma
     {
-        private bool hasStems;
-
         public string CurrencyCode => "%";
 
-        public string[,] GetDeflationTable
+        public string[,] GetDeflationTable => new[,]
         {
-            get
-            {
-                return new[,]
-                {
-                    {"", "", ""},
-                    {"procent", "procenty", "procent"},
-                    {"setna procenta", "setne procenta", "setnych procenta"}
-                };
-            }
-        }
+            {"", "", ""},
+            {"procent", "procenty", "procent"},
+            {"setna procenta", "setne procenta", "setnych procenta"}
+        };
 
         public List<string> OverrideAfterCommaUnity
         {
@@ -42,17 +34,6 @@ namespace LiczbyNaSlowaNET.Dictionaries.Currencies
             }
         }
 
-        public bool HasStems
-        {
-            get
-            {
-                return hasStems;
-            }
-
-            set
-            {
-                hasStems = value;
-            }
-        }
+        public bool HasStems { get; set; }
     }
 }

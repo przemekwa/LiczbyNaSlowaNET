@@ -4,12 +4,7 @@ namespace LiczbyNaSlowaNET.Dictionaries.Currencies
 {
     public class ChfCurrencyDeflation : ICurrencyDeflation
     {
-        private bool hasStems;
-
-        public string CurrencyCode
-        {
-            get { return "CHF"; }
-        }
+        public string CurrencyCode => "CHF";
 
         public string[,] GetDeflationTable
         {
@@ -36,25 +31,8 @@ namespace LiczbyNaSlowaNET.Dictionaries.Currencies
             }
         }
 
-        public List<string> OverrideUnity
-        {
-            get
-            {
-                return new List<string>();
-            }
-        }
+        public List<string> OverrideUnity => new List<string>();
 
-        public bool HasStems
-        {
-            get
-            {
-                return hasStems;
-            }
-
-            set
-            {
-                hasStems = value;
-            }
-        }
+        public bool HasStems { get; set; }
     }
 }

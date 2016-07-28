@@ -4,28 +4,14 @@ namespace LiczbyNaSlowaNET.Dictionaries.Currencies
 {
     public class SekCurrencyDeflation : ICurrencyDeflation, ICurrencyNotMaleDeflectionBeforeComma
     {
-        private bool hasStems;
+        public string CurrencyCode => "SEK";
 
-        public string CurrencyCode
+        public string[,] GetDeflationTable => new[,]
         {
-            get
-            {
-                return "SEK";
-            }
-        }
-
-        public string[,] GetDeflationTable
-        {
-            get
-            {
-                return new[,]
-                {
-                    {"", "", ""},
-                    {"korona szwedzka", "korony szwedzkie", "koron szwedzkich"},
-                    {"øre", "øre", "øre"}
-                };
-            }
-        }
+            {"", "", ""},
+            {"korona szwedzka", "korony szwedzkie", "koron szwedzkich"},
+            {"øre", "øre", "øre"}
+        };
 
         public List<string> OverrideBeforeCommaUnity
         {
@@ -47,18 +33,6 @@ namespace LiczbyNaSlowaNET.Dictionaries.Currencies
                 }
             }
         }
-        public bool HasStems
-        {
-            get
-            {
-                return hasStems;
-            }
-
-            set
-            {
-                hasStems = value;
-            }
-        }
-
+        public bool HasStems { get; set; }
     }
 }

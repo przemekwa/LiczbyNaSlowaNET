@@ -4,28 +4,14 @@ namespace LiczbyNaSlowaNET.Dictionaries.Currencies
 {
     public class CzkCurrenctDeflation : ICurrencyDeflation, ICurrencyNotMaleDeflectionBeforeComma
     {
-        private bool hasStems;
+        public string CurrencyCode => "CZK";
 
-        public string CurrencyCode
+        public string[,] GetDeflationTable => new[,]
         {
-            get
-            {
-                return "CZK";
-            }
-        }
-
-        public string[,] GetDeflationTable
-        {
-            get
-            {
-                return new[,]
-               {
-                    {"", "", ""},
-                    {"korona czeska", "korony czeskie", "koron czeskich"},
-                    {"halerz", "halerze", "halerzy"}
-                };
-            }
-        }
+            {"", "", ""},
+            {"korona czeska", "korony czeskie", "koron czeskich"},
+            {"halerz", "halerze", "halerzy"}
+        };
 
         public List<string> OverrideBeforeCommaUnity
         {
@@ -47,18 +33,6 @@ namespace LiczbyNaSlowaNET.Dictionaries.Currencies
                 }
             }
         }
-        public bool HasStems
-        {
-            get
-            {
-                return hasStems;
-            }
-
-            set
-            {
-                hasStems = value;
-            }
-        }
-
+        public bool HasStems { get; set; }
     }
 }

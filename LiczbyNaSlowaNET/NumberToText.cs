@@ -15,7 +15,20 @@ namespace LiczbyNaSlowaNET
 
     internal enum Phase { BeforeComma = 1, AfterComma };
 
-    public enum Currency { None, PLN, CHF, CZK, EUR, HUF,JPY,LTL,NOK,SEK, USD   };
+    public enum Currency
+    {
+        None,
+        PLN,
+        CHF,
+        CZK,
+        EUR,
+        HUF,
+        JPY,
+        LTL,
+        NOK,
+        SEK,
+        USD
+    }
 
     public static class NumberToText
     {

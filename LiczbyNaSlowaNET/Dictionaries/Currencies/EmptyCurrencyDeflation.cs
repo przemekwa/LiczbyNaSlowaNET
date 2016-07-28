@@ -4,47 +4,20 @@ namespace LiczbyNaSlowaNET.Dictionaries.Currencies
 {
     public class EmptyCurrencyDeflation : ICurrencyDeflation
     {
-        bool hasStems;
         public EmptyCurrencyDeflation()
         { 
         }
-        public string CurrencyCode
-        {
-            get { return string.Empty; }
-        }
+        public string CurrencyCode => string.Empty;
 
-        public string[,] GetDeflationTable
+        public string[,] GetDeflationTable => new[,]
         {
-            get
-            {
-                return new[,]
-                {
-                    {"", "", ""},
-                    {"", "", ""},
-                    {"", "", ""}
-                };
-            }
-        }
+            {"", "", ""},
+            {"", "", ""},
+            {"", "", ""}
+        };
 
-        public bool HasStems
-        {
-            get
-            {
-                return hasStems;
-            }
+        public bool HasStems { get; set; }
 
-            set
-            {
-                hasStems = value;
-            }
-        }
-
-        public List<string> OverrideUnity
-        {
-            get
-            {
-                return new List<string>();
-            }
-        }
+        public List<string> OverrideUnity => new List<string>();
     }
 }

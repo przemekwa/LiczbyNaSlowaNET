@@ -4,15 +4,7 @@ namespace LiczbyNaSlowaNET.Dictionaries.Currencies
 {
     public class JpyCurrencyDeflation : ICurrencyDeflation
     {
-        private bool hasStems;
-
-        public string CurrencyCode
-        {
-            get
-            {
-                return "JPY";
-            }
-        }
+        public string CurrencyCode => "JPY";
 
         public string[,] GetDeflationTable
         {
@@ -39,25 +31,8 @@ namespace LiczbyNaSlowaNET.Dictionaries.Currencies
             }
         }
 
-        public bool HasStems
-        {
-            get
-            {
-                return hasStems;
-            }
+        public bool HasStems { get; set; }
 
-            set
-            {
-                hasStems = value;
-            }
-        }
-
-        public List<string> OverrideUnity
-        {
-            get
-            {
-                return new List<string>();
-            }
-        }
+        public List<string> OverrideUnity => new List<string>();
     }
 }
