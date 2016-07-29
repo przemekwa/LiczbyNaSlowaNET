@@ -1,11 +1,8 @@
 ﻿
 // Copyright (c) 2014 Przemek Walkowski
 
-
-
 namespace LiczbyNaSlowaNET
 {
-    using System;
     using System.Collections.Generic;
 
     using Algorithms;
