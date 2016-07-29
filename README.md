@@ -57,6 +57,23 @@ Assert.AreEqual("dwanascie zlotych i dwadziescia trzy grosze", NumberToText.Conv
  - Assert.Equal("piec funtow brytyjskich zero pensow", NumberToText.Convert(5.00M, Currency.GBP));
  - Assert.Equal("piec koron czeskich zero halerzy", NumberToText.Convert(5.00M, Currency.CZK));
             
+Obecnie biblioteka wspiera nastepujące waluty:
+
+```public enum Currency
+    {
+        NONE,
+        PLN,
+        CHF,
+        CZK,
+        EUR,
+        HUF,
+        JPY,
+        LTL,
+        NOK,
+        SEK,
+        USD
+    }```
+
 Biblioteka jest bezpieczna w środowisku wielowątkowym(ThreadSafety)
 
 Opis biblioteki znajduje się również na moim blogu: http://blogprogramisty.net/zamiana-liczby-na-slowa-z-polska-gramatyka-c/
