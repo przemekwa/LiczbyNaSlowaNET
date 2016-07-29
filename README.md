@@ -12,7 +12,7 @@ Możliwości biblioteki są następujące:
 * zamiana liczb typu decimal i int,
 * zamiana liczb typu decimal na odpowiedniki walutowe,
 * definiowanie własnego separatora liczb typu decimal.
-* możliwość ustawiania dowolnej waluty, podczas konwersji liczby na odpowiednik walutowy (ta funkcjonalność powstała dzięki wsparciu społeczności w szcególności użytkownika s13n4). Przykłady znajdują się na dole.
+* możliwość ustawiania dowolnej waluty, podczas konwersji liczby na odpowiednik walutowy (ta funkcjonalność powstała dzięki wsparciu społeczności w szcególności użytkownika s13n4 - Tomasz Sienkiewicz). Przykłady znajdują się na dole.
 
 Projekt składa się z 2 solucji:
 
