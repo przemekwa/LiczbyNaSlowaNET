@@ -11,7 +11,6 @@ namespace LiczbyNaSlowaNET_Testy.PolishStemsDictionary
     
     public class Billions : TestBase
     {
-       
 
        [Fact]
         public void Test_2000000000()

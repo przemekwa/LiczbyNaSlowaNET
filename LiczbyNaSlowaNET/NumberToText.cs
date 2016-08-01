@@ -46,20 +46,19 @@ namespace LiczbyNaSlowaNET
             _kernel.Bind(x => x.FromAssemblyContaining<ICurrencyDeflation>().SelectAllClasses().InheritedFrom<ICurrencyDeflation>().BindAllInterfaces());
         }
 
-
         /// <summary>
         /// Convert (int) number into words.
         /// </summary>
         /// <param name="number">Number to convert</param>
         /// <param name="currency">Currency of number</param>
         /// <returns>he words describe number</returns>
-        public static string Convert(int number, Currency currency)
+        public static string Convert(int number, Currency currency = Currency.NONE)
         {
             var options = _kernel.Get<NumberToTextOptions>();
 
             ConvertToICurrenctyDeflation(currency, options);
 
-            return CommonConvert(new int[] { number }, options);
+            return CommonConvert(new[] { number }, options);
         }
 
         public static string Convert(decimal number, Currency currency = Currency.NONE)
@@ -73,7 +72,7 @@ namespace LiczbyNaSlowaNET
 
         public static string Convert(int number, NumberToTextOptions options)
         {
-            return CommonConvert(new int[] { number }, options);
+            return CommonConvert(new[] { number }, options);
         }
 
         public static string Convert(decimal number, NumberToTextOptions options)
@@ -136,6 +135,6 @@ namespace LiczbyNaSlowaNET
        /// <summary>
         /// Returns list of defined/available currencies
         /// </summary>
-        public static List<ICurrencyDeflation> DefinedCurrencies => _kernel.Get<CurrencyDeflationFactory>().CurrencyList;
+       public static List<ICurrencyDeflation> DefinedCurrencies => _kernel.Get<CurrencyDeflationFactory>().CurrencyList;
     }
 }
