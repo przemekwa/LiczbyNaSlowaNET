@@ -151,7 +151,9 @@ namespace LiczbyNaSlowaNET_Testy
             Assert.Equal("zero zlotych jeden grosz", NumberToText.Convert(0.01M, Currency.PLN));
         }
 
-       [Fact]
+       
+
+        [Fact]
         public void Test_Currency_0_20()
         {
             Assert.Equal("zero zlotych dwadziescia groszy", NumberToText.Convert(0.20M, Currency.PLN));

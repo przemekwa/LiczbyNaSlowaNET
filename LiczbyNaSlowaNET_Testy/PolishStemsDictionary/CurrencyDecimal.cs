@@ -288,12 +288,12 @@ namespace LiczbyNaSlowaNET_Testy.PolishStemsDictionary
        [Fact]
         public void Test_CurrencyHUF_1()
         {
-            Assert.Equal("jeden forint", NumberToText.Convert(1, "HUF"));
+            Assert.Equal("jeden forint", NumberToText.Convert(1, Currency.HUF));
         }
        [Fact]
         public void Test_CurrencyHUF_2()
         {
-            Assert.Equal("dwa forinty", NumberToText.Convert(2, "HUF"));
+            Assert.Equal("dwa forinty", NumberToText.Convert(2, Currency.HUF));
         }
        [Fact]
         public void Test_CurrencyHUF_5()
@@ -353,7 +353,7 @@ namespace LiczbyNaSlowaNET_Testy.PolishStemsDictionary
        [Fact]
         public void Test_CurrencySEK_2()
         {
-            Assert.Equal("dwie korony szwedzkie", NumberToText.Convert(2, "SEK"));
+            Assert.Equal("dwie korony szwedzkie", NumberToText.Convert(2, Currency.SEK));
         }
        [Fact]
         public void Test_CurrencySEK_5()
@@ -363,7 +363,7 @@ namespace LiczbyNaSlowaNET_Testy.PolishStemsDictionary
        [Fact]
         public void Test_CurrencySEK_5NOSTEM()
         {
-            Assert.Equal("piec koron szwedzkich zero øre", NumberToText.Convert(5.00M,  "SEK" ));
+            Assert.Equal("piec koron szwedzkich zero øre", NumberToText.Convert(5.00M, Currency.SEK));
         }
     }
 }

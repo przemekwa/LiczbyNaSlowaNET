@@ -62,11 +62,6 @@ namespace LiczbyNaSlowaNET
             return CommonConvert(new int[] { number }, options);
         }
 
-        public static string Convert(int number, NumberToTextOptions options)
-        {
-            return CommonConvert(new int[] { number }, options);
-        }
-
         public static string Convert(decimal number, Currency currency = Currency.NONE)
         {
             var options = _kernel.Get<NumberToTextOptions>();
@@ -74,6 +69,11 @@ namespace LiczbyNaSlowaNET
             ConvertToICurrenctyDeflation(currency, options);
 
             return CommonConvert(PrepareNumbers(number), options);
+        }
+
+        public static string Convert(int number, NumberToTextOptions options)
+        {
+            return CommonConvert(new int[] { number }, options);
         }
 
         public static string Convert(decimal number, NumberToTextOptions options)
@@ -133,32 +133,7 @@ namespace LiczbyNaSlowaNET
             options.Currency = _kernel.Get<ICurrencyDeflationFactory>().CreateInstance(currency.ToString());
         }
 
-        /// <summary>
-        /// Converts decimal number with currency, based on currency ISO code
-        /// </summary>
-        /// <param name="number">Number to convert</param>
-        /// <param name="currencyCode">Currency Code as given in ISO 4217</param>
-        /// <returns></returns>
-        public static string Convert(decimal number, string currencyCode)
-        {
-            var options = _kernel.Get<NumberToTextOptions>();
-            options.Currency = _kernel.Get<ICurrencyDeflationFactory>().CreateInstance(currencyCode);
-            return CommonConvert(PrepareNumbers(number), options);
-        }
-        /// <summary>
-        /// Converts integer number with currency, based on currency ISO code
-        /// </summary>
-        /// <param name="number">Integer to convert</param>
-        /// <param name="currencyCode">Currency code asgiven in ISO 4217</param>
-        /// <returns></returns>
-        public static string Convert(int number, string currencyCode)
-        {
-            var options = _kernel.Get<NumberToTextOptions>();
-            options.Currency = _kernel.Get<ICurrencyDeflationFactory>().CreateInstance(currencyCode);
-            return CommonConvert(PrepareNumbers(number), options);
-        }
-
-        /// <summary>
+       /// <summary>
         /// Returns list of defined/available currencies
         /// </summary>
         public static List<ICurrencyDeflation> DefinedCurrencies => _kernel.Get<CurrencyDeflationFactory>().CurrencyList;
