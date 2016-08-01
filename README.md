@@ -12,6 +12,7 @@ Możliwości biblioteki są następujące:
 * zamiana liczb typu decimal i int,
 * zamiana liczb typu decimal na odpowiedniki walutowe,
 * definiowanie własnego separatora liczb typu decimal.
+* możliwość ustawiania dowolnej waluty, podczas konwersji liczby na odpowiednik walutowy (ta funkcjonalność powstała dzięki wsparciu społeczności w szcególności użytkownika s13n4 - Tomasz Sienkiewicz). Przykłady znajdują się na dole.
 
 Projekt składa się z 2 solucji:
 
@@ -48,7 +49,31 @@ Przykłady zastosowań z testów dostępnych w projekcie:
             };```
 
 Assert.AreEqual("dwanascie zlotych i dwadziescia trzy grosze", NumberToText.Convert(12.23M, options));
+
+
+* Możliwość konwersji liczby na odpowiednik walutowy z możliwością wyboru waluty.
+
+ - Assert.Equal("trzynascie euro zero centow", NumberToText.Convert(13.0M, Currency.EUR)); 
+ - Assert.Equal("piec funtow brytyjskich zero pensow", NumberToText.Convert(5.00M, Currency.GBP));
+ - Assert.Equal("piec koron czeskich zero halerzy", NumberToText.Convert(5.00M, Currency.CZK));
             
+Obecnie biblioteka wspiera nastepujące waluty:
+
+```public enum Currency
+    {
+        NONE,
+        PLN,
+        CHF,
+        CZK,
+        EUR,
+        HUF,
+        JPY,
+        LTL,
+        NOK,
+        SEK,
+        USD
+    }```
+
 Biblioteka jest bezpieczna w środowisku wielowątkowym(ThreadSafety)
 
 Opis biblioteki znajduje się również na moim blogu: http://blogprogramisty.net/zamiana-liczby-na-slowa-z-polska-gramatyka-c/
