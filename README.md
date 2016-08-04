@@ -1,4 +1,4 @@
-LiczbyNaSłowaNET ![NuGet Version](https://img.shields.io/nuget/v/LiczbyNaSlowaNET.dll.svg?style=flat)
+LiczbyNaSłowaNET ![NuGet Version](https://img.shields.io/nuget/v/LiczbyNaSlowaNET.dll.svg?style=flat)(https://www.nuget.org/packages/LiczbyNaSlowaNET.dll/)
 ================
 
 
