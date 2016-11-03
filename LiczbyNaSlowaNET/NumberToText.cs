@@ -43,7 +43,7 @@ namespace LiczbyNaSlowaNET
             _kernel.Bind<CurrencyAlgorithm>().ToSelf();
             _kernel.Bind<NumberToTextOptions>().ToSelf();
             _kernel.Bind<ICurrencyDeflationFactory>().To<CurrencyDeflationFactory>().WithConstructorArgument("withStems",_kernel.Get<IDictionaries>().HasStems);
-            _kernel.Bind(x => x.FromAssemblyContaining<ICurrencyDeflation>().SelectAllClasses().InheritedFrom<ICurrencyDeflation>().BindAllInterfaces());
+            _kernel.Bind(x => x.FromAssemblyContaining<ICurrencyDeflation>().IncludingNonePublicTypes().SelectAllClasses().InheritedFrom<ICurrencyDeflation>().BindAllInterfaces());
         }
 
         /// <summary>
