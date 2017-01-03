@@ -1,4 +1,4 @@
-LiczbyNaSłowaNET [![NuGet Version](https://img.shields.io/nuget/v/LiczbyNaSlowaNET.dll.svg?style=flat)](https://www.nuget.org/packages/LiczbyNaSlowaNET.dll/)
+LiczbyNaSłowaNET [![NuGet Version](https://img.shields.io/nuget/v/LiczbyNaSlowaNET.dll.svg?style=flat)](https://www.nuget.org/packages/LiczbyNaSlowaNET.dll/) ![Build] (https://api.travis-ci.org/przemekwa/LiczbyNaSlowaNET.svg?branch=master)
 =================
  
 
