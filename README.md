@@ -1,6 +1,6 @@
-LiczbyNaSłowaNET [![NuGet Version](https://img.shields.io/nuget/v/LiczbyNaSlowaNET.dll.svg?style=flat)](https://www.nuget.org/packages/LiczbyNaSlowaNET.dll/)
-================
-
+LiczbyNaSłowaNET [![NuGet Version](https://img.shields.io/nuget/v/LiczbyNaSlowaNET.dll.svg?style=flat)](https://www.nuget.org/packages/LiczbyNaSlowaNET.dll/) ![Build] (https://api.travis-ci.org/przemekwa/LiczbyNaSlowaNET.svg?branch=master)
+=================
+ 
 
 LiczbyNaSłowaNET to biblioteka, która umożliwia konwersje liczb na odpowiedniki słowne z zachowaniem polskiej gramatyki.
 
@@ -18,6 +18,25 @@ Projekt składa się z 2 solucji:
 
 1. LiczbyNaSlowaNET - jest to głowna bliblioteka służąca do zamiany liczb na słowa.
 2. LiczbyNaSlowaNET_Testy - jest to biblioteka z testami.
+
+Wersja 1.0.0.4
+
++ usunięcie kontenera DI.
++ biblioteka już nie potrzebuje zależności innych niż .NET 4.0
++ możliwość ustawiania czy tekst ma posadać polskie znaki czy też nie. Domyślnie jest bez polskich znaków. 
++ możliwość podmienienia słowników zawierających liczebniki.
++ dodanie obsługi wartości procentowych
+
+Przykładowe wywołanie i ustawienie słownika z polskimi znakami. 
+
+            var options = new NumberToTextOptions
+            {
+                Stems = true,
+                CurrencyDeflation = Currency.PLN,
+            };
+
+            Assert.Equal("sześć złotych czterdzieści dziewięć groszy", NumberToText.Convert(6.486M, options));
+            
 
 ### Szybki start:
 
@@ -71,7 +90,9 @@ Obecnie biblioteka wspiera nastepujące waluty:
         LTL,
         NOK,
         SEK,
-        USD
+        USD,
+        GBP,
+        PERCENT // nie było lepszego miejsca. To jest wartość procentowa np: sześć procent
     }```
 
 Biblioteka jest bezpieczna w środowisku wielowątkowym(ThreadSafety)
