@@ -63,7 +63,6 @@
     <Compile Include="Dictionaries\IDictionaries.cs" />
     <Compile Include="INumberToTextOptions.cs" />
     <Compile Include="NumberToText.cs" />
-    <Compile Include="Algorithms\CommonAlgorithm.cs" />
     <Compile Include="Algorithms\IAlgorithm.cs" />
     <Compile Include="NumberToTextOptionBuilder.cs" />
     <Compile Include="NumberToTextOptions.cs" />
