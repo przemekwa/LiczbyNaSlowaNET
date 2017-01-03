@@ -25,7 +25,8 @@ namespace LiczbyNaSlowaNET
         LTL,
         NOK,
         SEK,
-        USD
+        USD,
+        GBP
     }
 
     public static class NumberToText
@@ -40,18 +41,24 @@ namespace LiczbyNaSlowaNET
         /// <returns>he words describe number</returns>
         public static string Convert(int number, Currency currency = Currency.NONE)
         {
-            var options = new NumberToTextOptions();
-
-            ConvertToICurrenctyDeflation(currency, options);
+            var options = new NumberToTextOptions
+            {
+                Stems = false,
+                CurrencyDeflation = currency,
+                Currency = new CurrencyDeflationFactory(false).CreateInstance(currency.ToString())
+        };
 
             return CommonConvert(new[] { number }, options);
         }
 
         public static string Convert(decimal number, Currency currency = Currency.NONE)
         {
-            var options = new NumberToTextOptions();
-
-            ConvertToICurrenctyDeflation(currency, options);
+            var options = new NumberToTextOptions
+            {
+                Stems = false,
+                CurrencyDeflation = currency,
+                Currency = new CurrencyDeflationFactory(false).CreateInstance(currency.ToString())
+            };
 
             return CommonConvert(PrepareNumbers(number), options);
         }
@@ -65,11 +72,17 @@ namespace LiczbyNaSlowaNET
         {
             return CommonConvert(PrepareNumbers(number), options);
         }
-        
+
+        private static void SetDeflation(NumberToTextOptions options)
+        {
+            options.Currency =
+                new CurrencyDeflationFactory(options.Stems).CreateInstance(options.CurrencyDeflation.ToString());
+        }
+
         private static string CommonConvert(IEnumerable<int> numbers, NumberToTextOptions options)
         {
             var dictionaries = options.Dictionary ?? new PolishDictionary();
-                               
+            SetDeflation(options);
             var algorithm = new CurrencyAlgorithm(dictionaries)
             {
                 Numbers = numbers,
@@ -101,12 +114,6 @@ namespace LiczbyNaSlowaNET
             }
 
             return allNumbers;
-        }
-
-        private static void ConvertToICurrenctyDeflation(Currency currency, INumberToTextOptions options)
-        {
-            options.Currency = 
-                new CurrencyDeflationFactory(false).CreateInstance(currency.ToString());
         }
     }
 }
