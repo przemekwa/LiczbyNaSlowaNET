@@ -32,8 +32,6 @@ namespace LiczbyNaSlowaNET
 
     public static class NumberToText
     {
-        public static List<ICurrencyDeflation> ListCurrencyDeflation { get; set; }
-
         /// <summary>
         /// Convert (int) number into words.
         /// </summary>
@@ -74,8 +72,9 @@ namespace LiczbyNaSlowaNET
 
         private static string CommonConvert(IEnumerable<int> numbers, NumberToTextOptions options)
         {
-            SetDictionary(options);
-            SetDeflation(options);
+            var numberToTextOptionBuilder = new NumberToTextOptionBuilder();
+
+            options = numberToTextOptionBuilder.Build(options);
 
             var algorithm = new CurrencyAlgorithm(options.Dictionary)
             {
@@ -86,19 +85,8 @@ namespace LiczbyNaSlowaNET
             return algorithm.Build();
         }
 
-        private static void SetDeflation(INumberToTextOptions options)
-        {
-            options.Currency = options.Currency ??
-                new CurrencyDeflationFactory(options.Stems).CreateInstance(options.CurrencyDeflation.ToString());
-        }
-
-        private static void SetDictionary(NumberToTextOptions options)
-        {
-            options.Dictionary = options.Dictionary ?? new PolishDictionary();
-        }
-
         private static IEnumerable<int> PrepareNumbers(decimal numbers)
-       {
+        { 
             var splitNumber = Math.Round(numbers, 2).ToString(CultureInfo.InvariantCulture).Replace('.', '@').Replace(',', '@').Split('@');
 
             if (splitNumber.Length > 1 && splitNumber[1].Length == 1)

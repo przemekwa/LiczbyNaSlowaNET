@@ -65,6 +65,7 @@
     <Compile Include="NumberToText.cs" />
     <Compile Include="Algorithms\CommonAlgorithm.cs" />
     <Compile Include="Algorithms\IAlgorithm.cs" />
+    <Compile Include="NumberToTextOptionBuilder.cs" />
     <Compile Include="NumberToTextOptions.cs" />
     <Compile Include="Dictionaries\PolishWithsStemsDictionary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
