@@ -8,50 +8,38 @@ namespace LiczbyNaSlowaNET.Algorithms
 
     using Dictionaries.Currencies;
     using Dictionaries;
-
+    using System.Collections.Generic;
     internal sealed class CurrencyAlgorithm : Algorithm
     {
-        public CurrencyAlgorithm(IDictionaries dictionary) :
-           base(dictionary)
+        public CurrencyAlgorithm(IDictionaries dictionary, ICurrencyDeflation currencyDeflation, string splitDecimal, bool stems ) :
+           base(dictionary, currencyDeflation, splitDecimal, stems)
         { }
 
         private readonly StringBuilder result = new StringBuilder();
        
-        private int hundreds;
-                
-        private int tens;
+        private readonly long[] tempGrammarForm = { 2, 3, 4 };
 
-        private int unity;
-
-        private int othersTens;
-
-        private int order;
-
-        private Phase currentPhase;
-
-        private readonly int[] tempGrammarForm = { 2, 3, 4 };
-
-        public override string Build()
+        public override string Build( IEnumerable<long> numbers )
         {
-            this.currentPhase = Phase.BeforeComma;
+            var currentPhase = DeflationPhraseType.BeforeComma;
 
-            foreach (var number in Numbers)
+            foreach (var number in numbers )
             {
                 var partialResult = new StringBuilder();
 
                 if (number == 0)
                 {
-                    partialResult.Append(Dictionaries.Unity[10]);
+                    partialResult.Append(dictionary.Unity[10]);
 
                     partialResult.Append(" ");
 
-                    partialResult.Append(this.Options.Currency.GetDeflationTable[(int) currentPhase, 2]);
+                    partialResult.Append( currencyDeflation.GetDeflationPhrase( currentPhase, 2, withStems ) );
 
                     result.Append(partialResult.ToString().Trim());
 
                     result.Append(" ");
 
-                    this.currentPhase = Phase.AfterComma;
+                    currentPhase = DeflationPhraseType.AfterComma;
 
                     continue;
                    
@@ -59,93 +47,98 @@ namespace LiczbyNaSlowaNET.Algorithms
 
                 if (number < 0)
                 {
-                    partialResult.Append(Dictionaries.Sign[2]);
+                    partialResult.Append(dictionary.Sign[2]);
                 }
 
                 var tempNumber = number;
 
-                this.order = 0;
+                int order = 0;
+                int hundreds = 0, tens = 0, unity = 0, othersTens = 0, sumAboveUnity = 0;
 
                 while (tempNumber != 0)
                 {
-                    this.hundreds = (tempNumber % 1000) / 100;
+                    hundreds = (int)( ( tempNumber % 1000 ) / 100 );
+                    tens = (int)( ( tempNumber % 100 ) / 10 );
+                    unity = (int)( tempNumber % 10 );
+                    othersTens = 0;
 
-                    this.tens = (tempNumber % 100) / 10;
-
-                    this.unity = tempNumber % 10;
-
-                    if (this.tens == 1 && this.unity > 0)
+                    if ( tens == 1 && unity > 0)
                     {
-                        this.othersTens = this.unity;
-                        this.tens = 0;
-                        this.unity = 0;
+                        othersTens = unity;
+                        tens = 0;
+                        unity = 0;
                     }
                     else
                     {
-                        this.othersTens = 0;
+                        othersTens = 0;
                     }
 
-                    var grammarForm = this.GetGrammaForm();
+                    sumAboveUnity = hundreds + tens + othersTens;
+                    var grammarForm = this.GetGrammarForm( unity, sumAboveUnity );
                     
 
-                    if ((this.hundreds + this.unity + this.othersTens + this.tens) > 0)
+                    if ((unity + sumAboveUnity) > 0)
                     {
                         var tempPartialResult = partialResult.ToString().Trim();
 
                         partialResult.Clear();
-                        var properUnity = Dictionaries.Unity;
+                        var properUnity = dictionary.Unity;
 
-                        if (currentPhase == Phase.AfterComma && this.Options.Currency is ICurrencyNotMaleDeflectionAfterComma && this.tens == 0)
+                        if (currentPhase == DeflationPhraseType.AfterComma && currencyDeflation is ICurrencyNotMaleDeflectionAfterComma && tens == 0)
                         {
-                            properUnity = (this.Options.Currency as ICurrencyNotMaleDeflectionAfterComma).OverrideAfterCommaUnity;
+                            properUnity = ( currencyDeflation as ICurrencyNotMaleDeflectionAfterComma ).GetAfterCommaUnity( withStems );
                         }
 
-                        if (currentPhase == Phase.BeforeComma && this.Options.Currency is ICurrencyNotMaleDeflectionBeforeComma)
+                        if (currentPhase == DeflationPhraseType.BeforeComma && currencyDeflation is ICurrencyNotMaleDeflectionBeforeComma)
                         {
-                            properUnity = (this.Options.Currency as ICurrencyNotMaleDeflectionBeforeComma).OverrideBeforeCommaUnity;
+                            properUnity = ( currencyDeflation as ICurrencyNotMaleDeflectionBeforeComma ).GetBeforeCommaUnity( withStems );
                         }
 
-                        partialResult.AppendFormat("{0}{1}{2}{3}{4}{5}",
-                            this.SetSpaceBeforeString(Dictionaries.Hundreds[this.hundreds]),
-                            this.SetSpaceBeforeString(Dictionaries.Tens[this.tens]),
-                            this.SetSpaceBeforeString(Dictionaries.OthersTens[this.othersTens]),
-                            this.SetSpaceBeforeString(properUnity[this.unity]),
-                            this.SetSpaceBeforeString(Dictionaries.Endings[this.order, grammarForm]),
-                            this.SetSpaceBeforeString(tempPartialResult));
+                        partialResult.AppendFormat( "{0}{1}{2}{3}{4}{5}",
+                            this.SetSpaceBeforeString( dictionary.Hundreds[ hundreds ] ),
+                            this.SetSpaceBeforeString( dictionary.Tens[ tens ] ),
+                            this.SetSpaceBeforeString( dictionary.OthersTens[ othersTens ] ),
+                            this.SetSpaceBeforeString( properUnity[ unity ] ),
+                            this.SetSpaceBeforeString( dictionary.Endings[ order, grammarForm ] ),
+                            this.SetSpaceBeforeString( tempPartialResult ) );
                     }
 
-                    this.order += 1;
+                    order += 1;
 
                     tempNumber = tempNumber / 1000;
                 }
 
-                partialResult.Append(this.SetSpaceBeforeString(this.Options.Currency.GetDeflationTable[(int)this.currentPhase, GetCurrencyForm(number)]));
+                // hm we are using here some variables (unity, tens, sumabove) that are modified inside above while loop and only there
+                // and yet we are using them here, outside loop. It would be better if we could use them only inside while loop...
+                partialResult.Append( this.SetSpaceBeforeString(
+                    currencyDeflation.GetDeflationPhrase( currentPhase, GetCurrencyForm( number, othersTens ), withStems ) ) );
 
                 result.Append(partialResult.ToString().Trim());
 
                 result.Append(" ");
 
-                if (this.currentPhase == Phase.BeforeComma && !string.IsNullOrEmpty(Options.SplitDecimal))
+                if (currentPhase == DeflationPhraseType.BeforeComma && !string.IsNullOrEmpty( splitDecimal ))
                 {
-                    result.Append(Options.SplitDecimal);
+                    result.Append(splitDecimal);
                     result.Append(" ");
                 }
 
-                this.currentPhase = Phase.AfterComma;
+                currentPhase = DeflationPhraseType.AfterComma;
             }
 
             return result.ToString().Trim();
         }
 
-        private int GetCurrencyForm(int number)
+        // maybe this should be moved to dictionary classes?
+        private int GetCurrencyForm( long number, int othersTens )
         {
-            var hundreds = (number % 1000) / 100;
+            var hundreds = ( number % 1000 ) / 100;
 
-            var tens = (number % 100) / 10;
+            var tens = ( number % 100 ) / 10;
 
             var unity = number % 10;
 
-            if (unity == 1 && (hundreds + tens + othersTens == 0))
+            if( unity == 1 && ( hundreds + tens + othersTens == 0 ) )
             {
                 return 0;
             }
@@ -158,17 +151,14 @@ namespace LiczbyNaSlowaNET.Algorithms
             return 2;
         }
 
-        private int GetGrammaForm()
+        // maybe this should be moved to dictionary classes?
+        private int GetGrammarForm( int unity, int sumAboveUnity )
         {
-            if (this.unity == 1 && (this.hundreds + this.tens + this.othersTens == 0))
-            {
+            if ( unity == 1 && sumAboveUnity == 0)
                 return  0;
-            }
 
-            if (tempGrammarForm.Contains(this.unity))
-            {
+            if (tempGrammarForm.Contains( unity ) )
                 return 1;
-            }
 
             return 2;
         }

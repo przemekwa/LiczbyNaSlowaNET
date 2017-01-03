@@ -5,6 +5,6 @@ namespace LiczbyNaSlowaNET.Dictionaries.Currencies
 {
     public interface ICurrencyNotMaleDeflectionBeforeComma
     {
-        List<String> OverrideBeforeCommaUnity { get; }
+        List<String> GetBeforeCommaUnity( bool withStems );
     }
 }

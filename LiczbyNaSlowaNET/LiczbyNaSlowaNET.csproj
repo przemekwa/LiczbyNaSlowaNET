@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Algorithm.cs" />
     <Compile Include="Algorithms\CurrencyAlgorithm.cs" />
+    <Compile Include="Dictionaries\Currencies\BaseCurrencyDeflation.cs" />
     <Compile Include="Dictionaries\Currencies\ChfCurrencyDeflation.cs" />
     <Compile Include="Dictionaries\Currencies\CurrencyDeflationFactory.cs" />
     <Compile Include="Dictionaries\Currencies\CzkCurrenctDeflation.cs" />
@@ -50,7 +51,6 @@
     <Compile Include="Dictionaries\Currencies\GbpCurrencyDeflation.cs" />
     <Compile Include="Dictionaries\Currencies\HufCurrencyDeflation.cs" />
     <Compile Include="Dictionaries\Currencies\ICurrencyDeflation.cs" />
-    <Compile Include="Dictionaries\Currencies\ICurrencyDeflationFactory.cs" />
     <Compile Include="Dictionaries\Currencies\ICurrencyNotMaleDeflectionAfterComma.cs" />
     <Compile Include="Dictionaries\Currencies\ICurrencyNotMaleDeflectionBeforeComma.cs" />
     <Compile Include="Dictionaries\Currencies\JpyCurrencyDeflation.cs" />
@@ -64,7 +64,6 @@
     <Compile Include="INumberToTextOptions.cs" />
     <Compile Include="NumberToText.cs" />
     <Compile Include="Algorithms\IAlgorithm.cs" />
-    <Compile Include="NumberToTextOptionBuilder.cs" />
     <Compile Include="NumberToTextOptions.cs" />
     <Compile Include="Dictionaries\PolishWithsStemsDictionary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -2,23 +2,25 @@
 
 namespace LiczbyNaSlowaNET.Dictionaries.Currencies
 {
-    public class EmptyCurrencyDeflation : ICurrencyDeflation
+    public class EmptyCurrencyDeflation : BaseCurrencyDeflation
     {
+        public override Currency CurrencyCode => Currency.NONE;
+
         public EmptyCurrencyDeflation()
+            : base(
+                  new[ , ]
+                    {
+                        {"", "", ""},
+                        {"", "", ""},
+                        {"", "", ""}
+                    },
+                  new[ , ]
+                    {
+                        {"", "", ""},
+                        {"", "", ""},
+                        {"", "", ""}
+                    } )
         { 
         }
-
-        public string CurrencyCode => "NONE";
-
-        public string[,] GetDeflationTable => new[,]
-        {
-            {"", "", ""},
-            {"", "", ""},
-            {"", "", ""}
-        };
-
-        public bool HasStems { get; set; }
-
-        public List<string> OverrideUnity => new List<string>();
     }
 }

@@ -2,37 +2,26 @@
 
 namespace LiczbyNaSlowaNET.Dictionaries.Currencies
 {
-    public class ChfCurrencyDeflation : ICurrencyDeflation
+    public class ChfCurrencyDeflation : BaseCurrencyDeflation
     {
-        public string CurrencyCode => "CHF";
+        public override Currency CurrencyCode => Currency.CHF;
 
-        public string[,] GetDeflationTable
-        {
-            get
-            {
-                if (HasStems)
-                {
-                    return new[,]
-                    {
-                    {"", "", ""},
-                    {"frank szwajcarski", "franki szwajcarskie", "franków szwajcarskich"},
-                    {"centym", "centymy", "centymów"}
-                };
-                }
-                else
-                {
-                    return new[,]
+        public ChfCurrencyDeflation()
+            : base(
+                 new[ , ]
                 {
                     {"", "", ""},
                     {"frank szwajcarski", "franki szwajcarskie", "frankow szwajcarskich"},
                     {"centym", "centymy", "centymow"}
-                };
-                }
-            }
+                },
+                  new[ , ]
+                    {
+                    {"", "", ""},
+                    {"frank szwajcarski", "franki szwajcarskie", "franków szwajcarskich"},
+                    {"centym", "centymy", "centymów"}
+                })
+        {
+
         }
-
-        public List<string> OverrideUnity => new List<string>();
-
-        public bool HasStems { get; set; }
     }
 }

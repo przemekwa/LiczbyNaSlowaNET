@@ -22,7 +22,7 @@ namespace LiczbyNaSlowaNET_Testy.PolishStemsDictionary
             return new NumberToTextOptions
             {
                 Stems = true,
-                CurrencyDeflation = pln,
+                Currency = pln,
                 Dictionary = new PolishWithsStemsDictionary()
             };
         }
