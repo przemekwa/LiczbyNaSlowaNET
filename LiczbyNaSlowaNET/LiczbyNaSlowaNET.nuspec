@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>LiczbyNaSlowaNET.dll</id>
+    <version>1.0.0.4</version>
+    <authors>Einstein</authors>
+
+       <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>LiczbyNaSłowaNET to biblioteka, która umożliwia konwersje liczb na odpowiedniki słowne z zachowaniem polskiej gramatyki.</description>
+     <copyright>Copyright 2017</copyright>
+	 <tags>LiczbyNaSłowa zamiana liczb na słowa</tags>
+<releaseNotes>
++ usunięcie kontenera DI.
++ biblioteka już nie potrzebuje zależności innych niż .NET 4.0
++ możliwość ustawiania czy tekst ma posadać polskie znaki czy też nie. Domyślnie jest bez polskich znaków. 
++ możliwość podmienienia słowników zawierających liczebniki.
++ dodanie obsługi wartości procentowych
+
+</releaseNotes>
+  </metadata>
+  <files>
+   <file src="LiczbyNaSlowaNET.dll" target="lib" /> 
+   
+   </files>
+</package>
