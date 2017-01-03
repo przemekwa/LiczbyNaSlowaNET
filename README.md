@@ -25,6 +25,7 @@ Wersja 1.0.0.4
 + biblioteka już nie potrzebuje zależności innych niż .NET 4.0
 + możliwość ustawiania czy tekst ma posadać polskie znaki czy też nie. Domyślnie jest bez polskich znaków. 
 + możliwość podmienienia słowników zawierających liczebniki.
++ dodanie obsługi wartości procentowych
 
 Przykładowe wywołanie i ustawienie słownika z polskimi znakami. 
 
@@ -89,7 +90,9 @@ Obecnie biblioteka wspiera nastepujące waluty:
         LTL,
         NOK,
         SEK,
-        USD
+        USD,
+        GBP,
+        PERCENT // nie było lepszego miejsca. To jest wartość procentowa np: sześć procent
     }```
 
 Biblioteka jest bezpieczna w środowisku wielowątkowym(ThreadSafety)
