@@ -10,8 +10,6 @@ namespace LiczbyNaSlowaNET
     using Algorithms;
     using Dictionaries;
     using Dictionaries.Currencies;
-    using Ninject;
-    using Ninject.Extensions.Conventions;
 
     internal enum Phase { BeforeComma = 1, AfterComma };
 
@@ -32,19 +30,28 @@ namespace LiczbyNaSlowaNET
 
     public static class NumberToText
     {
-        private static IKernel _kernel;
+        public static List<ICurrencyDeflation> ListCurrencyDeflation { get; set; }
 
-        static NumberToText()
+       static NumberToText()
         {
-            _kernel = new StandardKernel();
-
-            _kernel.Bind(typeof(IDictionaries)).To<PolishDictionary>();
-            _kernel.Bind<CommonAlgorithm>().ToSelf();
-            _kernel.Bind<CurrencyAlgorithm>().ToSelf();
-            _kernel.Bind<NumberToTextOptions>().ToSelf();
-            _kernel.Bind<ICurrencyDeflationFactory>().To<CurrencyDeflationFactory>().WithConstructorArgument("withStems",_kernel.Get<IDictionaries>().HasStems);
-            _kernel.Bind(x => x.FromAssemblyContaining<ICurrencyDeflation>().IncludingNonePublicTypes().SelectAllClasses().InheritedFrom<ICurrencyDeflation>().BindAllInterfaces());
-        }
+             ListCurrencyDeflation = new List<ICurrencyDeflation>
+            {
+                new PlnCurrencyDeflation(),
+                new ChfCurrencyDeflation(),
+                new CzkCurrenctDeflation(),
+                new EmptyCurrencyDeflation(),
+                new EurCurrencyDeflation(),
+                new GbpCurrencyDeflation(),
+                new HufCurrencyDeflation(),
+                new JpyCurrencyDeflation(),
+                new LtlCurrencyDeflation(),
+                new NokCurrencyDeflation(),
+                new LtlCurrencyDeflation(),
+                new PercentageDeflation(),
+                new UsdCurrencyDeflation(),
+                new SekCurrencyDeflation(),
+            };
+}
 
         /// <summary>
         /// Convert (int) number into words.
@@ -54,7 +61,7 @@ namespace LiczbyNaSlowaNET
         /// <returns>he words describe number</returns>
         public static string Convert(int number, Currency currency = Currency.NONE)
         {
-            var options = _kernel.Get<NumberToTextOptions>();
+            var options = new NumberToTextOptions();
 
             ConvertToICurrenctyDeflation(currency, options);
 
@@ -63,7 +70,7 @@ namespace LiczbyNaSlowaNET
 
         public static string Convert(decimal number, Currency currency = Currency.NONE)
         {
-            var options = _kernel.Get<NumberToTextOptions>();
+            var options = new NumberToTextOptions();
 
             ConvertToICurrenctyDeflation(currency, options);
 
@@ -84,7 +91,8 @@ namespace LiczbyNaSlowaNET
         {
             var algorithm = GetAlgorithm(options.Currency);
 
-            algorithm.Dictionaries = options.Dictionary ?? _kernel.Get<IDictionaries>(); 
+            algorithm.Dictionaries = options.Dictionary ??
+                                     new PolishDictionary(new List<ICurrencyDeflation> {new PlnCurrencyDeflation()});
             algorithm.Numbers = numbers;
             algorithm.Options = options;
 
@@ -97,10 +105,10 @@ namespace LiczbyNaSlowaNET
 
             if (currency.CurrencyCode.Equals("NONE"))
             {
-                return _kernel.Get<CommonAlgorithm>();
+                return new CommonAlgorithm(new PolishDictionary(new List<ICurrencyDeflation> { new PlnCurrencyDeflation() }));
             }
 
-            return _kernel.Get<CurrencyAlgorithm>();
+            return new CurrencyAlgorithm(new PolishDictionary(new List<ICurrencyDeflation> { new PlnCurrencyDeflation() }));
         }
 
         private static IEnumerable<int> PrepareNumbers(decimal numbers)
@@ -129,12 +137,8 @@ namespace LiczbyNaSlowaNET
 
         private static void ConvertToICurrenctyDeflation(Currency currency, INumberToTextOptions options)
         {
-            options.Currency = _kernel.Get<ICurrencyDeflationFactory>().CreateInstance(currency.ToString());
+            options.Currency = 
+                new CurrencyDeflationFactory(ListCurrencyDeflation, false).CreateInstance(currency.ToString());
         }
-
-       /// <summary>
-        /// Returns list of defined/available currencies
-        /// </summary>
-       public static List<ICurrencyDeflation> DefinedCurrencies => _kernel.Get<CurrencyDeflationFactory>().CurrencyList;
     }
 }
