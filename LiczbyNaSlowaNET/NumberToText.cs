@@ -68,9 +68,8 @@ namespace LiczbyNaSlowaNET
         
         private static string CommonConvert(IEnumerable<int> numbers, NumberToTextOptions options)
         {
-            var dictionaries = options.Dictionary ?? 
-                new PolishDictionary(new List<ICurrencyDeflation> {new PlnCurrencyDeflation()});
-
+            var dictionaries = options.Dictionary ?? new PolishDictionary();
+                               
             var algorithm = new CurrencyAlgorithm(dictionaries)
             {
                 Numbers = numbers,

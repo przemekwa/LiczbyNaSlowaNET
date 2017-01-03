@@ -9,7 +9,7 @@ namespace LiczbyNaSlowaNET.Dictionaries
 
     public class PolishWithsStemsDictionary : IDictionaries
     {
-        public PolishWithsStemsDictionary(List<ICurrencyDeflation> currencyDeflation)
+        public PolishWithsStemsDictionary()
         {
             Unity = new List<string>
                 {
@@ -52,7 +52,7 @@ namespace LiczbyNaSlowaNET.Dictionaries
                 {"złoty","złote","złotych"},
                 {"grosz","grosze","groszy"}
             };
-            Currency = currencyDeflation;
+           
         }
 
         public List<string> Unity { get; }
@@ -68,8 +68,6 @@ namespace LiczbyNaSlowaNET.Dictionaries
         public List<string> Sign { get; }
 
         public string[,] Current { get; }
-
-        public List<ICurrencyDeflation> Currency { get; }
 
         public bool HasStems { get; } = true;
     }

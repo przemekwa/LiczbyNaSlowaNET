@@ -12,10 +12,8 @@ namespace LiczbyNaSlowaNET_Testy.PolishStemsDictionary
     {
         protected NumberToTextOptions NumberToTextOptions { get; set; } = new NumberToTextOptions
         {
-            Dictionary = new PolishWithsStemsDictionary(new List<ICurrencyDeflation>()
-            {
-                new EmptyCurrencyDeflation()
-            }), Currency = new EmptyCurrencyDeflation()
+            Dictionary = new PolishWithsStemsDictionary(),
+            Currency = new EmptyCurrencyDeflation()
         };
     }
 }

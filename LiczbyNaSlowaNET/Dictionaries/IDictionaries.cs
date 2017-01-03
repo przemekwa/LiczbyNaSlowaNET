@@ -16,7 +16,6 @@ namespace LiczbyNaSlowaNET.Dictionaries
         string[,] Endings{ get; }
         List<string> Sign{ get; }
         string[,] Current{ get; }
-        List<ICurrencyDeflation> Currency { get; }
         bool HasStems { get; }
     }
 }
