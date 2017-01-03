@@ -60,7 +60,7 @@
     <Compile Include="Dictionaries\Currencies\PlnCurrencyDeflation.cs" />
     <Compile Include="Dictionaries\Currencies\SekCurrencyDeflation.cs" />
     <Compile Include="Dictionaries\Currencies\UsdCurrencyDeflation.cs" />
-    <Compile Include="Dictionaries\IDictionaries.cs" />
+    <Compile Include="Dictionaries\ICurrencyDictionary.cs" />
     <Compile Include="INumberToTextOptions.cs" />
     <Compile Include="NumberToText.cs" />
     <Compile Include="Algorithms\IAlgorithm.cs" />

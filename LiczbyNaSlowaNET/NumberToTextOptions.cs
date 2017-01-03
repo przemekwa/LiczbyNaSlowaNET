@@ -10,7 +10,7 @@ namespace LiczbyNaSlowaNET
     {
         public Currency Currency { get; set; }
 
-        public IDictionaries Dictionary { get; set; }
+        public ICurrencyDictionary Dictionary { get; set; }
 
         public string SplitDecimal { get; set; } = string.Empty;
 

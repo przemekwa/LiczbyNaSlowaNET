@@ -8,7 +8,7 @@ namespace LiczbyNaSlowaNET
     public interface INumberToTextOptions
     {
         Currency Currency { get; set; }
-        Dictionaries.IDictionaries Dictionary { get; set; }
+        Dictionaries.ICurrencyDictionary Dictionary { get; set; }
         string SplitDecimal { get; set; }
         bool Stems { get; set; }
     }

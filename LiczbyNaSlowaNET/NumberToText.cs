@@ -84,7 +84,9 @@ namespace LiczbyNaSlowaNET
             // create proper currency deflation according to options
             var currencyDeflation = CurrencyDeflationFactory.GetCurrencyDeflation( options.Currency );
             // get dictionary or default
-            var dictionary = options.Dictionary ?? new PolishDictionary();
+            var dictionary = options.Dictionary;
+            if( dictionary == null )
+                dictionary = options.Stems ? new PolishWithsStemsDictionary() : (ICurrencyDictionary)new PolishDictionary();
             // create algorithm
             var algorithm = new CurrencyAlgorithm( dictionary, currencyDeflation, options.SplitDecimal, options.Stems );
             // convert!

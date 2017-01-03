@@ -11,12 +11,12 @@ namespace LiczbyNaSlowaNET
     using Dictionaries.Currencies;
     internal abstract class Algorithm : IAlgorithm
     {
-        protected IDictionaries dictionary;
+        protected ICurrencyDictionary dictionary;
         protected ICurrencyDeflation currencyDeflation;
         protected string splitDecimal;
         protected bool withStems;
         
-        protected Algorithm(IDictionaries dictionary, ICurrencyDeflation currencyDeflation, string splitDecimal, bool withStems )
+        protected Algorithm(ICurrencyDictionary dictionary, ICurrencyDeflation currencyDeflation, string splitDecimal, bool withStems )
         {
             if( dictionary == null )
                 throw new ArgumentNullException( nameof( dictionary ) );
