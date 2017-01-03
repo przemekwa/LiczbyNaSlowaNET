@@ -10,7 +10,7 @@ namespace LiczbyNaSlowaNET_Testy.PolishStemsDictionary
 {
     public abstract class TestBase
     {
-        public NumberToTextOptions NumberToTextOptions { get; set; } = new NumberToTextOptions
+        protected NumberToTextOptions NumberToTextOptions { get; set; } = new NumberToTextOptions
         {
             Dictionary = new PolishWithsStemsDictionary(new List<ICurrencyDeflation>()
             {

@@ -32,27 +32,6 @@ namespace LiczbyNaSlowaNET
     {
         public static List<ICurrencyDeflation> ListCurrencyDeflation { get; set; }
 
-       static NumberToText()
-        {
-             ListCurrencyDeflation = new List<ICurrencyDeflation>
-            {
-                new PlnCurrencyDeflation(),
-                new ChfCurrencyDeflation(),
-                new CzkCurrenctDeflation(),
-                new EmptyCurrencyDeflation(),
-                new EurCurrencyDeflation(),
-                new GbpCurrencyDeflation(),
-                new HufCurrencyDeflation(),
-                new JpyCurrencyDeflation(),
-                new LtlCurrencyDeflation(),
-                new NokCurrencyDeflation(),
-                new LtlCurrencyDeflation(),
-                new PercentageDeflation(),
-                new UsdCurrencyDeflation(),
-                new SekCurrencyDeflation(),
-            };
-}
-
         /// <summary>
         /// Convert (int) number into words.
         /// </summary>
@@ -89,26 +68,16 @@ namespace LiczbyNaSlowaNET
         
         private static string CommonConvert(IEnumerable<int> numbers, NumberToTextOptions options)
         {
-            var algorithm = GetAlgorithm(options.Currency);
+            var dictionaries = options.Dictionary ?? 
+                new PolishDictionary(new List<ICurrencyDeflation> {new PlnCurrencyDeflation()});
 
-            algorithm.Dictionaries = options.Dictionary ??
-                                     new PolishDictionary(new List<ICurrencyDeflation> {new PlnCurrencyDeflation()});
-            algorithm.Numbers = numbers;
-            algorithm.Options = options;
+            var algorithm = new CurrencyAlgorithm(dictionaries)
+            {
+                Numbers = numbers,
+                Options = options
+            };
 
             return algorithm.Build();
-        }
-
-        private static IAlgorithm GetAlgorithm(ICurrencyDeflation currency)
-        {
-            //TODO Ten kawałek jest nie przetestowany. CurrencyCode nie mozemy być typu string.
-
-            if (currency.CurrencyCode.Equals("NONE"))
-            {
-                return new CommonAlgorithm(new PolishDictionary(new List<ICurrencyDeflation> { new PlnCurrencyDeflation() }));
-            }
-
-            return new CurrencyAlgorithm(new PolishDictionary(new List<ICurrencyDeflation> { new PlnCurrencyDeflation() }));
         }
 
         private static IEnumerable<int> PrepareNumbers(decimal numbers)
@@ -138,7 +107,7 @@ namespace LiczbyNaSlowaNET
         private static void ConvertToICurrenctyDeflation(Currency currency, INumberToTextOptions options)
         {
             options.Currency = 
-                new CurrencyDeflationFactory(ListCurrencyDeflation, false).CreateInstance(currency.ToString());
+                new CurrencyDeflationFactory(false).CreateInstance(currency.ToString());
         }
     }
 }

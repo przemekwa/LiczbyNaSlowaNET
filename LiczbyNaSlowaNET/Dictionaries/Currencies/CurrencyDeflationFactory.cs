@@ -6,9 +6,26 @@ namespace LiczbyNaSlowaNET.Dictionaries.Currencies
     {
         private readonly List<string> availableCurrencyDeflations = new List<string>();
         private bool withStems;
-        public CurrencyDeflationFactory(List<ICurrencyDeflation> definedDeflations,bool withStems)
+        public CurrencyDeflationFactory(bool withStems)
         {
-            CurrencyList = definedDeflations;
+            CurrencyList = new List<ICurrencyDeflation>
+            {
+                new PlnCurrencyDeflation(),
+                new ChfCurrencyDeflation(),
+                new CzkCurrenctDeflation(),
+                new EmptyCurrencyDeflation(),
+                new EurCurrencyDeflation(),
+                new GbpCurrencyDeflation(),
+                new HufCurrencyDeflation(),
+                new JpyCurrencyDeflation(),
+                new LtlCurrencyDeflation(),
+                new NokCurrencyDeflation(),
+                new LtlCurrencyDeflation(),
+                new PercentageDeflation(),
+                new UsdCurrencyDeflation(),
+                new SekCurrencyDeflation(),
+            };
+
             this.withStems = withStems;
         }
 
