@@ -26,7 +26,8 @@ namespace LiczbyNaSlowaNET
         NOK,
         SEK,
         USD,
-        GBP
+        GBP,
+        PERCENT
     }
 
     public static class NumberToText
@@ -45,8 +46,7 @@ namespace LiczbyNaSlowaNET
             {
                 Stems = false,
                 CurrencyDeflation = currency,
-                Currency = new CurrencyDeflationFactory(false).CreateInstance(currency.ToString())
-        };
+            };
 
             return CommonConvert(new[] { number }, options);
         }
@@ -57,7 +57,6 @@ namespace LiczbyNaSlowaNET
             {
                 Stems = false,
                 CurrencyDeflation = currency,
-                Currency = new CurrencyDeflationFactory(false).CreateInstance(currency.ToString())
             };
 
             return CommonConvert(PrepareNumbers(number), options);
@@ -73,23 +72,29 @@ namespace LiczbyNaSlowaNET
             return CommonConvert(PrepareNumbers(number), options);
         }
 
-        private static void SetDeflation(NumberToTextOptions options)
-        {
-            options.Currency =
-                new CurrencyDeflationFactory(options.Stems).CreateInstance(options.CurrencyDeflation.ToString());
-        }
-
         private static string CommonConvert(IEnumerable<int> numbers, NumberToTextOptions options)
         {
-            var dictionaries = options.Dictionary ?? new PolishDictionary();
+            SetDictionary(options);
             SetDeflation(options);
-            var algorithm = new CurrencyAlgorithm(dictionaries)
+
+            var algorithm = new CurrencyAlgorithm(options.Dictionary)
             {
                 Numbers = numbers,
                 Options = options
             };
 
             return algorithm.Build();
+        }
+
+        private static void SetDeflation(INumberToTextOptions options)
+        {
+            options.Currency = options.Currency ??
+                new CurrencyDeflationFactory(options.Stems).CreateInstance(options.CurrencyDeflation.ToString());
+        }
+
+        private static void SetDictionary(NumberToTextOptions options)
+        {
+            options.Dictionary = options.Dictionary ?? new PolishDictionary();
         }
 
         private static IEnumerable<int> PrepareNumbers(decimal numbers)

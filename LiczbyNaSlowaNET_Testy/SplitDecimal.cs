@@ -17,7 +17,6 @@ namespace LiczbyNaSlowaNET_Testy
         {
             var options = new NumberToTextOptions
             {
-                Currency = new EmptyCurrencyDeflation(),
                 SplitDecimal = "i"
             };
 
@@ -31,7 +30,6 @@ namespace LiczbyNaSlowaNET_Testy
             var options = new NumberToTextOptions
             {
                 CurrencyDeflation = Currency.PLN,
-                Currency = new PlnCurrencyDeflation(),
                 SplitDecimal = "i"
             };
 
@@ -45,7 +43,6 @@ namespace LiczbyNaSlowaNET_Testy
             var options = new NumberToTextOptions
             {
                 CurrencyDeflation = Currency.PLN,
-                Currency = new PlnCurrencyDeflation(),
                 SplitDecimal = "i"
             };
 
@@ -58,7 +55,6 @@ namespace LiczbyNaSlowaNET_Testy
         {
             var options = new NumberToTextOptions
             {
-                Currency = new PlnCurrencyDeflation(),
                 CurrencyDeflation = Currency.PLN,
                 SplitDecimal = " oraz "
             };
@@ -71,7 +67,7 @@ namespace LiczbyNaSlowaNET_Testy
         {
             var options = new NumberToTextOptions
             {
-                Currency = new PlnCurrencyDeflation(),
+              
                 CurrencyDeflation = Currency.PLN
             };
 

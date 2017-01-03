@@ -4,7 +4,7 @@ namespace LiczbyNaSlowaNET.Dictionaries.Currencies
 {
     public class PercentageDeflation : ICurrencyDeflation, ICurrencyNotMaleDeflectionAfterComma
     {
-        public string CurrencyCode => "%";
+        public string CurrencyCode => "PERCENT";
 
         public string[,] GetDeflationTable => new[,]
         {

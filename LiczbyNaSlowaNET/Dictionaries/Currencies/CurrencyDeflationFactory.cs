@@ -34,6 +34,7 @@ namespace LiczbyNaSlowaNET.Dictionaries.Currencies
             get
             {
                 availableCurrencyDeflations.Clear();
+
                 foreach (var item in CurrencyList)
                 {
                     availableCurrencyDeflations.Add(item.CurrencyCode);
