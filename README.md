@@ -19,6 +19,24 @@ Projekt składa się z 2 solucji:
 1. LiczbyNaSlowaNET - jest to głowna bliblioteka służąca do zamiany liczb na słowa.
 2. LiczbyNaSlowaNET_Testy - jest to biblioteka z testami.
 
+Wersja 1.0.0.4
+
++ usunięcie kontenera DI.
++ biblioteka już nie potrzebuje zależności innych niż .NET 4.0
++ możliwość ustawiania czy tekst ma posadać polskie znaki czy też nie. Domyślnie jest bez polskich znaków. 
++ możliwość podmienienia słowników zawierających liczebniki.
+
+Przykładowe wywołanie i ustawienie słownika z polskimi znakami. 
+
+            var options = new NumberToTextOptions
+            {
+                Stems = true,
+                CurrencyDeflation = Currency.PLN,
+            };
+
+            Assert.Equal("sześć złotych czterdzieści dziewięć groszy", NumberToText.Convert(6.486M, options));
+            
+
 ### Szybki start:
 
 Biblioteka LiczbyNaSłowaNET to statyczna klasa NumberToText z metodą Convert, która przyjmuje liczbę typu int lub decimal i zwraca string z odpowiednikiem słownym danej liczby. Dodatkowo można przesłać obiekt NumberToTextOptions, w którym definiujemy walutę i separator liczb dziesiętnych.
