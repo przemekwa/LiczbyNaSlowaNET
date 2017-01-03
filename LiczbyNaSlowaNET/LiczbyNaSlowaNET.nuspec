@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>LiczbyNaSlowaNET.dll</id>
-    <version>1.0.0.4</version>
+    <version>1.0.4</version>
     <authors>Einstein</authors>
 
        <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -19,7 +19,8 @@
 </releaseNotes>
   </metadata>
   <files>
-   <file src="LiczbyNaSlowaNET.dll" target="lib" /> 
+   <file src="bin\Debug\LiczbyNaSlowaNET.dll" target="lib" /> 
+   <file src="bin\Debug\LiczbyNaSlowaNET.pdb" target="lib" /> 
    
    </files>
 </package>
