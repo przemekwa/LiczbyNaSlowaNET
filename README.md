@@ -1,6 +1,6 @@
 LiczbyNaSłowaNET [![NuGet Version](https://img.shields.io/nuget/v/LiczbyNaSlowaNET.dll.svg?style=flat)](https://www.nuget.org/packages/LiczbyNaSlowaNET.dll/)
-================
-
+=================
+ 
 
 LiczbyNaSłowaNET to biblioteka, która umożliwia konwersje liczb na odpowiedniki słowne z zachowaniem polskiej gramatyki.
 
