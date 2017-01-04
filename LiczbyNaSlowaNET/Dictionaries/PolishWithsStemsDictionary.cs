@@ -7,7 +7,7 @@ namespace LiczbyNaSlowaNET.Dictionaries
 
     using Currencies;
 
-    public class PolishWithsStemsDictionary : IDictionaries
+    public class PolishWithsStemsDictionary : ICurrencyDictionary
     {
         public PolishWithsStemsDictionary()
         {

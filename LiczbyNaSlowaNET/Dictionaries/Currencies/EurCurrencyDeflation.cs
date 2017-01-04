@@ -2,39 +2,27 @@
 
 namespace LiczbyNaSlowaNET.Dictionaries.Currencies
 {
-    public class EurCurrencyDeflation : ICurrencyDeflation
+    public class EurCurrencyDeflation : BaseCurrencyDeflation
     {
-        //TODO Dlaczego CurrencyCode jest typu string. Powinien być typu Currency
+        public override Currency CurrencyCode => Currency.EUR;
 
-        public string CurrencyCode => "EUR";
-
-        public string[,] GetDeflationTable
-        {
-            get
-            {
-                if (HasStems)
+        public EurCurrencyDeflation()
+            : base(
+            new[,]
                 {
-                    return new[,]
+                    {"", "", ""},
+                    {"euro", "euro", "euro"},
+                    {"cent", "centy", "centow"}
+                },
+            new[,]
                     {
                     {"", "", ""},
                     {"euro", "euro", "euro"},
                     {"cent", "centy", "centów"}
-                };
-                }
-                else
-                {
-                    return new[,]
-                                       {
-                    {"", "", ""},
-                    {"euro", "euro", "euro"},
-                    {"cent", "centy", "centow"}
-                };
-                }
-            }
+                })
+
+        {
+
         }
-
-        public List<string> OverrideUnity => new List<string>();
-
-        public bool HasStems { get; set; }
     }
 }

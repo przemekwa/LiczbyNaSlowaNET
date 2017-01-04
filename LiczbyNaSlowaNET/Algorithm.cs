@@ -3,27 +3,35 @@
 
 namespace LiczbyNaSlowaNET
 {
+    using System;
     using System.Collections.Generic;
 
     using Algorithms;
     using Dictionaries;
-
+    using Dictionaries.Currencies;
     internal abstract class Algorithm : IAlgorithm
     {
-        public IDictionaries Dictionaries { get; set; }
-
-        public IEnumerable<int> Numbers { get; set; }
-
-        public NumberToTextOptions Options { get; set; }
-
-        protected Algorithm(IDictionaries dictionary)
+        protected ICurrencyDictionary dictionary;
+        protected ICurrencyDeflation currencyDeflation;
+        protected string splitDecimal;
+        protected bool withStems;
+        
+        protected Algorithm(ICurrencyDictionary dictionary, ICurrencyDeflation currencyDeflation, string splitDecimal, bool withStems )
         {
-            this.Dictionaries = dictionary;
+            if( dictionary == null )
+                throw new ArgumentNullException( nameof( dictionary ) );
+            if( currencyDeflation == null )
+                throw new ArgumentNullException( nameof( currencyDeflation ) );
+
+            this.dictionary = dictionary;
+            this.currencyDeflation = currencyDeflation;
+            this.splitDecimal = splitDecimal;
+            this.withStems = withStems;
         }
 
-        public abstract string Build();
+        public abstract string Build( IEnumerable<long> numbers );
 
-        public virtual string SetSpaceBeforeString(string @string)
+        protected virtual string SetSpaceBeforeString(string @string)
         {
             return string.IsNullOrEmpty(@string) ? string.Empty : " " + @string;
         }

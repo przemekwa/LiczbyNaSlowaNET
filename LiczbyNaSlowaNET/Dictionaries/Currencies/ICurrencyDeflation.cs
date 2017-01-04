@@ -1,5 +1,7 @@
 ﻿namespace LiczbyNaSlowaNET.Dictionaries.Currencies
 {
+    public enum DeflationPhraseType { BeforeComma = 1, AfterComma };
+
     /// <summary>
     ///     Interface for classes that define deflation table for specific currency.
     /// </summary>
@@ -8,13 +10,10 @@
         /// <summary>
         ///     Current currency code as stands in ISO 4217
         /// </summary>
-        string CurrencyCode { get; }
+        Currency CurrencyCode { get; }
 
-        /// <summary>
-        ///     Deflation table used during conversion.
-        /// </summary>
-        string[,] GetDeflationTable { get; } 
-        bool HasStems { get; set; }
+        // maybe change grammar form from int to some int (like DeflationPhraseType)?
+        string GetDeflationPhrase( DeflationPhraseType phraseType, int grammarForm, bool withStems );
 
     }
 }

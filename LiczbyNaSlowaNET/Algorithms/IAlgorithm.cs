@@ -9,12 +9,6 @@ namespace LiczbyNaSlowaNET.Algorithms
 
     internal interface IAlgorithm
     {
-        IEnumerable<int> Numbers { get; set; }
-
-        IDictionaries Dictionaries { get; set; }
-
-        NumberToTextOptions Options { get; set; }
-
-        string Build();
+        string Build( IEnumerable<long> numbers );
     }
 }

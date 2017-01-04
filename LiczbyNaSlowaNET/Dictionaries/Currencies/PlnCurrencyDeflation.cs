@@ -2,37 +2,27 @@
 
 namespace LiczbyNaSlowaNET.Dictionaries.Currencies
 {
-    public class PlnCurrencyDeflation : ICurrencyDeflation
+    public class PlnCurrencyDeflation : BaseCurrencyDeflation
     {
-        public string CurrencyCode => "PLN";
+        public override Currency CurrencyCode => Currency.PLN;
 
-        public string[,] GetDeflationTable
-        {
-            get
-            {
-                if (HasStems)
-                {
-                    return new[,]
+        public PlnCurrencyDeflation()
+            : base(
+                  new[ , ]
+                      {
+                        {"", "", ""},
+                        {"zloty", "zlote", "zlotych"},
+                        {"grosz", "grosze", "groszy"}
+                    },
+                  new[ , ]
                     {
-                    {"", "", ""},
-                    {"złoty", "złote", "złotych"},
-                    {"grosz", "grosze", "groszy"}
-                };
-                }
-                else
-                {
-                    return new[,]
-                  {
-                    {"", "", ""},
-                    {"zloty", "zlote", "zlotych"},
-                    {"grosz", "grosze", "groszy"}
-                };
-                }
-            }
+                        {"", "", ""},
+                        {"złoty", "złote", "złotych"},
+                        {"grosz", "grosze", "groszy"}
+                    }
+                  )
+        {
+
         }
-
-        public List<string> OverrideUnity => new List<string>();
-
-        public bool HasStems { get; set; }
     }
 }
