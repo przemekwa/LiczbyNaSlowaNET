@@ -19,7 +19,7 @@ Projekt składa się z 2 solucji:
 1. LiczbyNaSlowaNET - jest to głowna bliblioteka służąca do zamiany liczb na słowa.
 2. LiczbyNaSlowaNET_Testy - jest to biblioteka z testami.
 
-Wersja 1.0.0.5
+##Wersja 1.0.0.5
 
 Dzięki wsparciu https://github.com/ZmorzynskiK biblioteka dorobiła się kolejne wersji i sporo przydatnych zmian w kodzie
 
@@ -31,7 +31,7 @@ Dzięki wsparciu https://github.com/ZmorzynskiK biblioteka dorobiła się kolejn
 + wspólna bazowa klasa BaseCurrencyDeflation
 + dostosowanie słowników-deflacji do zmienionego interfejsu ICurrencyDeflation
 
-Wersja 1.0.0.4
+##Wersja 1.0.0.4
 
 + usunięcie kontenera DI.
 + biblioteka już nie potrzebuje zależności innych niż .NET 4.0
