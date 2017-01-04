@@ -19,7 +19,7 @@ namespace LiczbyNaSlowaNET.Algorithms
        
         private readonly long[] tempGrammarForm = { 2, 3, 4 };
 
-        public override string Build( IEnumerable<long> numbers )
+        public override string Build(IEnumerable<long> numbers)
         {
             var currentPhase = DeflationPhraseType.BeforeComma;
 
@@ -129,7 +129,6 @@ namespace LiczbyNaSlowaNET.Algorithms
             return result.ToString().Trim();
         }
 
-        // maybe this should be moved to dictionary classes?
         private int GetCurrencyForm( long number, int othersTens )
         {
             var hundreds = ( number % 1000 ) / 100;
@@ -151,7 +150,6 @@ namespace LiczbyNaSlowaNET.Algorithms
             return 2;
         }
 
-        // maybe this should be moved to dictionary classes?
         private int GetGrammarForm( int unity, int sumAboveUnity )
         {
             if ( unity == 1 && sumAboveUnity == 0)

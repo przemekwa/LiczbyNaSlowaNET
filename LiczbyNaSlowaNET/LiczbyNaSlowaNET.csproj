@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Algorithm.cs" />
+    <Compile Include="Algorithms\Algorithm.cs" />
     <Compile Include="Algorithms\CurrencyAlgorithm.cs" />
     <Compile Include="Dictionaries\Currencies\BaseCurrencyDeflation.cs" />
     <Compile Include="Dictionaries\Currencies\ChfCurrencyDeflation.cs" />

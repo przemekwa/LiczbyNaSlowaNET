@@ -36,6 +36,7 @@ namespace LiczbyNaSlowaNET
         /// </summary>
         /// <param name="number">Number to convert</param>
         /// <param name="currency">Currency of number</param>
+        /// <param name="stems">Stems</param>
         /// <returns>he words describe number</returns>
         public static string Convert(int number, Currency currency = Currency.NONE, bool stems = false )
         {
@@ -81,15 +82,19 @@ namespace LiczbyNaSlowaNET
 
         private static string CommonConvert(IEnumerable<long> numbers, NumberToTextOptions options)
         {
-            // create proper currency deflation according to options
-            var currencyDeflation = CurrencyDeflationFactory.GetCurrencyDeflation( options.Currency );
-            // get dictionary or default
+            var currencyDeflation = CurrencyDeflationFactory.GetCurrencyDeflation(options.Currency);
+            
             var dictionary = options.Dictionary;
-            if( dictionary == null )
-                dictionary = options.Stems ? new PolishWithsStemsDictionary() : (ICurrencyDictionary)new PolishDictionary();
-            // create algorithm
-            var algorithm = new CurrencyAlgorithm( dictionary, currencyDeflation, options.SplitDecimal, options.Stems );
-            // convert!
+
+            if (dictionary == null)
+            {
+                dictionary = options.Stems
+                    ? new PolishWithsStemsDictionary()
+                    : (ICurrencyDictionary) new PolishDictionary();
+            }
+
+            var algorithm = new CurrencyAlgorithm(dictionary, currencyDeflation, options.SplitDecimal, options.Stems);
+           
             return algorithm.Build( numbers );
         }
 
@@ -99,7 +104,7 @@ namespace LiczbyNaSlowaNET
 
             if (splitNumber.Length > 1 && splitNumber[1].Length == 1)
             {
-                splitNumber[1] += "0"; // why like that? :)
+                splitNumber[1] += "0"; 
             }
 
             var allNumbers = new List<long>( splitNumber.Length );
@@ -107,8 +112,11 @@ namespace LiczbyNaSlowaNET
             foreach (var t in splitNumber)
             {
                 long nb;
-                if ( long.TryParse(t, out nb))
+
+                if (long.TryParse(t, out nb))
+                {
                     allNumbers.Add(nb);
+                }
             }
 
             return allNumbers;

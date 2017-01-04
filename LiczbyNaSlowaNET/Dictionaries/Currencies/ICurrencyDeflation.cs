@@ -12,8 +12,6 @@
         /// </summary>
         Currency CurrencyCode { get; }
 
-        // maybe change grammar form from int to some int (like DeflationPhraseType)?
         string GetDeflationPhrase( DeflationPhraseType phraseType, int grammarForm, bool withStems );
-
     }
 }

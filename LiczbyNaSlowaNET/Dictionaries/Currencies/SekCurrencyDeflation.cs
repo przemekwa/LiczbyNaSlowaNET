@@ -12,7 +12,7 @@ namespace LiczbyNaSlowaNET.Dictionaries.Currencies
                     {
                         {"", "", ""},
                         {"korona szwedzka", "korony szwedzkie", "koron szwedzkich"},
-                        {"øre", "øre", "øre"} // <--- isn't this stems?
+                        {"øre", "øre", "øre"} 
                     },
                   new[ , ]
                     {

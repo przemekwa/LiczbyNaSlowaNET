@@ -9,7 +9,6 @@ namespace LiczbyNaSlowaNET.Dictionaries.Currencies
     {
         public abstract Currency CurrencyCode { get; }
 
-        // hm we could probably have only one phrases table - with stems - and create no stems table from that
         protected readonly string[,] noStemsPhrases;
         protected readonly string[,] withStemsPhrases;
 
@@ -21,10 +20,12 @@ namespace LiczbyNaSlowaNET.Dictionaries.Currencies
 
         public virtual string GetDeflationPhrase( DeflationPhraseType phraseType, int grammarForm, bool withStems )
         {
-            if( withStems )
-                return withStemsPhrases[ (int)phraseType, grammarForm ];
-            else
-                return noStemsPhrases[ (int)phraseType, grammarForm ];
+            if (withStems)
+            {
+                return withStemsPhrases[(int) phraseType, grammarForm];
+            }
+
+            return noStemsPhrases[(int) phraseType, grammarForm];
         }
 
     }
