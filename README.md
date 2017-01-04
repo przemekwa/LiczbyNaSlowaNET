@@ -1,4 +1,5 @@
 LiczbyNaSłowaNET [![NuGet Version](https://img.shields.io/nuget/v/LiczbyNaSlowaNET.dll.svg?style=flat)](https://www.nuget.org/packages/LiczbyNaSlowaNET.dll/) ![Build] (https://api.travis-ci.org/przemekwa/LiczbyNaSlowaNET.svg?branch=master)
+[![Join the chat at https://gitter.im/LiczbyNaSlowaNET/Lobby?source=orgpage](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/LiczbyNaSlowaNET/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 =================
  
 
