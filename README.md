@@ -19,6 +19,18 @@ Projekt składa się z 2 solucji:
 1. LiczbyNaSlowaNET - jest to głowna bliblioteka służąca do zamiany liczb na słowa.
 2. LiczbyNaSlowaNET_Testy - jest to biblioteka z testami.
 
+Wersja 1.0.0.5
+
+Dzięki wsparciu https://github.com/ZmorzynskiK biblioteka dorobiła się kolejne wersji i sporo przydatnych zmian w kodzie
+
++ dodanie pomocniczych metod do NumberToText
++ przejście z int na long (potencjalnie większy zakres)
++ usunięcie kilku klas (np NumberToTextOptionBuilder), w ich miejsce inne wywołania
++ zmiany w architekturze klasy CurrencyAlgorithm
++ uproszczenie interfejsów
++ wspólna bazowa klasa BaseCurrencyDeflation
++ dostosowanie słowników-deflacji do zmienionego interfejsu ICurrencyDeflation
+
 Wersja 1.0.0.4
 
 + usunięcie kontenera DI.
@@ -32,7 +44,7 @@ Przykładowe wywołanie i ustawienie słownika z polskimi znakami.
             var options = new NumberToTextOptions
             {
                 Stems = true,
-                CurrencyDeflation = Currency.PLN,
+                Currency = Currency.PLN,
             };
 
             Assert.Equal("sześć złotych czterdzieści dziewięć groszy", NumberToText.Convert(6.486M, options));
