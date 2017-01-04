@@ -2,37 +2,25 @@
 
 namespace LiczbyNaSlowaNET.Dictionaries.Currencies
 {
-    public class UsdCurrencyDeflation : ICurrencyDeflation
+    public class UsdCurrencyDeflation : BaseCurrencyDeflation
     {
-        public string CurrencyCode => "USD";
+        public override Currency CurrencyCode => Currency.USD;
 
-        public string[,] GetDeflationTable
-        {
-            get
-            {
-                if (HasStems)
-                {
-                    return new[,]
-                    {
-                    {"", "", ""},
-                    {"dolar", "dolary", "dolarów"},
-                    {"cent", "centy", "centów"}
-                };
-                }
-                else
-                {
-                    return new[,]
+        public UsdCurrencyDeflation()
+            :base( new[ , ]
                    {
                     {"", "", ""},
                     {"dolar", "dolary", "dolarow"},
                     {"cent", "centy", "centow"}
-                };
-                }
-            }
+                },
+                new[ , ]
+                    {
+                    {"", "", ""},
+                    {"dolar", "dolary", "dolarów"},
+                    {"cent", "centy", "centów"}
+                } )
+        {
+
         }
-
-        public List<string> OverrideUnity => new List<string>();
-
-        public bool HasStems { get; set; }
     }
 }

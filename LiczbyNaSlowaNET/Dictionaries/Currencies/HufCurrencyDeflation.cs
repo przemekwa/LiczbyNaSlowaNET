@@ -2,38 +2,26 @@
 
 namespace LiczbyNaSlowaNET.Dictionaries.Currencies
 {
-    public class HufCurrencyDeflation : ICurrencyDeflation
+    public class HufCurrencyDeflation : BaseCurrencyDeflation
     {
-        public string CurrencyCode => "HUF";
+        public override Currency CurrencyCode => Currency.HUF;
 
-        public string[,] GetDeflationTable
-        {
-            get
-            {
-                if(HasStems)
-                {
-                    return new[,]
-                                  {
-                    {"", "", ""},
-                    {"forint", "forinty", "forintów"},
-                    {"", "", ""}
-                };
-                }
-                else
-                {
-                    return new[,]
+        public HufCurrencyDeflation()
+            : base(
+                  new[ , ]
                                 {
                     {"", "", ""},
                     {"forint", "forinty", "forintow"},
                     {"", "", ""}
-                };
-                }
-                
-            }
+                },
+                new[ , ]
+                                  {
+                    {"", "", ""},
+                    {"forint", "forinty", "forintów"},
+                    {"", "", ""}
+                } )
+        {
+
         }
-
-        public List<string> OverrideUnity => new List<string>();
-
-        public bool HasStems { get; set; }
     }
 }

@@ -2,37 +2,44 @@
 
 namespace LiczbyNaSlowaNET.Dictionaries.Currencies
 {
-    public class NokCurrencyDeflation : ICurrencyDeflation, ICurrencyNotMaleDeflectionBeforeComma
+    public class NokCurrencyDeflation : BaseCurrencyDeflation, ICurrencyNotMaleDeflectionBeforeComma
     {
-        public string CurrencyCode => "NOK";
+        public override Currency CurrencyCode => Currency.NOK;
 
-        public string[,] GetDeflationTable => new[,]
-        {
-            {"", "", ""},
-            {"korona norweska", "korony norweskie", "koron norweskich"},
-            {"øre", "øre", "øre"}
-        };
-
-        public List<string> OverrideBeforeCommaUnity
-        {
-            get
-            {
-                if (HasStems)
+        public NokCurrencyDeflation()
+            : base(
+                  new[ , ]
                 {
-                    return new List<string>
+                    {"", "", ""},
+                    {"korona norweska", "korony norweskie", "koron norweskich"},
+                    {"øre", "øre", "øre"} // <--- isn't this stems?
+                } ,
+                new[ , ]
+                {
+                    {"", "", ""},
+                    {"korona norweska", "korony norweskie", "koron norweskich"},
+                    {"øre", "øre", "øre"}
+                } )
+        {
+
+        }
+
+        public List<string> GetBeforeCommaUnity( bool withStems )
+        {
+            if( withStems )
+            {
+                return new List<string>
                 {
                     "","jedna","dwie" , "trzy", "cztery", "pięć", "sześć", "siedem", "osiem", "dziewięć","zero"
                 };
-                }
-                else
-                {
-                    return new List<string>
+            }
+            else
+            {
+                return new List<string>
                 {
                     "","jedna","dwie" , "trzy", "cztery", "piec", "szesc", "siedem", "osiem", "dziewiec","zero"
                 };
-                }
             }
         }
-        public bool HasStems { get; set; }
     }
 }

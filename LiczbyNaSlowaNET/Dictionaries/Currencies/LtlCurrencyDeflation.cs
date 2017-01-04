@@ -2,37 +2,25 @@
 
 namespace LiczbyNaSlowaNET.Dictionaries.Currencies
 {
-    public class LtlCurrencyDeflation : ICurrencyDeflation
+    public class LtlCurrencyDeflation : BaseCurrencyDeflation
     {
-        public string CurrencyCode => "LTL";
+        public override Currency CurrencyCode => Currency.LTL;
 
-        public string[,] GetDeflationTable
-        {
-            get
-            {
-                if (HasStems)
-                {
-                    return new[,]
-                    {
-                    {"", "", ""},
-                    {"lit litewski", "lity litewskie", "litów litewskich"},
-                    {"cent", "centy", "centów"}
-                };
-                }
-                else
-                {
-                    return new[,]
+        public LtlCurrencyDeflation()
+            : base( new[ , ]
                    {
                     {"", "", ""},
                     {"lit litewski", "lity litewskie", "litow litewskich"},
                     {"cent", "centy", "centow"}
-                };
-                }
-            }
+                },
+                new[ , ]
+                    {
+                    {"", "", ""},
+                    {"lit litewski", "lity litewskie", "litów litewskich"},
+                    {"cent", "centy", "centów"}
+                } )
+        {
+
         }
-
-        public List<string> OverrideUnity => new List<string>();
-
-        public bool HasStems { get; set; }
     }
 }

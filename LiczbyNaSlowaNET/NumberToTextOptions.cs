@@ -8,11 +8,9 @@ namespace LiczbyNaSlowaNET
 
     public class NumberToTextOptions : INumberToTextOptions
     {
-        public ICurrencyDeflation Currency { get; set; }
+        public Currency Currency { get; set; }
 
-        public Currency CurrencyDeflation { get; set; }
-
-        public IDictionaries Dictionary { get; set; }
+        public ICurrencyDictionary Dictionary { get; set; }
 
         public string SplitDecimal { get; set; } = string.Empty;
 

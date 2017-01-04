@@ -2,37 +2,25 @@
 
 namespace LiczbyNaSlowaNET.Dictionaries.Currencies
 {
-    public class JpyCurrencyDeflation : ICurrencyDeflation
+    public class JpyCurrencyDeflation : BaseCurrencyDeflation
     {
-        public string CurrencyCode => "JPY";
+        public override Currency CurrencyCode => Currency.JPY;
 
-        public string[,] GetDeflationTable
-        {
-            get
-            {
-                if (HasStems)
-                {
-                    return new[,]
-                   {
-                    {"", "", ""},
-                    {"jen", "jeny", "jenów"},
-                    {"", "", ""}
-                };
-                }
-                else
-                {
-                    return new[,]
+        public JpyCurrencyDeflation()
+            : base( new[ , ]
                    {
                     {"", "", ""},
                     {"jen", "jeny", "jenow"},
                     {"", "", ""}
-                };
-                }
-            }
+                },
+                new[ , ]
+                   {
+                    {"", "", ""},
+                    {"jen", "jeny", "jenów"},
+                    {"", "", ""}
+                } )
+        {
+
         }
-
-        public bool HasStems { get; set; }
-
-        public List<string> OverrideUnity => new List<string>();
     }
 }

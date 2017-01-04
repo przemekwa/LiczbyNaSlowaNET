@@ -1,14 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace LiczbyNaSlowaNET.Dictionaries.Currencies
 {
-    public class CurrencyDeflationFactory : ICurrencyDeflationFactory
+    public static class CurrencyDeflationFactory
     {
-        private readonly List<string> availableCurrencyDeflations = new List<string>();
-        private bool withStems;
-        public CurrencyDeflationFactory(bool withStems)
+        static CurrencyDeflationFactory()
         {
-            CurrencyList = new List<ICurrencyDeflation>
+            // maybe go over all types that implement ICurrencyDeflation in current assembly?
+            CurrencyDeflationList = new List<ICurrencyDeflation>
             {
                 new PlnCurrencyDeflation(),
                 new ChfCurrencyDeflation(),
@@ -25,30 +25,16 @@ namespace LiczbyNaSlowaNET.Dictionaries.Currencies
                 new UsdCurrencyDeflation(),
                 new SekCurrencyDeflation(),
             };
-
-            this.withStems = withStems;
         }
 
-        public List<string> AvailableCurrencyDeflations
+        public static List<ICurrencyDeflation> CurrencyDeflationList { get; }
+
+        public static ICurrencyDeflation GetCurrencyDeflation(Currency currency )
         {
-            get
-            {
-                availableCurrencyDeflations.Clear();
+            var currencyInstance = CurrencyDeflationList.Find( x => x.CurrencyCode == currency );
+            if( currencyInstance == null )
+                throw new NotImplementedException( "No currency deflation is defined for currency " + currency );
 
-                foreach (var item in CurrencyList)
-                {
-                    availableCurrencyDeflations.Add(item.CurrencyCode);
-                }
-                return availableCurrencyDeflations;
-            }
-        }
-
-        public List<ICurrencyDeflation> CurrencyList { get; }
-
-        public ICurrencyDeflation CreateInstance(string currencyCode)
-        {
-            var currencyInstance = CurrencyList.Find(x => x.CurrencyCode.Equals(currencyCode));
-            currencyInstance.HasStems = this.withStems;
             return currencyInstance;
         }
  

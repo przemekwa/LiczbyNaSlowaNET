@@ -2,37 +2,26 @@
 
 namespace LiczbyNaSlowaNET.Dictionaries.Currencies
 {
-    public class GbpCurrencyDeflation : ICurrencyDeflation
+    public class GbpCurrencyDeflation : BaseCurrencyDeflation
     {
-        public string CurrencyCode => "GBP";
+        public override Currency CurrencyCode => Currency.GBP;
 
-        public string[,] GetDeflationTable
-        {
-            get
-            {
-                if (HasStems)
-                {
-                    return new[,]
-                   {
-                    {"", "", ""},
-                    {"funt brytyjski", "funty brytyjskie", "funtów brytyjskich"},
-                    {"pens", "pensy", "pensów"}
-                };
-                }
-                else
-                {
-                    return new[,]
+        public GbpCurrencyDeflation()
+            : base(
+                  new[ , ]
                                      {
                     {"", "", ""},
                     {"funt brytyjski", "funty brytyjskie", "funtow brytyjskich"},
                     {"pens", "pensy", "pensow"}
-                };
-                }
-            }
+                } ,
+                 new[ , ]
+                                     {
+                    {"", "", ""},
+                    {"funt brytyjski", "funty brytyjskie", "funtów brytyjskich"},
+                    {"pens", "pensy", "pensów"}
+                } )
+        {
+
         }
-
-        public List<string> OverrideUnity => new List<string>();
-
-        public bool HasStems { get; set; }
     }
 }

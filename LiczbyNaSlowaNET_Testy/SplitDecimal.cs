@@ -29,7 +29,7 @@ namespace LiczbyNaSlowaNET_Testy
         {
             var options = new NumberToTextOptions
             {
-                CurrencyDeflation = Currency.PLN,
+                Currency = Currency.PLN,
                 SplitDecimal = "i"
             };
 
@@ -42,7 +42,7 @@ namespace LiczbyNaSlowaNET_Testy
         {
             var options = new NumberToTextOptions
             {
-                CurrencyDeflation = Currency.PLN,
+                Currency = Currency.PLN,
                 SplitDecimal = "i"
             };
 
@@ -55,7 +55,7 @@ namespace LiczbyNaSlowaNET_Testy
         {
             var options = new NumberToTextOptions
             {
-                CurrencyDeflation = Currency.PLN,
+                Currency = Currency.PLN,
                 SplitDecimal = " oraz "
             };
 
@@ -67,8 +67,8 @@ namespace LiczbyNaSlowaNET_Testy
         {
             var options = new NumberToTextOptions
             {
-              
-                CurrencyDeflation = Currency.PLN
+
+                Currency = Currency.PLN
             };
 
             Assert.Equal("zero zlotych dwanascie groszy", NumberToText.Convert(0.12M, options));

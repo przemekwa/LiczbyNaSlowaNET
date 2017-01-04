@@ -2,38 +2,44 @@
 
 namespace LiczbyNaSlowaNET.Dictionaries.Currencies
 {
-    public class PercentageDeflation : ICurrencyDeflation, ICurrencyNotMaleDeflectionAfterComma
+    public class PercentageDeflation : BaseCurrencyDeflation, ICurrencyNotMaleDeflectionAfterComma
     {
-        public string CurrencyCode => "PERCENT";
+        public override Currency CurrencyCode => Currency.PERCENT;
 
-        public string[,] GetDeflationTable => new[,]
+        public PercentageDeflation()
+            : base(
+                  new[ , ]
+                    {
+                        {"", "", ""},
+                        {"procent", "procenty", "procent"},
+                        {"setna procenta", "setne procenta", "setnych procenta"}
+                    } ,
+                  new[ , ]
+                    {
+                        {"", "", ""},
+                        {"procent", "procenty", "procent"},
+                        {"setna procenta", "setne procenta", "setnych procenta"}
+                    } )
         {
-            {"", "", ""},
-            {"procent", "procenty", "procent"},
-            {"setna procenta", "setne procenta", "setnych procenta"}
-        };
 
-        public List<string> OverrideAfterCommaUnity
+        }
+        
+        public List<string> GetAfterCommaUnity( bool withStems )
         {
-            get
+            if( withStems )
             {
-                if (HasStems)
-                {
-                    return new List<string>
+                return new List<string>
                 {
                     "","jedna","dwie" , "trzy", "cztery", "pięć", "sześć", "siedem", "osiem", "dziewięć","zero"
                 };
-                }
-                else
-                {
-                    return new List<string>
+            }
+            else
+            {
+                return new List<string>
                 {
                     "","jedna","dwie" , "trzy", "cztery", "piec", "szesc", "siedem", "osiem", "dziewiec","zero"
                 };
-                }
             }
         }
-
-        public bool HasStems { get; set; }
     }
 }
