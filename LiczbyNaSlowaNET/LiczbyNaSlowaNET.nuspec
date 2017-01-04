@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>LiczbyNaSlowaNET.dll</id>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
     <authors>Einstein</authors>
 
        <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -10,11 +10,17 @@
      <copyright>Copyright 2017</copyright>
 	 <tags>LiczbyNaSłowa zamiana liczb na słowa</tags>
 <releaseNotes>
-+ usunięcie kontenera DI.
-+ biblioteka już nie potrzebuje zależności innych niż .NET 4.0
-+ możliwość ustawiania czy tekst ma posadać polskie znaki czy też nie. Domyślnie jest bez polskich znaków. 
-+ możliwość podmienienia słowników zawierających liczebniki.
-+ dodanie obsługi wartości procentowych
+	Refactoring kodu  …
+Najważniejsze zmiany:
+- dodanie pomocniczych metod do NumberToText
+- przejście z int na long (potencjalnie większy zakres)
+- usunięcie kilku klas (np NumberToTextOptionBuilder), w ich miejsce
+inne wywołania
+- zmiany w architekturze klasy CurrencyAlgorithm
+- uproszczenie interfejsów
+- wspólna bazowa klasa BaseCurrencyDeflation
+- dostosowanie słowników-deflacji do zmienionego interfejsu
+ICurrencyDeflation
 
 </releaseNotes>
   </metadata>
